@@ -15,64 +15,473 @@
 <script type="application/json" id="fish-data">
 {
   "dataVersion": 1,
-  "sources": {},
+  "sources": {
+    "mhlw_anisakis": {
+      "name": "厚生労働省「アニサキスによる食中毒を予防しましょう」",
+      "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000042953.html",
+      "confirmedOn": "2026-11-09"
+    },
+    "fsc_histamine": {
+      "name": "食品安全委員会 ヒスタミン ファクトシート",
+      "url": "https://www.fsc.go.jp/factsheets/index.data/210330histamine.pdf",
+      "confirmedOn": "2026-11-09"
+    },
+    "tokyo_haccp": {
+      "name": "東京都 HACCP取組支援資料（アニサキス対策）",
+      "url": "https://www.hokeniryo1.metro.tokyo.lg.jp/shokuhin/files/anisakisu_haccp.pdf",
+      "confirmedOn": "2026-11-09"
+    },
+    "hiroshima_anisakis": {
+      "name": "広島市 アニサキスの注意",
+      "url": "https://www.city.hiroshima.lg.jp/living/eisei/1052189/1052194/1052202/1014187.html",
+      "confirmedOn": "2026-11-09"
+    },
+    "honda_maaji": {
+      "name": "Honda釣り図鑑 マアジ",
+      "url": "https://www.honda.co.jp/fishing/picture-book/maaji/",
+      "confirmedOn": "2026-11-09"
+    },
+    "honda_masaba": {
+      "name": "Honda釣り図鑑 マサバ",
+      "url": "https://www.honda.co.jp/fishing/picture-book/masaba/",
+      "confirmedOn": "2026-11-09"
+    },
+    "honda_kasago": {
+      "name": "Honda釣り図鑑 カサゴ",
+      "url": "https://www.honda.co.jp/fishing/picture-book/kasago/",
+      "confirmedOn": "2026-11-09"
+    },
+    "kngyoren_kasago": {
+      "name": "神奈川県漁連 カサゴ",
+      "url": "https://www.kngyoren.com/pages/235/",
+      "confirmedOn": "2026-11-09"
+    },
+    "ifarc_kasago": {
+      "name": "東京都島しょ農林水産総合センター カサゴ",
+      "url": "https://www.ifarc.metro.tokyo.lg.jp/archive/27,1065,55,227.html",
+      "confirmedOn": "2026-11-09"
+    },
+    "tokushima_kasago": {
+      "name": "徳島の漁連の資料 カサゴ",
+      "url": "http://www.tokushimagyoren.or.jp/re-Poster/Re-PDF/kasago.pdf",
+      "confirmedOn": "2026-11-09"
+    },
+    "tottori_kiken": {
+      "name": "鳥取県 海の危険生物",
+      "url": "https://www.pref.tottori.lg.jp/secure/923265/kikenseibutu.pdf",
+      "confirmedOn": "2026-11-09"
+    },
+    "kaiho_onikasago": {
+      "name": "海上保安庁サイト内コラム「オニカサゴ釣り」",
+      "url": "https://www6.kaiho.mlit.go.jp/watersafety/learn_the_ocean_from_the_sea/pdf/ono_vol.3_onikasago.pdf",
+      "confirmedOn": "2026-11-09"
+    },
+    "maff_ajifry": {
+      "name": "農林水産省 あじフライ",
+      "url": "https://www.maff.go.jp/j/yusyutu_kokusai/kokuchi/middle_east/japan-cuisine/ja/japan/5/index.html",
+      "confirmedOn": "2026-11-09"
+    },
+    "osaka_recipes": {
+      "name": "大阪市中央卸売市場 魚介のレシピ",
+      "url": "https://www.city.osaka.lg.jp/shijo/page/0000084161.html",
+      "confirmedOn": "2026-11-09"
+    },
+    "chiba_misoni": {
+      "name": "千葉県 さば［味噌煮］",
+      "url": "https://www.pref.chiba.lg.jp/suisan/sakana/sakana-variety/saba-misoni.html",
+      "confirmedOn": "2026-11-09"
+    },
+    "zennoh_sabafry": {
+      "name": "JA全農とやま 塩サバのフライ",
+      "url": "https://www.zennoh.or.jp/ty/eat_buy/recipe/ssi/post-10.html",
+      "confirmedOn": "2026-11-09"
+    },
+    "funabashi_kasago": {
+      "name": "船橋市 カサゴの煮付け",
+      "url": "https://www.city.funabashi.lg.jp/shisetsu/shiminkatsudo/0003/0001/0005/p004387.html",
+      "confirmedOn": "2026-11-09"
+    }
+  },
   "fish": [
     {
       "id": "aji",
       "name": "アジ",
       "facts": {
-        "season":     { "value": "要確認", "status": "要確認", "sources": [] },
-        "howToCatch": { "value": "要確認", "status": "要確認", "sources": [] },
-        "identify":   { "value": "要確認", "status": "要確認", "sources": [] },
-        "bestWay":    { "value": "要確認", "status": "要確認", "sources": [] }
+        "season": {
+          "value": "要確認",
+          "status": "要確認",
+          "sources": []
+        },
+        "howToCatch": {
+          "value": "要確認",
+          "status": "要確認",
+          "sources": []
+        },
+        "identify": {
+          "value": "要確認",
+          "status": "要確認",
+          "sources": []
+        },
+        "bestWay": {
+          "value": "塩焼き、干物、なめろう、フライなど、いろいろな食べ方で楽しまれている魚。",
+          "status": "確認済み",
+          "sources": [
+            "honda_maaji"
+          ]
+        }
       },
       "safety": {
-        "rawOk":    { "value": "要確認", "status": "要確認", "sources": [] },
-        "cautions": { "value": [], "status": "要確認", "sources": [] },
+        "rawOk": {
+          "value": "要確認",
+          "status": "要確認",
+          "sources": []
+        },
+        "cautions": {
+          "value": [
+            "アニサキスという寄生虫がいることがあります。釣ったら早く内臓を取りのぞき、内臓は生で食べないでください。",
+            "常温に置かず、すぐ冷やしてください。ヒスタミンという食中毒の原因は、火を通しても消えません。"
+          ],
+          "status": "確認済み",
+          "sources": [
+            "mhlw_anisakis",
+            "fsc_histamine"
+          ]
+        },
         "prepType": "要確認",
         "poisonParts": null,
         "treatment": null
       },
-      "dishes": [],
-      "game": { "spots": ["teibo"], "sizeCm": [15, 35], "fight": "dart", "power": 3, "biteWindowMs": 700, "nibbles": [1, 2], "bestRange": [0.35, 0.8], "weightA": 0.0115 }
+      "dishes": [
+        {
+          "id": "shioyaki",
+          "name": "アジの塩焼き",
+          "raw": false,
+          "image": "images/dish-aji-shioyaki.webp",
+          "foodReport": "皮はパリッ、身はふっくら。すだちをしぼると、塩の角がふっと丸くなる。",
+          "recipe": null
+        },
+        {
+          "id": "fry",
+          "name": "アジフライ",
+          "raw": false,
+          "image": "images/dish-aji-fry.webp",
+          "foodReport": "ザクッと歯ごたえのあと、やわらかい身がほどける。タルタルが止まらない。",
+          "recipe": {
+            "serves": "1人前",
+            "source": "maff_ajifry",
+            "ingredients": [
+              "あじ 2枚",
+              "卵 1個",
+              "パン粉 20g",
+              "小麦粉 10g",
+              "塩 ひとつまみ",
+              "黒こしょう ひとつまみ",
+              "食用油 500ml"
+            ],
+            "steps": [
+              "魚を4つに切り、塩と黒こしょうをふっておく",
+              "小麦粉をまぶす",
+              "卵液にくぐらせて、パン粉をつける",
+              "油を熱して、魚を揚げる",
+              "完全に火が通ったらできあがり"
+            ]
+          }
+        }
+      ],
+      "game": {
+        "spots": [
+          "teibo"
+        ],
+        "sizeCm": [
+          15,
+          35
+        ],
+        "fight": "dart",
+        "power": 3,
+        "biteWindowMs": 700,
+        "nibbles": [
+          1,
+          2
+        ],
+        "bestRange": [
+          0.35,
+          0.8
+        ],
+        "weightA": 0.0115
+      }
     },
     {
       "id": "saba",
       "name": "サバ",
       "facts": {
-        "season":     { "value": "要確認", "status": "要確認", "sources": [] },
-        "howToCatch": { "value": "要確認", "status": "要確認", "sources": [] },
-        "identify":   { "value": "要確認", "status": "要確認", "sources": [] },
-        "bestWay":    { "value": "要確認", "status": "要確認", "sources": [] }
+        "season": {
+          "value": "旬は脂がのった冬。",
+          "status": "確認済み",
+          "sources": [
+            "honda_masaba"
+          ]
+        },
+        "howToCatch": {
+          "value": "要確認",
+          "status": "要確認",
+          "sources": []
+        },
+        "identify": {
+          "value": "要確認",
+          "status": "要確認",
+          "sources": []
+        },
+        "bestWay": {
+          "value": "塩焼き、味噌煮、フライなどが定番。",
+          "status": "確認済み",
+          "sources": [
+            "honda_masaba"
+          ]
+        }
       },
       "safety": {
-        "rawOk":    { "value": "要確認", "status": "要確認", "sources": [] },
-        "cautions": { "value": [], "status": "要確認", "sources": [] },
+        "rawOk": {
+          "value": "要確認",
+          "status": "要確認",
+          "sources": []
+        },
+        "cautions": {
+          "value": [
+            "アニサキスという寄生虫がいることがあります。釣ったら早く内臓を取りのぞき、内臓は生で食べないでください。",
+            "常温に置かず、すぐ冷やしてください。ヒスタミンという食中毒の原因は、火を通しても消えません。",
+            "シメサバのように酢でしめても、アニサキスは死にません。"
+          ],
+          "status": "確認済み",
+          "sources": [
+            "mhlw_anisakis",
+            "fsc_histamine"
+          ]
+        },
         "prepType": "要確認",
         "poisonParts": null,
         "treatment": null
       },
-      "dishes": [],
-      "game": { "spots": ["teibo"], "sizeCm": [25, 45], "fight": "run", "power": 5, "biteWindowMs": 600, "nibbles": [0, 1], "bestRange": [0.62, 1], "weightA": 0.0105 }
+      "dishes": [
+        {
+          "id": "shioyaki",
+          "name": "サバの塩焼き",
+          "raw": false,
+          "image": "images/dish-saba-shioyaki.webp",
+          "foodReport": "ふくらんだ皮から脂がじゅわっ。大根おろしが、ちょうどよく受け止めてくれる。",
+          "recipe": {
+            "serves": "作りやすい量",
+            "source": "osaka_recipes",
+            "ingredients": [
+              "サバ（皮つき）",
+              "塩 適量",
+              "すだちなど（好みで）"
+            ],
+            "steps": [
+              "サバは皮をつけたまま、4切れくらいに切る",
+              "両面に適量の塩をふる",
+              "そのまま焼く",
+              "食べるときに、すだちなどをかける"
+            ]
+          }
+        },
+        {
+          "id": "misoni",
+          "name": "サバの味噌煮",
+          "raw": false,
+          "image": "images/dish-saba-misoni.webp",
+          "foodReport": "味噌のコクが身の奥までしみている。ごはんを持つ手が止まらない。",
+          "recipe": {
+            "serves": "4人分",
+            "source": "chiba_misoni",
+            "ingredients": [
+              "さば 1尾",
+              "味噌 大さじ3",
+              "醤油 大さじ1",
+              "砂糖 大さじ2",
+              "酒 大さじ2",
+              "生姜 1片",
+              "水 1カップ"
+            ],
+            "steps": [
+              "さばは二枚におろして、さらに半分に切る。生姜は薄切りにする",
+              "浅い鍋に水を入れ、味噌の半分とほかの調味料を合わせて煮立たせる",
+              "さばと生姜を入れ、煮汁が半分になるまで煮る",
+              "味を見ながら残りの味噌を煮汁で溶き、煮立つ寸前で火を止める"
+            ]
+          }
+        },
+        {
+          "id": "fry",
+          "name": "サバのフライ",
+          "raw": false,
+          "image": "images/dish-saba-fry.webp",
+          "foodReport": "サクサクの衣の中から、脂ののった身があふれる。ソースをたっぷりつけたい。",
+          "recipe": {
+            "serves": "4人分",
+            "source": "zennoh_sabafry",
+            "note": "元のレシピは塩サバを使っています。天ぷら粉は、元のレシピでは商品名で書かれています。",
+            "ingredients": [
+              "塩サバ（片身） 4切れ",
+              "卵 1個",
+              "天ぷら粉 40g",
+              "水 大さじ2",
+              "生パン粉 適量",
+              "揚げ油 適量",
+              "キャベツ 1/2個",
+              "マヨネーズ 50g位",
+              "レモン 1/2個"
+            ],
+            "steps": [
+              "キャベツは千切り、レモンはくし切りにする",
+              "卵をよく溶いて水を混ぜ、天ぷら粉を入れて混ぜる",
+              "塩サバに衣をつけてパン粉をつけ、15〜20分おいて落ち着かせる",
+              "170〜180℃くらいの油で揚げる",
+              "食べやすく切って皿に盛り、キャベツ、マヨネーズ、レモンを添える"
+            ]
+          }
+        }
+      ],
+      "game": {
+        "spots": [
+          "teibo"
+        ],
+        "sizeCm": [
+          25,
+          45
+        ],
+        "fight": "run",
+        "power": 5,
+        "biteWindowMs": 600,
+        "nibbles": [
+          0,
+          1
+        ],
+        "bestRange": [
+          0.62,
+          1
+        ],
+        "weightA": 0.0105
+      }
     },
     {
       "id": "kasago",
       "name": "カサゴ",
       "facts": {
-        "season":     { "value": "要確認", "status": "要確認", "sources": [] },
-        "howToCatch": { "value": "要確認", "status": "要確認", "sources": [] },
-        "identify":   { "value": "要確認", "status": "要確認", "sources": [] },
-        "bestWay":    { "value": "要確認", "status": "要確認", "sources": [] }
+        "season": {
+          "value": "旬は冬から初春。",
+          "status": "確認済み",
+          "sources": [
+            "kngyoren_kasago"
+          ]
+        },
+        "howToCatch": {
+          "value": "要確認",
+          "status": "要確認",
+          "sources": []
+        },
+        "identify": {
+          "value": "要確認",
+          "status": "要確認",
+          "sources": []
+        },
+        "bestWay": {
+          "value": "火を通しても身が硬くなりにくく、煮付けが定番。",
+          "status": "確認済み",
+          "sources": [
+            "kngyoren_kasago"
+          ]
+        }
       },
       "safety": {
-        "rawOk":    { "value": "要確認", "status": "要確認", "sources": [] },
-        "cautions": { "value": [], "status": "要確認", "sources": [] },
+        "rawOk": {
+          "value": "要確認",
+          "status": "要確認",
+          "sources": []
+        },
+        "cautions": {
+          "value": [
+            "カサゴは頭やエラぶたに鋭いトゲがあります。トゲやヒレに注意して調理しよう。トゲに毒があるかは、資料によって書き方が違います。"
+          ],
+          "status": "確認済み",
+          "sources": [
+            "ifarc_kasago",
+            "kngyoren_kasago",
+            "tokushima_kasago",
+            "tottori_kiken",
+            "kaiho_onikasago"
+          ]
+        },
         "prepType": "要確認",
         "poisonParts": null,
         "treatment": null
       },
-      "dishes": [],
-      "game": { "spots": ["teibo"], "sizeCm": [14, 30], "fight": "dive", "power": 4, "biteWindowMs": 900, "nibbles": [2, 3], "bestRange": [0.2, 0.5], "weightA": 0.02 }
+      "dishes": [
+        {
+          "id": "nitsuke",
+          "name": "カサゴの煮付け",
+          "raw": false,
+          "image": "images/dish-kasago-nitsuke.webp",
+          "foodReport": "甘辛い煮汁をまとった白身が、箸でほろりとほどける。煮汁までごちそう。",
+          "recipe": {
+            "serves": "4人分",
+            "source": "funabashi_kasago",
+            "note": "元のレシピの作り方には酒が出てきますが、分量は書かれていません。",
+            "ingredients": [
+              "カサゴ 4尾",
+              "醤油 1カップ",
+              "砂糖 大さじ4",
+              "みりん 大さじ2",
+              "しょうが 適宜",
+              "水 1/2カップ",
+              "酒（分量は元のレシピに書かれていません）"
+            ],
+            "steps": [
+              "ウロコを取り、水で洗いながら内臓を取りのぞいて、飾り包丁を入れる",
+              "鍋に水、醤油、砂糖、酒を入れて一煮立ちさせる",
+              "魚を入れて、落としぶたをする",
+              "アクを取りながら、煮汁が1/3くらいになるまで煮詰める",
+              "鍋を傾けて煮汁を魚にかけながら、さらに煮詰める"
+            ]
+          }
+        },
+        {
+          "id": "karaage",
+          "name": "カサゴの唐揚げ",
+          "raw": false,
+          "image": "images/dish-kasago-karaage.webp",
+          "foodReport": "カリカリに揚がったヒレまで香ばしい。レモンをしぼって、熱いうちに。",
+          "recipe": null
+        },
+        {
+          "id": "shioyaki",
+          "name": "カサゴの塩焼き",
+          "raw": false,
+          "image": "images/dish-kasago-shioyaki.webp",
+          "foodReport": "焦げた皮の香りのあと、白身のうまみがじんわり広がる。",
+          "recipe": null
+        }
+      ],
+      "game": {
+        "spots": [
+          "teibo"
+        ],
+        "sizeCm": [
+          14,
+          30
+        ],
+        "fight": "dive",
+        "power": 4,
+        "biteWindowMs": 900,
+        "nibbles": [
+          2,
+          3
+        ],
+        "bestRange": [
+          0.2,
+          0.5
+        ],
+        "weightA": 0.02
+      }
     }
   ]
 }
@@ -114,6 +523,46 @@
     background: #fff6e6;
     border-radius: 6px;
   }
+  /* レシピや注意を読む窓 */
+  #sheet {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    background: rgba(20, 14, 10, 0.82);
+    -webkit-user-select: text;
+    user-select: text;
+  }
+  .sheet-box {
+    box-sizing: border-box;
+    width: calc(100% - 32px);
+    max-width: 520px;
+    margin: 24px auto;
+    padding: 22px;
+    color: #2d2118;
+    background: #fff6e6;
+    border-radius: 14px;
+    font: 16px/1.8 "Hiragino Maru Gothic ProN", "Yu Gothic UI", Meiryo, "Noto Sans CJK JP", sans-serif;
+  }
+  .sheet-box h2 { margin: 0 0 12px; font-size: 20px; line-height: 1.5; }
+  .sheet-box h3 { margin: 16px 0 4px; font-size: 16px; }
+  .sheet-box p { margin: 8px 0; }
+  .sheet-box ol, .sheet-box ul { margin: 4px 0; padding-left: 1.4em; }
+  .sheet-source { font-size: 13px; }
+  .sheet-source a { color: #27406a; }
+  .sheet-box button {
+    display: block;
+    margin: 18px auto 0;
+    padding: 12px 40px;
+    color: #fff6e6;
+    background: #27406a;
+    border: 0;
+    border-radius: 24px;
+    font: inherit;
+  }
   #notice button {
     padding: 12px 24px;
     color: #27406a;
@@ -127,6 +576,7 @@
 <body>
 <div id="game"></div>
 <div id="notice" role="alert"></div>
+<div id="sheet"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.90.0/phaser.min.js"></script>
 <script>
@@ -135,7 +585,7 @@
 /* ============================================================
    2. ゲームの設定
    ============================================================ */
-const GAME_VERSION = 'v0.2';
+const GAME_VERSION = 'v0.3';
 const TAU = Math.PI * 2;
 
 // 横幅は固定し、高さを端末の縦横比に合わせる（スマホで上下左右に余白を出さないため）
@@ -156,7 +606,7 @@ const FONT_BODY = '"Hiragino Maru Gothic ProN","Yu Gothic UI","Meiryo","Noto San
 const COLOR = {
   cream: '#fff6e6',
   ink: '#27406a',
-  shore: '#343757',
+  shore: '#171a2c',
 };
 
 // 動きを減らす設定の端末では、波やふわっと出る動きを控えめにする
@@ -693,7 +1143,7 @@ const ROD_TIP = { x: 430, y: SHORE_TOP + 70 };
 
 function paintShore(ctx, w, h, noRod) {
   const rnd = seeded(23);
-  ctx.fillStyle = rgba(COLOR.shore, 0.2);
+  ctx.fillStyle = rgba(COLOR.shore, 0.5);
   for (let pass = 0; pass < 6; pass++) {
     const j = () => (rnd() - 0.5) * 5;
     ctx.beginPath();
@@ -766,8 +1216,8 @@ function paintFloat(ctx, w, h) {
 }
 
 function paintGull(ctx, w, h) {
-  ctx.strokeStyle = '#3f4674';
-  ctx.lineWidth = 4;
+  ctx.strokeStyle = '#1e2036';
+  ctx.lineWidth = 3.4;
   ctx.lineCap = 'round';
   ctx.beginPath();
   ctx.moveTo(4, h * 0.65);
@@ -776,180 +1226,645 @@ function paintGull(ctx, w, h) {
   ctx.stroke();
 }
 
-// 魚の絵の違い（体の太さ、色、ヒレの形）
-const FISH_ART = {
-  aji:    { top: 62, belly: 60, tail: 11, back: '#5d7d93', mid: '#b9c9cc', low: '#f3efe3', fin: '#a9b48e', tailFork: 54 },
-  saba:   { top: 52, belly: 52, tail: 8,  back: '#2c6877', mid: '#9dbbbe', low: '#f6f2e7', fin: '#476f79', tailFork: 62 },
-  kasago: { top: 78, belly: 62, tail: 18, back: '#7a382b', mid: '#b9553e', low: '#edc8a5', fin: '#a2452f', tailFork: 8 },
+/* ---------- 写実の絵のための道具 ---------- */
+function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+function sstep(a, b, v) { const t = clamp01((v - a) / (b - a)); return t * t * (3 - 2 * t); }
+function lerp(a, b, t) { return a + (b - a) * t; }
+function lerp3(a, b, t) { return [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)]; }
+
+// 同じ場所なら毎回同じ値になる、なめらかなでこぼこ
+function hash2(ix, iy) {
+  let h = (Math.imul(ix, 374761393) + Math.imul(iy, 668265263)) | 0;
+  h = Math.imul(h ^ (h >>> 13), 1274126177);
+  return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
+}
+function vnoise(x, y) {
+  const ix = Math.floor(x), iy = Math.floor(y);
+  let fx = x - ix, fy = y - iy;
+  fx = fx * fx * (3 - 2 * fx);
+  fy = fy * fy * (3 - 2 * fy);
+  const a = hash2(ix, iy), b = hash2(ix + 1, iy), c = hash2(ix, iy + 1), d = hash2(ix + 1, iy + 1);
+  return a + (b - a) * fx + (c - a) * fy + (a - b - c + d) * fx * fy;
+}
+function fbm(x, y, octaves) {
+  let sum = 0, amp = 0.5, total = 0;
+  for (let i = 0; i < octaves; i++) {
+    sum += amp * vnoise(x, y);
+    total += amp;
+    x = x * 2.03 + 17.1;
+    y = y * 2.03 - 9.7;
+    amp *= 0.5;
+  }
+  return sum / total;
+}
+
+// 1点ずつ色を計算して描く。shade(x, y, out) が out に [赤, 緑, 青, 不透明度] を入れる
+function paintPixels(ctx, w, h, shade) {
+  const image = ctx.createImageData(w, h);
+  const data = image.data;
+  const out = [0, 0, 0, 255];
+  let i = 0;
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      out[3] = 255;
+      shade(x, y, out);
+      data[i++] = out[0];
+      data[i++] = out[1];
+      data[i++] = out[2];
+      data[i++] = out[3];
+    }
+  }
+  ctx.putImageData(image, 0, 0);
+}
+
+function offscreen(w, h) {
+  const canvas = document.createElement('canvas');
+  canvas.width = w;
+  canvas.height = h;
+  return canvas;
+}
+
+// 点の列を通る、なめらかな線を作る
+function curveFrom(points) {
+  const n = points.length;
+  const slope = (i) => {
+    const a = points[Math.max(0, i - 1)], b = points[Math.min(n - 1, i + 1)];
+    return (b[1] - a[1]) / (b[0] - a[0]);
+  };
+  return (x) => {
+    const v = Math.min(points[n - 1][0], Math.max(points[0][0], x));
+    let i = 0;
+    while (i < n - 2 && v > points[i + 1][0]) i++;
+    const [x0, y0] = points[i];
+    const [x1, y1] = points[i + 1];
+    const d = x1 - x0, t = (v - x0) / d, t2 = t * t, t3 = t2 * t;
+    return (2 * t3 - 3 * t2 + 1) * y0 + (t3 - 2 * t2 + t) * d * slope(i)
+      + (-2 * t3 + 3 * t2) * y1 + (t3 - t2) * d * slope(i + 1);
+  };
+}
+
+/* ---------- 魚の絵 ---------- */
+
+// 魚の形。x は口先0〜尾の付け根1、top と bot は体の中心線から背中・おなかまでの高さ（体長に対する割合）
+const FISH_SHAPE = {
+  // マアジ：先のとがった平たい体で、尾の付け根がとても細い
+  aji: {
+    x0: 22, L: 418, gill: 0.265, eye: [0.105, -0.28], eyeR: 12.5,
+    top: [[0, 0], [0.03, 0.052], [0.1, 0.108], [0.2, 0.142], [0.3, 0.152], [0.45, 0.142], [0.6, 0.108], [0.75, 0.062], [0.88, 0.028], [1, 0.022]],
+    bot: [[0, 0], [0.03, 0.03], [0.1, 0.076], [0.2, 0.122], [0.3, 0.138], [0.45, 0.132], [0.6, 0.102], [0.75, 0.06], [0.88, 0.028], [1, 0.022]],
+  },
+  // マサバ：太い魚雷の形
+  saba: {
+    x0: 22, L: 430, gill: 0.235, eye: [0.095, -0.22], eyeR: 12.5,
+    top: [[0, 0], [0.03, 0.034], [0.1, 0.082], [0.2, 0.114], [0.32, 0.127], [0.5, 0.117], [0.7, 0.082], [0.88, 0.034], [1, 0.022]],
+    bot: [[0, 0], [0.03, 0.03], [0.1, 0.072], [0.2, 0.102], [0.32, 0.116], [0.5, 0.11], [0.7, 0.076], [0.88, 0.032], [1, 0.022]],
+  },
+  // カサゴ：頭が大きく、尾の付け根が太い
+  kasago: {
+    x0: 26, L: 392, gill: 0.33, eye: [0.135, -0.5], eyeR: 15,
+    top: [[0, 0], [0.02, 0.05], [0.08, 0.128], [0.18, 0.178], [0.3, 0.192], [0.45, 0.178], [0.6, 0.142], [0.75, 0.108], [0.9, 0.088], [1, 0.082]],
+    bot: [[0, 0.01], [0.02, 0.058], [0.08, 0.1], [0.18, 0.138], [0.3, 0.155], [0.45, 0.148], [0.6, 0.114], [0.75, 0.088], [0.9, 0.072], [1, 0.068]],
+  },
 };
 
-function fishBodyPath(ctx, h, a) {
-  const cy = h / 2;
+function fishGeometry(id) {
+  const shape = FISH_SHAPE[id] || FISH_SHAPE.aji;
+  const top = curveFrom(shape.top);
+  const bot = curveFrom(shape.bot);
+  const cy = 140;
+  return {
+    ...shape, id, cy,
+    px: (x) => shape.x0 + x * shape.L,
+    upY: (x) => cy - top(x) * shape.L,
+    lowY: (x) => cy + bot(x) * shape.L,
+  };
+}
+
+// 体の輪かくの線
+function fishOutline(ctx, g) {
   ctx.beginPath();
-  ctx.moveTo(34, cy + 6);
-  ctx.bezierCurveTo(130, cy - a.top * 1.3, 300, cy - a.top * 1.25, 452, cy - a.tail);
-  ctx.lineTo(452, cy + a.tail);
-  ctx.bezierCurveTo(300, cy + a.belly * 1.25, 130, cy + a.belly * 1.3, 34, cy + 6);
+  ctx.moveTo(g.px(0), g.upY(0));
+  for (let x = 0.01; x <= 1.0001; x += 0.01) ctx.lineTo(g.px(x), g.upY(x));
+  for (let x = 1; x >= 0; x -= 0.01) ctx.lineTo(g.px(x), g.lowY(x));
   ctx.closePath();
 }
 
-// 横向きの魚（頭が左）。尾→ヒレ→体→模様→目の順に重ねる
-function paintFish(ctx, w, h, id) {
-  const a = FISH_ART[id] || FISH_ART.aji;
-  const cy = h / 2;
-  const rnd = seeded(id.length * 97);
-
-  // 尾びれ
-  ctx.fillStyle = a.fin;
-  ctx.beginPath();
-  ctx.moveTo(444, cy - a.tail);
-  ctx.quadraticCurveTo(490, cy - 40, 534, cy - 76);
-  ctx.quadraticCurveTo(534 - a.tailFork, cy, 534, cy + 76);
-  ctx.quadraticCurveTo(490, cy + 40, 444, cy + a.tail);
-  ctx.closePath();
-  ctx.fill();
-
-  // 背びれ・しりびれ
-  ctx.fillStyle = a.fin;
-  if (id === 'kasago') {
-    // カサゴはトゲのある背びれ
-    ctx.beginPath();
-    ctx.moveTo(160, cy - a.top + 2);
-    for (let i = 0; i <= 11; i++) {
-      const x = 160 + i * 22;
-      ctx.lineTo(x + 10, cy - a.top - 34 + i * 2.4);
-      ctx.lineTo(x + 22, cy - a.top + 6 + i * 3);
-    }
-    ctx.lineTo(420, cy - 20);
-    ctx.lineTo(160, cy - 30);
-    ctx.closePath();
-    ctx.fill();
-  } else {
-    ctx.beginPath();
-    ctx.moveTo(190, cy - a.top + 4);
-    ctx.lineTo(214, cy - a.top - 36);
-    ctx.lineTo(262, cy - a.top + 2);
-    ctx.closePath();
-    ctx.fill();
-    ctx.beginPath();
-    ctx.moveTo(288, cy - a.top + 8);
-    ctx.quadraticCurveTo(320, cy - a.top - 24, 400, cy - 22);
-    ctx.lineTo(380, cy - 10);
-    ctx.closePath();
-    ctx.fill();
-  }
-  ctx.beginPath();
-  ctx.moveTo(290, cy + a.belly - 6);
-  ctx.quadraticCurveTo(330, cy + a.belly + 24, 400, cy + 22);
-  ctx.lineTo(370, cy + 10);
-  ctx.closePath();
-  ctx.fill();
-
-  // サバは尾の近くに小さいヒレが並ぶ
-  if (id === 'saba') {
-    for (let i = 0; i < 4; i++) {
-      const x = 400 + i * 13;
-      for (const dir of [-1, 1]) {
-        ctx.beginPath();
-        ctx.moveTo(x, cy + dir * 15);
-        ctx.lineTo(x + 8, cy + dir * 30);
-        ctx.lineTo(x + 11, cy + dir * 11);
-        ctx.closePath();
-        ctx.fill();
+// 各魚の、生のときの体の色
+function rawFishColor(id, g, x, s, bx, half) {
+  if (id === 'aji') {
+    const n = fbm(bx * 0.02, s * 2.2, 3);
+    let c = lerp3([44, 74, 78], [186, 196, 188], sstep(-0.9, -0.08, s + (n - 0.5) * 0.2));
+    c = lerp3(c, [240, 240, 232], sstep(-0.1, 0.62, s));
+    // 体の横に、うっすら黄金色の帯
+    const band = Math.exp(-Math.pow((s + 0.16) / 0.24, 2)) * 0.5;
+    c = lerp3(c, [204, 176, 92], band);
+    // ぜいご（尾に向かう、とげのあるうろこの列）
+    const line = lerp(-0.46, -0.03, sstep(0.3, 0.62, x));
+    if (x > g.gill + 0.02) {
+      const dy = Math.abs((s - line) * half);
+      const height = lerp(2, 8.5, sstep(0.42, 0.72, x)) * (1 - sstep(0.93, 1, x) * 0.4);
+      const period = lerp(6, 11, sstep(0.4, 0.8, x));
+      const u = (bx / period) % 1;
+      const shield = dy / height + Math.abs(u - 0.5) * 0.85;
+      if (shield < 1) {
+        const face = lerp3([214, 208, 180], [108, 98, 78], u);
+        c = lerp3(c, face, sstep(1, 0.72, shield) * lerp(0.28, 0.7, sstep(0.42, 0.7, x)));
       }
     }
+    // エラの上の黒い点
+    const sx = (x - (g.gill - 0.012)) / 0.024, sy = (s + 0.62) / 0.14;
+    c = lerp3(c, [20, 24, 28], sstep(1.2, 0.5, sx * sx + sy * sy) * 0.92);
+    return c;
+  }
+  if (id === 'saba') {
+    const n = fbm(bx * 0.018 + 3, s * 2, 3);
+    let c = lerp3([22, 82, 104], [42, 118, 124], n);
+    c = lerp3(c, [204, 212, 212], sstep(-0.16, 0.26, s + (n - 0.5) * 0.12));
+    c = lerp3(c, [246, 244, 238], sstep(0.2, 0.75, s));
+    // 背中の、くねくねした黒い模様
+    if (s < 0.08 && x > g.gill - 0.04) {
+      const warp = fbm(x * 12, s * 4 + 5, 3);
+      const wave = Math.sin(x * 92 + warp * 13 + s * 11);
+      const zone = sstep(0.06, -0.3, s);
+      c = lerp3(c, [12, 30, 40], sstep(0.05, 0.55, wave) * zone * 0.95);
+    }
+    // おなかのピンクがかった光
+    c = lerp3(c, [236, 196, 200], Math.exp(-Math.pow((s - 0.34) / 0.2, 2)) * 0.2 * n * 2);
+    return c;
+  }
+  // カサゴ：赤茶色で、暗い帯とまだら、小さな白い点
+  const n = fbm(bx * 0.03, s * 3 + 8, 4);
+  let c = lerp3([150, 62, 40], [108, 44, 30], n);
+  c = lerp3(c, [226, 164, 124], sstep(0.12, 0.92, s + (n - 0.5) * 0.3));
+  let bar = 0;
+  for (const center of [0.36, 0.5, 0.64, 0.78, 0.93]) {
+    bar += Math.exp(-Math.pow((x - center + (fbm(s * 3, center * 20, 3) - 0.5) * 0.09) / 0.042, 2));
+  }
+  c = lerp3(c, [48, 22, 18], clamp01(bar) * sstep(0.62, -0.2, s) * 0.86);
+  const blotch = sstep(0.54, 0.74, fbm(bx * 0.075, s * half * 0.075 + 4, 3));
+  c = lerp3(c, [64, 28, 20], blotch * sstep(0.7, -0.1, s) * 0.5);
+  const cellX = Math.floor(bx / 13), cellY = Math.floor((s * half) / 13);
+  if (hash2(cellX + 3, cellY) > 0.86 && s < 0.5) {
+    const px = bx / 13 - cellX - 0.5 + (hash2(cellX, cellY + 2) - 0.5) * 0.5;
+    const py = (s * half) / 13 - cellY - 0.5 + (hash2(cellX + 9, cellY) - 0.5) * 0.5;
+    const size = 0.02 + hash2(cellX, cellY) * 0.05;
+    c = lerp3(c, [222, 190, 158], sstep(size, size * 0.4, px * px + py * py) * 0.55);
+  }
+  return c;
+}
+
+// 焼いたときの体の色
+const ROAST_RAMP = [
+  [0, [240, 196, 116]],
+  [0.36, [205, 138, 58]],
+  [0.64, [128, 72, 28]],
+  [0.86, [58, 32, 16]],
+  [1, [26, 16, 10]],
+];
+function roastColor(v) {
+  for (let i = 1; i < ROAST_RAMP.length; i++) {
+    if (v <= ROAST_RAMP[i][0]) {
+      const [a, ca] = ROAST_RAMP[i - 1], [b, cb] = ROAST_RAMP[i];
+      return lerp3(ca, cb, (v - a) / (b - a));
+    }
+  }
+  return ROAST_RAMP[ROAST_RAMP.length - 1][1];
+}
+
+function grilledFishColor(id, g, x, s, bx, by, raw) {
+  const rough = fbm(bx * 0.04, by * 0.06, 4);
+  // 網の焦げ目は、まっすぐでなく、ところどころ途切れる
+  const grid = (bx * 0.0165 + s * 0.14 + (rough - 0.5) * 0.3) % 1;
+  const mark = Math.exp(-Math.pow((grid - 0.5) / 0.075, 2)) * sstep(0.34, 0.5, fbm(by * 0.03, bx * 0.012, 2));
+  let burn = 0.1 + sstep(0.55, -0.85, s) * 0.34 + (rough - 0.42) * 1.05 + mark * 0.62;
+  burn += sstep(0.13, 0.02, x) * 0.32;                   // 顔のあたりはよく焼ける
+  burn += sstep(0.82, 1, x) * 0.18;
+  // 生のときの模様は、焼いても少し残る
+  const rawLum = (raw[0] + raw[1] + raw[2]) / 765;
+  burn += (0.55 - rawLum) * 0.34;
+  let c = roastColor(clamp01(burn));
+  c = lerp3(c, [188, 170, 142], 0.3 * (1 - clamp01(burn)));
+  if (id === 'kasago') c = lerp3(c, [168, 74, 40], 0.22);
+  // 皮がふくらんだところ
+  const bumpX = bx * 0.2, bumpY = by * 0.2;
+  const bump = vnoise(bumpX, bumpY);
+  if (bump > 0.7) c = lerp3(c, [248, 208, 140], sstep(0.7, 0.86, bump) * 0.65);
+  else if (bump < 0.22) c = lerp3(c, [60, 32, 14], sstep(0.22, 0.08, bump) * 0.55);
+  return c;
+}
+
+function fishBodyCanvas(id, w, h, cooked) {
+  const scale = w / 560;
+  const g = fishGeometry(id);
+  const canvas = offscreen(w, h);
+  const scaleFreq = id === 'kasago' ? 0.5 : id === 'saba' ? 1.1 : 0.82;
+
+  paintPixels(canvas.getContext('2d'), w, h, (px, py, o) => {
+    const bx = px / scale, by = py / scale;
+    const x = (bx - g.x0) / g.L;
+    if (x <= 0 || x >= 1.012) { o[3] = 0; return; }
+    const up = g.upY(x), low = g.lowY(x);
+    const half = (low - up) / 2;
+    if (half <= 0.2) { o[3] = 0; return; }
+    const s = (by - (up + low) / 2) / half;
+    const edge = (1 - Math.abs(s)) * half * scale;
+    if (edge <= -0.5) { o[3] = 0; return; }
+
+    const raw = rawFishColor(id, g, x, s, bx, half);
+    let c = cooked ? grilledFishColor(id, g, x, s, bx, by, raw) : raw;
+
+    // 体の丸みに合わせた明るさ。上から光が当たる
+    const round = Math.sqrt(Math.max(0, 1 - s * s));
+    let light = 0.42 + 0.72 * clamp01(round * 0.72 - s * 0.42);
+
+    // エラぶたのふち
+    const gillAt = g.gill - 0.05 * s * s;
+    const fromGill = x - gillAt;
+    if (fromGill < 0) {
+      if (fromGill > -0.016) light *= lerp(0.62, 1, sstep(0, -0.016, fromGill));
+      if (id === 'kasago') {
+        c = lerp3(c, [44, 20, 16], sstep(0.5, 0.74, fbm(bx * 0.09, by * 0.09, 3)) * 0.55);
+      }
+    } else if (!cooked || id === 'kasago') {
+      // うろこ。光の当たり方でチラチラする
+      const size = id === 'kasago' ? 8.5 : id === 'saba' ? 3.2 : 4.2;
+      const v = (s * half) / size + fbm(bx * 0.02, by * 0.02, 2) * 0.8;
+      const row = Math.floor(v);
+      const u = bx / (size * 1.25) + (row % 2) * 0.5;
+      const cell = Math.floor(u);
+      const fu = u - cell - 0.5, fv = v - row - 0.5;
+      // うろこ1枚の後ろのふちだけ、うすく影を落とす
+      const rim = sstep(0.05, 0.42, fu + fv * fv * 0.9);
+      const strength = id === 'kasago' ? 0.2 : 0.07;
+      light *= 1 - rim * (cooked ? strength * 0.3 : strength);
+      if (!cooked) {
+        const glitter = hash2(cell, row * 7);
+        const band = clamp01(1 - Math.abs(s + 0.08) * 1.25);
+        if (glitter > 0.7) c = lerp3(c, [255, 255, 248], (glitter - 0.7) * (id === 'kasago' ? 0.2 : 1.3) * band);
+      }
+    }
+
+    // 銀色の体に映り込む、長くのびた濃淡
+    if (!cooked && id !== 'kasago') {
+      const streak = fbm(bx * 0.009 + 5, s * 5.5, 3);
+      light *= 0.82 + streak * 0.42;
+    }
+
+    // 虹色の光（生の魚のぬめりと銀色）
+    if (!cooked && id !== 'kasago') {
+      const tint = fbm(bx * 0.012 + 40, by * 0.02, 2);
+      c = lerp3(c, tint > 0.5 ? [150, 210, 214] : [226, 186, 214], Math.abs(tint - 0.5) * 0.7 * clamp01(1 - Math.abs(s)));
+    }
+
+    o[0] = c[0] * light;
+    o[1] = c[1] * light;
+    o[2] = c[2] * light;
+
+    // 背中側に細く走る光
+    const specBand = Math.exp(-Math.pow((s + 0.42) / 0.13, 2));
+    const specNoise = fbm(bx * 0.05 + 11, by * 0.05, 2);
+    const spec = specBand * (cooked ? 0.1 + specNoise * 0.3 : id === 'kasago' ? 0.14 : 0.42) * 255 * (cooked ? 0.42 : 0.6);
+    o[0] += spec;
+    o[1] += spec * 0.95;
+    o[2] += spec * (cooked ? 0.72 : 0.92);
+
+    o[3] = 255 * clamp01(edge + 0.5) * clamp01((1.012 - x) * g.L * scale * 0.4);
+  });
+  return canvas;
+}
+
+// ヒレ1枚。rays は [付け根x, 付け根y, 先x, 先y] の列
+function drawFin(ctx, rays, opts) {
+  const { color, edge, alpha = 0.86, spiny = false, cooked = false, rnd } = opts;
+  const first = rays[0], last = rays[rays.length - 1];
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(first[0], first[1]);
+  ctx.lineTo(first[2], first[3]);
+  for (let i = 1; i < rays.length; i++) {
+    const a = rays[i - 1], b = rays[i];
+    if (spiny) {
+      // トゲとトゲの間の膜は、内側にくぼむ
+      ctx.quadraticCurveTo((a[2] + b[2] + a[0] + b[0]) / 4, lerp((a[3] + b[3]) / 2, (a[1] + b[1]) / 2, 0.42), b[2], b[3]);
+    } else {
+      ctx.lineTo(b[2], b[3]);
+    }
+  }
+  ctx.lineTo(last[0], last[1]);
+  ctx.closePath();
+  const g = ctx.createLinearGradient(first[0], first[1], first[2], first[3]);
+  g.addColorStop(0, rgba(color, Math.min(1, alpha + 0.1)));
+  g.addColorStop(1, rgba(edge, alpha * 0.82));
+  ctx.fillStyle = g;
+  ctx.fill();
+  ctx.clip();
+  // すじ（鰭条）
+  ctx.lineCap = 'round';
+  for (let i = 0; i < rays.length; i++) {
+    const r = rays[i];
+    ctx.strokeStyle = rgba(edge, 0.75);
+    ctx.lineWidth = spiny ? 1.9 : 1.1;
+    ctx.beginPath();
+    ctx.moveTo(r[0], r[1]);
+    ctx.lineTo(r[2], r[3]);
+    ctx.stroke();
+    if (i < rays.length - 1) {
+      const n = rays[i + 1];
+      ctx.strokeStyle = rgba(edge, 0.3);
+      ctx.lineWidth = 0.8;
+      ctx.beginPath();
+      ctx.moveTo((r[0] + n[0]) / 2, (r[1] + n[1]) / 2);
+      ctx.lineTo((r[2] + n[2]) / 2, (r[3] + n[3]) / 2);
+      ctx.stroke();
+    }
+  }
+  if (cooked) {
+    // 焦げと、ふった塩
+    for (let i = 0; i < 10; i++) {
+      const a = rays[Math.floor(rnd() * rays.length)];
+      const t = 0.55 + rnd() * 0.45;
+      blob(ctx, lerp(a[0], a[2], t), lerp(a[1], a[3], t), 8 + rnd() * 14, 6 + rnd() * 10, '#23120a', 0.5);
+    }
+    for (let i = 0; i < 7 * rays.length; i++) {
+      const a = rays[Math.floor(rnd() * rays.length)];
+      const t = rnd();
+      ctx.fillStyle = `rgba(255,252,244,${0.35 + rnd() * 0.55})`;
+      ctx.beginPath();
+      ctx.arc(lerp(a[0], a[2], t) + (rnd() - 0.5) * 8, lerp(a[1], a[3], t) + (rnd() - 0.5) * 8, 0.4 + rnd() * 1.1, 0, TAU);
+      ctx.fill();
+    }
+  }
+  ctx.restore();
+}
+
+// x の範囲に、背びれ・しりびれのすじを並べる
+function raysAlong(g, from, to, count, side, height, lean) {
+  const rays = [];
+  for (let i = 0; i < count; i++) {
+    const t = count === 1 ? 0 : i / (count - 1);
+    const x = lerp(from, to, t);
+    const bx = g.px(x);
+    const by = side < 0 ? g.upY(x) + 3 : g.lowY(x) - 3;
+    const len = height(t) * g.L;
+    rays.push([bx, by, bx + len * lean, by + side * len]);
+  }
+  return rays;
+}
+
+// 尾びれ。付け根から tips の点へ広げる
+function tailRays(g, tipFn, count) {
+  const rays = [];
+  const baseX = g.px(1) - 4;
+  const up = g.upY(1), low = g.lowY(1);
+  for (let i = 0; i < count; i++) {
+    const t = i / (count - 1);
+    const tip = tipFn(t);
+    rays.push([baseX, lerp(up, low, t), tip[0], tip[1]]);
+  }
+  return rays;
+}
+
+function fanRays(cx, cy, from, to, count, length, wobble) {
+  const rays = [];
+  for (let i = 0; i < count; i++) {
+    const t = i / (count - 1);
+    const a = lerp(from, to, t);
+    const len = length * wobble(t);
+    rays.push([cx, cy + t * 8, cx + Math.cos(a) * len, cy + Math.sin(a) * len]);
+  }
+  return rays;
+}
+
+function drawFishEye(ctx, g, cooked) {
+  const x = g.px(g.eye[0]);
+  const up = g.upY(g.eye[0]), low = g.lowY(g.eye[0]);
+  const y = (up + low) / 2 + g.eye[1] * (low - up) / 2;
+  const r = g.eyeR;
+  if (cooked) {
+    blob(ctx, x, y, r * 1.5, r * 1.5, '#2a160a', 0.7);
+    const pale = ctx.createRadialGradient(x - r * 0.15, y - r * 0.2, 1, x, y, r * 0.78);
+    pale.addColorStop(0, '#f4ecd9');
+    pale.addColorStop(0.6, '#d8cbb0');
+    pale.addColorStop(1, '#7c6548');
+    ctx.fillStyle = pale;
+    ctx.beginPath();
+    ctx.arc(x, y, r * 0.78, 0, TAU);
+    ctx.fill();
+    blob(ctx, x, y, r * 0.3, r * 0.3, '#6a5a44', 0.65);
+    return;
+  }
+  // 目のまわりのくぼみ
+  blob(ctx, x, y, r * 1.5, r * 1.5, '#10141c', 0.42);
+  const iris = ctx.createRadialGradient(x, y, r * 0.4, x, y, r);
+  if (g.id === 'kasago') {
+    iris.addColorStop(0, '#b98745');
+    iris.addColorStop(0.75, '#7a4326');
+    iris.addColorStop(1, '#3a1b12');
+  } else {
+    iris.addColorStop(0, '#c8c4ae');
+    iris.addColorStop(0.7, '#8d8768');
+    iris.addColorStop(1, '#34332a');
+  }
+  ctx.fillStyle = iris;
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, TAU);
+  ctx.fill();
+  const pupil = ctx.createRadialGradient(x - r * 0.1, y - r * 0.1, 0, x, y, r * 0.7);
+  pupil.addColorStop(0, '#1a2432');
+  pupil.addColorStop(1, '#05070c');
+  ctx.fillStyle = pupil;
+  ctx.beginPath();
+  ctx.arc(x, y, r * 0.68, 0, TAU);
+  ctx.fill();
+  // 目の表面の光
+  ctx.fillStyle = 'rgba(255,255,255,0.92)';
+  ctx.beginPath();
+  ctx.ellipse(x - r * 0.3, y - r * 0.36, r * 0.13, r * 0.08, -0.5, 0, TAU);
+  ctx.fill();
+  const film = ctx.createLinearGradient(x, y - r, x, y + r);
+  film.addColorStop(0, 'rgba(255,255,255,0.2)');
+  film.addColorStop(0.5, 'rgba(255,255,255,0)');
+  film.addColorStop(1, 'rgba(190,210,230,0.24)');
+  ctx.fillStyle = film;
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, TAU);
+  ctx.fill();
+}
+
+// 魚1匹を描く。cooked が true なら塩焼きにする
+function paintFish(ctx, w, h, id, cooked = false) {
+  const scale = w / 560;
+  const g = fishGeometry(id);
+  const cy = g.cy;
+  const rnd = seeded(id.length * 211 + (cooked ? 7 : 0));
+  const palette = {
+    aji: { fin: '#8f9471', edge: '#4d5140', tail: '#b09c4d', tailEdge: '#544b24' },
+    saba: { fin: '#3d5c68', edge: '#16242c', tail: '#2c4a58', tailEdge: '#0f1b22' },
+    kasago: { fin: '#a84a2c', edge: '#4c2016', tail: '#993f26', tailEdge: '#3f1a12' },
+  }[id];
+  const baked = cooked ? { color: '#a06a30', edge: '#3a2110' } : null;
+  const fin = (rays, tone, spiny, alpha) => drawFin(ctx, rays, {
+    color: baked ? baked.color : tone[0],
+    edge: baked ? baked.edge : tone[1],
+    spiny, alpha, cooked, rnd,
+  });
+  const finTone = [palette.fin, palette.edge];
+  const tailTone = [palette.tail, palette.tailEdge];
+
+  ctx.save();
+  ctx.scale(scale, scale);
+
+  const L = g.L;
+  const tailX = g.px(1);
+  if (id === 'aji') {
+    fin(tailRays(g, (t) => {
+      const fork = Math.abs(t - 0.5) * 2;
+      return [tailX + lerp(38, 108, Math.pow(fork, 1.2)), cy + (t - 0.5) * 2 * lerp(6, 74, Math.pow(fork, 0.85))];
+    }, 18), tailTone);
+    fin(raysAlong(g, 0.36, 0.5, 8, -1, (t) => 0.1 * (1 - t * 0.68) + 0.014, 0.42), finTone, true);
+    fin(raysAlong(g, 0.53, 0.88, 26, -1, (t) => 0.07 * Math.pow(1 - t, 1.3) + 0.02, 0.36), finTone);
+    fin(raysAlong(g, 0.57, 0.88, 22, 1, (t) => 0.06 * Math.pow(1 - t, 1.3) + 0.018, 0.36), finTone);
+    fin(raysAlong(g, 0.3, 0.335, 5, 1, () => 0.05, 0.75), finTone);
+  } else if (id === 'saba') {
+    fin(tailRays(g, (t) => {
+      const fork = Math.abs(t - 0.5) * 2;
+      return [tailX + lerp(22, 92, Math.pow(fork, 1.1)), cy + (t - 0.5) * 2 * lerp(5, 66, fork)];
+    }, 18), tailTone);
+    fin(raysAlong(g, 0.33, 0.53, 10, -1, (t) => 0.062 * (1 - t * 0.55), 0.34), finTone, true);
+    fin(raysAlong(g, 0.63, 0.73, 9, -1, (t) => 0.06 * (1 - t * 0.6), 0.5), finTone);
+    fin(raysAlong(g, 0.66, 0.76, 9, 1, (t) => 0.056 * (1 - t * 0.6), 0.5), finTone);
+    // 尾の近くに並ぶ小さなヒレ
+    for (let i = 0; i < 5; i++) {
+      const x = 0.76 + i * 0.05;
+      fin(raysAlong(g, x, x + 0.03, 3, -1, () => 0.024, 0.9), finTone);
+      fin(raysAlong(g, x + 0.012, x + 0.04, 3, 1, () => 0.024, 0.9), finTone);
+    }
+    fin(raysAlong(g, 0.28, 0.31, 5, 1, () => 0.05, 0.7), finTone);
+  } else {
+    fin(tailRays(g, (t) => {
+      const a = lerp(-0.62, 0.62, t);
+      return [tailX + Math.cos(a) * 92, cy + Math.sin(a) * 92];
+    }, 16), tailTone);
+    // とげの背びれ（12本）と、やわらかい後ろの背びれ
+    fin(raysAlong(g, 0.26, 0.74, 12, -1, (t) => 0.13 - 0.03 * t + 0.008 * Math.sin(t * 19), 0.1), finTone, true, 0.9);
+    fin(raysAlong(g, 0.76, 0.97, 13, -1, (t) => 0.125 * Math.sin(0.5 + t * 2.3), 0.34), finTone);
+    fin(raysAlong(g, 0.74, 0.92, 11, 1, (t) => 0.135 * Math.sin(0.45 + t * 2.3), 0.3), finTone);
+    fin(raysAlong(g, 0.34, 0.4, 6, 1, () => 0.1, 0.6), finTone);
   }
 
-  // 体（背中が濃く、おなかが淡い）
-  const body = ctx.createLinearGradient(0, cy - a.top, 0, cy + a.belly);
-  body.addColorStop(0, a.back);
-  body.addColorStop(0.46, a.mid);
-  body.addColorStop(1, a.low);
-  fishBodyPath(ctx, h, a);
-  ctx.fillStyle = body;
-  ctx.fill();
+  ctx.drawImage(fishBodyCanvas(id, w, h, cooked), 0, 0, w / scale, h / scale);
 
-  // 模様は体の内側だけに描く
-  ctx.save();
-  fishBodyPath(ctx, h, a);
-  ctx.clip();
+  // 胸びれは体の上に乗る
   if (id === 'aji') {
-    // 尾に向かうトゲトゲのうろこの列
-    ctx.fillStyle = 'rgba(232,212,126,0.9)';
-    for (let i = 0; i < 18; i++) {
-      const x = 268 + i * 11;
+    const bx = g.px(0.27), by = cy + 14;
+    fin(fanRays(bx, by, -0.1, 0.32, 13, 0.25 * L, (t) => 1 - t * 0.55), finTone, false, cooked ? 0.4 : 0.7);
+  } else if (id === 'saba') {
+    const bx = g.px(0.245), by = cy + 2;
+    fin(fanRays(bx, by, -0.1, 0.5, 11, 0.135 * L, (t) => 1 - t * 0.3), finTone, false, 0.74);
+  } else {
+    const bx = g.px(0.335), by = cy + 2;
+    fin(fanRays(bx, by, -0.55, 1.05, 18, 0.26 * L, (t) => 0.86 + Math.sin(t * Math.PI) * 0.18), finTone, false, 0.92);
+    if (!cooked) {
+      ctx.save();
+      for (let i = 0; i < 16; i++) {
+        const a = lerp(-0.5, 1, rnd());
+        const r = lerp(0.08, 0.24, rnd()) * L;
+        blob(ctx, bx + Math.cos(a) * r, by + Math.sin(a) * r, 8 + rnd() * 6, 5 + rnd() * 5, '#3f1a12', 0.5);
+      }
+      ctx.restore();
+    }
+    // 頭のトゲ
+    ctx.fillStyle = cooked ? '#4a2810' : '#5b2a1c';
+    for (const [x, s, h2] of [[0.1, -0.86, 13], [0.16, -0.94, 15], [0.21, -0.97, 13], [0.26, -0.72, 13], [0.3, -0.42, 14], [0.32, -0.16, 12]]) {
+      const bx2 = g.px(x), up = g.upY(x), low = g.lowY(x);
+      const y = (up + low) / 2 + s * (low - up) / 2;
       ctx.beginPath();
-      ctx.moveTo(x, cy - 2);
-      ctx.lineTo(x + 7, cy - 8);
-      ctx.lineTo(x + 12, cy - 2);
-      ctx.lineTo(x + 7, cy + 5);
+      ctx.moveTo(bx2 - 5, y + 2);
+      ctx.lineTo(bx2 + 7, y - h2);
+      ctx.lineTo(bx2 + 6, y + 3);
       ctx.closePath();
       ctx.fill();
     }
-    blob(ctx, 170, cy - 22, 15, 11, '#2d3a48', 0.85);
-  } else if (id === 'saba') {
-    // 背中の波のような模様
-    ctx.strokeStyle = 'rgba(24,52,66,0.8)';
-    ctx.lineWidth = 6;
-    ctx.lineCap = 'round';
-    for (let i = 0; i < 17; i++) {
-      const x = 120 + i * 20;
+  }
+
+  // 飾り包丁の切り目（焼いたときだけ）
+  if (cooked) {
+    ctx.save();
+    fishOutline(ctx, g);
+    ctx.clip();
+    for (const x of [0.46, 0.6]) {
+      const bx = g.px(x), mid = (g.upY(x) + g.lowY(x)) / 2 - 6;
+      const half = (g.lowY(x) - g.upY(x)) * 0.3;
+      ctx.save();
+      ctx.translate(bx, mid);
+      ctx.rotate(0.24);
+      ctx.fillStyle = '#4a2711';
       ctx.beginPath();
-      ctx.moveTo(x, cy - 72);
-      ctx.quadraticCurveTo(x + 18, cy - 44, x - 4, cy - 28 + (i % 3) * 5);
-      ctx.stroke();
+      ctx.moveTo(0, -half);
+      ctx.quadraticCurveTo(11, 0, 0, half);
+      ctx.quadraticCurveTo(-10, 0, 0, -half);
+      ctx.closePath();
+      ctx.fill();
+      const flesh = ctx.createLinearGradient(-6, 0, 7, 0);
+      flesh.addColorStop(0, '#dfb67c');
+      flesh.addColorStop(0.55, '#eedcbb');
+      flesh.addColorStop(1, '#e6c38f');
+      ctx.fillStyle = flesh;
+      ctx.beginPath();
+      ctx.moveTo(0, -half * 0.8);
+      ctx.quadraticCurveTo(6.5, 0, 0, half * 0.8);
+      ctx.quadraticCurveTo(-5, 0, 0, -half * 0.8);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
     }
-  } else {
-    // まだらの模様
-    for (let i = 0; i < 26; i++) {
-      blob(ctx, 90 + rnd() * 350, cy - 70 + rnd() * 105, 16 + rnd() * 26, 10 + rnd() * 18, '#54231c', 0.55);
+    // 体にふった塩
+    for (let i = 0; i < 240; i++) {
+      const x = 0.04 + rnd() * 0.94;
+      const y = lerp(g.upY(x), g.lowY(x), Math.pow(rnd(), 1.7));
+      ctx.fillStyle = `rgba(255,254,248,${0.3 + rnd() * 0.5})`;
+      ctx.beginPath();
+      ctx.arc(g.px(x), y, 0.35 + rnd() * 0.75, 0, TAU);
+      ctx.fill();
     }
-    for (let i = 0; i < 12; i++) {
-      blob(ctx, 110 + rnd() * 310, cy - 20 + rnd() * 60, 8 + rnd() * 12, 6 + rnd() * 9, '#f1d3b6', 0.5);
-    }
+    ctx.restore();
   }
-  // 体のつやと水彩のにじみ
-  blob(ctx, 220, cy - 14, 190, 16, '#ffffff', 0.32);
-  for (let i = 0; i < 10; i++) {
-    blob(ctx, 60 + rnd() * 400, cy - 60 + rnd() * 120, 40 + rnd() * 50, 20 + rnd() * 26, a.mid, 0.14);
+
+  // 頭のつくり（ほおの線と鼻の穴）
+  {
+    const eyeX = g.px(g.eye[0]);
+    const eyeUp = g.upY(g.eye[0]), eyeLow = g.lowY(g.eye[0]);
+    const eyeY = (eyeUp + eyeLow) / 2 + g.eye[1] * (eyeLow - eyeUp) / 2;
+    ctx.save();
+    fishOutline(ctx, g);
+    ctx.clip();
+    ctx.strokeStyle = cooked ? 'rgba(50,26,10,0.32)' : 'rgba(30,36,44,0.22)';
+    ctx.lineWidth = 1.6;
+    ctx.beginPath();
+    ctx.moveTo(eyeX + g.eyeR * 2.1, eyeY - g.eyeR * 0.3);
+    ctx.quadraticCurveTo(eyeX + g.eyeR * 3.2, eyeY + g.eyeR * 2, eyeX + g.eyeR * 0.6, eyeY + g.eyeR * 3.1);
+    ctx.stroke();
+    blob(ctx, eyeX + g.eyeR * 1.2, eyeY + g.eyeR * 1.7, g.eyeR * 2, g.eyeR * 1.1, '#ffffff', cooked ? 0.06 : 0.14);
+    ctx.fillStyle = 'rgba(14,16,20,0.55)';
+    ctx.beginPath();
+    ctx.ellipse(eyeX - g.eyeR * 1.45, eyeY + g.eyeR * 0.1, 1.8, 1.2, 0.3, 0, TAU);
+    ctx.fill();
+    ctx.restore();
   }
-  ctx.restore();
 
-  // エラ・胸びれ
-  ctx.strokeStyle = 'rgba(30,40,60,0.45)';
-  ctx.lineWidth = 3.5;
-  ctx.beginPath();
-  ctx.arc(120, cy, a.top * 0.72, -0.9, 0.9);
-  ctx.stroke();
-  ctx.fillStyle = rgba(a.fin, 0.92);
-  ctx.beginPath();
-  ctx.moveTo(150, cy + 8);
-  ctx.quadraticCurveTo(204, cy + 6, 222, cy + 36);
-  ctx.quadraticCurveTo(178, cy + 42, 150, cy + 22);
-  ctx.closePath();
-  ctx.fill();
-
-  // 目と口
-  const eyeR = id === 'kasago' ? 20 : 16;
-  ctx.fillStyle = '#fff6e6';
-  ctx.beginPath();
-  ctx.arc(84, cy - 16, eyeR, 0, TAU);
-  ctx.fill();
-  ctx.fillStyle = '#20263c';
-  ctx.beginPath();
-  ctx.arc(82, cy - 16, eyeR * 0.6, 0, TAU);
-  ctx.fill();
-  ctx.fillStyle = '#ffffff';
-  ctx.beginPath();
-  ctx.arc(79, cy - 20, eyeR * 0.2, 0, TAU);
-  ctx.fill();
-  ctx.strokeStyle = 'rgba(30,30,50,0.65)';
-  ctx.lineWidth = 3.5;
+  // 口
+  const mouthEnd = id === 'kasago' ? 0.13 : id === 'saba' ? 0.085 : 0.08;
+  const my = (g.upY(0.02) + g.lowY(0.02)) / 2 + (id === 'kasago' ? 4 : 2);
+  ctx.strokeStyle = cooked ? 'rgba(36,18,8,0.8)' : 'rgba(24,24,30,0.72)';
+  ctx.lineWidth = id === 'kasago' ? 3.2 : 2;
   ctx.lineCap = 'round';
   ctx.beginPath();
-  ctx.moveTo(38, cy + 7);
-  ctx.quadraticCurveTo(62, cy + (id === 'kasago' ? 26 : 16), id === 'kasago' ? 92 : 78, cy + (id === 'kasago' ? 22 : 12));
+  ctx.moveTo(g.px(0.004), my);
+  ctx.quadraticCurveTo(g.px(mouthEnd * 0.55), my + (id === 'kasago' ? 14 : 7), g.px(mouthEnd), my + (id === 'kasago' ? 20 : 11));
   ctx.stroke();
+
+  drawFishEye(ctx, g, cooked);
+  ctx.restore();
 }
 
 function paintGlint(ctx, w, h) {
@@ -987,6 +1902,190 @@ function paintButton(ctx, w, h) {
   ctx.restore();
 }
 
+/* ---------- 料理の絵 ---------- */
+
+// 木のテーブル（低い解像度で作って広げ、奥がぼけたように見せる）
+function paintTable(ctx, w, h) {
+  const plank = 118;
+  paintPixels(ctx, w, h, (x, y, o) => {
+    const row = Math.floor(y / plank);
+    const yy = y + row * 37;
+    const warp = fbm(x * 0.006 + row * 9, yy * 0.05, 4);
+    const ring = Math.sin(yy * 0.24 + warp * 22);
+    const fine = fbm(x * 0.03 + row, yy * 0.8, 3);
+    const tone = lerp(0.74, 1.08, hash2(row, 5));
+    let c = lerp3([52, 30, 18], [122, 78, 46], clamp01(ring * 0.28 + 0.46 + (fine - 0.5) * 0.9));
+    c = lerp3(c, [146, 96, 58], sstep(0.62, 0.84, fine) * 0.26);
+    const seam = y - row * plank;
+    const groove = Math.min(seam, plank - seam);
+    const dark = lerp(0.3, 1, sstep(0, 2.4, groove));
+    // 明かりは手前の真ん中に集まり、まわりは暗い
+    const dx = (x / w - 0.5) * 1.3, dy = (y / h - 0.5) * 1.65;
+    const lamp = 1.2 - sstep(0.12, 0.92, Math.sqrt(dx * dx + dy * dy)) * 0.95;
+    o[0] = c[0] * tone * dark * lamp * 1.04;
+    o[1] = c[1] * tone * dark * lamp * 0.97;
+    o[2] = c[2] * tone * dark * lamp * 0.88;
+  });
+}
+
+// 魚の絵の大きさ（写真も同じ大きさにそろえている）
+const FISH_BAKE = { w: 840, h: 420 };
+
+// 湯気のひとすじ。形がくずれながら上がる
+function paintSteam(ctx, w, h) {
+  paintPixels(ctx, w, h, (x, y, o) => {
+    const v = 1 - y / h;
+    const sway = Math.sin(v * 5.8) * 0.17 + (fbm(y * 0.012, 3, 2) - 0.5) * 0.26;
+    const dx = (x / w - 0.5 - sway) / lerp(0.1, 0.26, v);
+    const fall = Math.exp(-dx * dx) * sstep(0, 0.1, v) * sstep(1, 0.5, v);
+    const n = fbm(x * 0.024, y * 0.018, 4);
+    o[0] = 255; o[1] = 248; o[2] = 236;
+    o[3] = 150 * fall * sstep(0.32, 0.72, n);
+  });
+}
+
+/* ---------- 空と海 ---------- */
+
+// 朝焼けの空（低い解像度で作って広げる。雲はやわらかいのでこれで十分）
+function paintRealSky(ctx, w, h) {
+  const stops = [
+    [0, [34, 48, 104]], [0.32, [70, 84, 146]], [0.58, [146, 118, 164]],
+    [0.78, [232, 148, 124]], [0.92, [252, 192, 134]], [1, [255, 226, 176]],
+  ];
+  const sunX = SUN_X / 2, sunY = h - 3;
+  paintPixels(ctx, w, h, (x, y, o) => {
+    const v = y / h;
+    let c = stops[stops.length - 1][1];
+    for (let i = 1; i < stops.length; i++) {
+      if (v <= stops[i][0]) {
+        c = lerp3(stops[i - 1][1], stops[i][1], (v - stops[i - 1][0]) / (stops[i][0] - stops[i - 1][0]));
+        break;
+      }
+    }
+    const dx = (x - sunX) / w, dy = (y - sunY) / h;
+    const dist2 = dx * dx * 2.2 + dy * dy;
+    const glow = Math.exp(-dist2 * 9);
+    c = lerp3(c, [255, 206, 142], glow * 0.72);
+
+    // 雲。高いところは大きく、水平線に近いほど平たくつぶれて見える
+    const depth = 1 / (1.07 - v);
+    const cu = (x / w - 0.5) * depth * 1.5 + 2.7;
+    const cv = Math.pow(depth, 0.72) * 2.8;
+    const n = fbm(cu * 2.1, cv * 2.2, 5);
+    const toward = fbm((cu + (sunX / w - x / w) * 0.2) * 2.1, (cv + 0.16) * 2.2, 5);
+    const density = sstep(0.52, 0.76, n) * sstep(0, 0.2, v) * sstep(1, 0.8, v);
+    if (density > 0) {
+      const lit = clamp01((toward - n) * 5 + 0.62 + glow * 0.5);
+      const shadowTone = lerp3([56, 58, 112], [146, 98, 128], v);
+      const lightTone = lerp3([232, 158, 166], [255, 196, 140], sstep(0.45, 0.95, v));
+      c = lerp3(c, lerp3(shadowTone, lightTone, lit), density * 0.92);
+    }
+
+    // 太陽
+    const sx = x - sunX, sy = y - sunY;
+    const sunD = Math.sqrt(sx * sx + sy * sy);
+    c = lerp3(c, [255, 246, 214], sstep(23, 19, sunD));
+
+    // 遠くの山
+    const ground = h - (fbm(x * 0.022, 3.3, 4) * 62 + 6) * sstep(0.56, 0.02, x / w);
+    if (y > ground - 1) {
+      const mist = sstep(ground, h, y);
+      c = lerp3(c, lerp3([74, 68, 112], [196, 142, 136], mist * 0.7), clamp01(y - ground + 1));
+    }
+    o[0] = c[0]; o[1] = c[1]; o[2] = c[2];
+  });
+}
+
+// 海。波の高さから1点ずつ面の向きを出して、空の映り込みと日の光を計算する
+const SEA_SHADER = `
+precision highp float;
+uniform vec2 resolution;
+uniform float uT;
+uniform float uSunX;
+varying vec2 fragCoord;
+
+const float CAM = 9.0;
+const float VIEW = 0.5;
+
+vec3 skyColor(vec3 r, vec3 sun) {
+  float e = clamp(r.y, 0.0, 1.0);
+  vec3 c = mix(vec3(1.0, 0.72, 0.46), vec3(0.88, 0.50, 0.48), smoothstep(0.0, 0.13, e));
+  c = mix(c, vec3(0.42, 0.38, 0.62), smoothstep(0.1, 0.36, e));
+  c = mix(c, vec3(0.14, 0.20, 0.42), smoothstep(0.3, 0.85, e));
+  float g = max(dot(r, sun), 0.0);
+  c += vec3(1.0, 0.6, 0.3) * (pow(g, 8.0) * 0.32 + pow(g, 90.0) * 0.5);
+  return c;
+}
+
+// 向きの違う波を重ねる。とがった山と広い谷にして、前の波で次の波の場所をずらす
+void waves(vec2 p, float foot, float t, out float h, out vec2 g) {
+  float freq = 0.42, amp = 0.34, speed = 0.9;
+  h = 0.0;
+  g = vec2(0.0);
+  for (int i = 0; i < 16; i++) {
+    float angle = 0.5 + sin(float(i) * 2.4) * (0.55 + float(i) * 0.05);
+    vec2 d = vec2(sin(angle), cos(angle));
+    float x = dot(d, p) * freq + t * speed + float(i) * 1.7;
+    float w = exp(sin(x) - 1.0);
+    float dw = w * cos(x);
+    float keep = 1.0 - smoothstep(0.5, 1.6, freq * foot);
+    h += w * amp * keep;
+    g += d * dw * freq * amp * keep;
+    p -= d * dw * amp * 0.22;
+    freq *= 1.26;
+    amp *= 0.83;
+    speed *= 1.09;
+  }
+}
+
+vec3 toneMap(vec3 c) {
+  return clamp((c * (2.51 * c + 0.03)) / (c * (2.43 * c + 0.59) + 0.14), 0.0, 1.0);
+}
+
+void main() {
+  vec2 uv = fragCoord / resolution;
+  float v = 1.0 - uv.y;
+  float aspect = resolution.x / resolution.y;
+  vec3 rd = normalize(vec3((uv.x - 0.5) * aspect * VIEW, -(v * VIEW + 0.002), 1.0));
+  vec3 sun = normalize(vec3((uSunX - 0.5) * aspect * VIEW, 0.012, 1.0));
+
+  float dist = CAM / -rd.y;
+  vec2 p = rd.xz * dist;
+  float foot = dist * dist * VIEW / (resolution.y * CAM) + dist * VIEW / resolution.y;
+
+  float h;
+  vec2 g;
+  waves(p, foot, uT, h, g);
+  vec3 n = normalize(vec3(-g.x * 0.62, 1.0, -g.y * 0.62));
+  if (n.y < 0.0) n.y = -n.y;
+
+  vec3 r = reflect(rd, n);
+  r.y = abs(r.y);
+  float fres = 0.02 + 0.98 * pow(1.0 - max(dot(n, -rd), 0.0), 5.0);
+
+  vec3 reflected = skyColor(r, sun);
+  // 水の色。波の山は光が透けて少し青緑になる
+  vec3 water = mix(vec3(0.012, 0.055, 0.105), vec3(0.03, 0.17, 0.20), smoothstep(0.3, 1.5, h));
+  vec3 c = mix(water, reflected, min(fres * 1.15, 1.0));
+
+  // 日の光。遠くは面がならされるので、光の道を広くする
+  float far = smoothstep(25.0, 500.0, dist);
+  float power = mix(520.0, 46.0, far);
+  float sp = pow(max(dot(r, sun), 0.0), power);
+  c += vec3(1.0, 0.72, 0.42) * sp * mix(5.0, 1.6, far);
+
+  // 波がくずれて白くなるところ
+  float foam = smoothstep(1.75, 2.35, h + 0.3 * sin(p.x * 1.3 + p.y * 1.7)) * (1.0 - far);
+  c = mix(c, vec3(0.86, 0.80, 0.76), foam * 0.5);
+
+  // 遠くはかすんで、水平線の空の色に溶ける
+  float haze = 1.0 - exp(-dist * 0.0028);
+  c = mix(c, vec3(1.0, 0.70, 0.46) * 0.96, haze * 0.82);
+
+  gl_FragColor = vec4(toneMap(c * 1.05), 1.0);
+}
+`;
+
 // 海と空の背景を作る。2つの画面で同じものを使う
 const WAVE_LAYERS = [
   { key: 'wave1', from: 0.02, size: 0.36, top: '#f4cdb0', deep: '#c9abbb', amp: 7,  speed: 0.006,  bob: 3 },
@@ -997,6 +2096,24 @@ const WAVE_LAYERS = [
 ];
 
 function createDawn(scene) {
+  // 光の計算ができる端末では、写実の海にする
+  if (scene.sys.game.renderer.type === Phaser.WEBGL) {
+    bake(scene, 'real-sky', Math.round(W / 2), Math.round(HORIZON / 2), paintRealSky);
+    scene.add.image(0, 0, 'real-sky').setOrigin(0).setDepth(0).setDisplaySize(W, HORIZON);
+    if (!scene.cache.shader.exists('sea')) {
+      scene.cache.shader.add('sea', new Phaser.Display.BaseShader('sea', SEA_SHADER, undefined, {
+        uT: { type: '1f', value: 0 },
+        uSunX: { type: '1f', value: SUN_X / W },
+      }));
+    }
+    const sea = scene.add.shader('sea', 0, HORIZON, W, SEA_H).setOrigin(0).setDepth(1);
+    const speed = REDUCE_MOTION ? 0.15 : 1;
+    return {
+      real: true,
+      update(time) { sea.setUniform('uT.value', (time * 0.001 * speed) % 3600); },
+    };
+  }
+
   bake(scene, 'dawn', W, H, paintDawn);
   scene.add.image(0, 0, 'dawn').setOrigin(0).setDepth(0);
 
@@ -1099,7 +2216,7 @@ class TitleScene extends Phaser.Scene {
     // 太陽のきらめき
     bake(this, 'glint', 44, 8, paintGlint);
     const rnd = seeded(47);
-    this.glints = Array.from({ length: 36 }, () => {
+    this.glints = Array.from({ length: this.dawn.real ? 0 : 36 }, () => {
       const t = rnd();
       const spread = (rnd() + rnd() - 1) * (30 + t * 150);
       const image = this.add.image(SUN_X + spread, HORIZON + 14 + t * SEA_H * 0.42, 'glint')
@@ -1137,6 +2254,9 @@ class TitleScene extends Phaser.Scene {
     this.add.text(W - 22, H - 18, Save.available ? GAME_VERSION : `${GAME_VERSION} 保存オフ`, {
       fontFamily: FONT_BODY, fontSize: '20px', color: COLOR.cream,
     }).setOrigin(1, 1).setAlpha(0.65).setDepth(40);
+    this.add.text(22, H - 18, '魚と料理の絵はAIで作成しました', {
+      fontFamily: FONT_BODY, fontSize: '22px', color: COLOR.cream,
+    }).setOrigin(0, 1).setAlpha(0.65).setDepth(40);
 
     this.input.keyboard.once('keydown-ENTER', () => this.start());
   }
@@ -1271,6 +2391,8 @@ class HarborScene extends Phaser.Scene {
 class FishingScene extends Phaser.Scene {
   constructor() { super('Fishing'); }
 
+  preload() { preloadFishPhotos(this); }
+
   init(data) {
     this.useMotion = !!(data && data.motion);
   }
@@ -1285,13 +2407,13 @@ class FishingScene extends Phaser.Scene {
     this.add.image(0, SHORE_TOP, 'shoreNoRod').setOrigin(0).setDepth(5);
     bake(this, 'float', 26, 56, paintFloat);
     for (const fish of window.fishData.fish) {
-      bake(this, `fish-${fish.id}`, 560, 280, (ctx, w, h) => paintFish(ctx, w, h, fish.id));
+      bake(this, `fish-${fish.id}`, FISH_BAKE.w, FISH_BAKE.h, (ctx, w, h) => paintFish(ctx, w, h, fish.id));
     }
 
     this.world = this.add.graphics().setDepth(9);
     this.float = this.add.image(0, 0, 'float').setDepth(9);
     this.shadow = this.add.image(0, 0, `fish-${window.fishData.fish[0].id}`)
-      .setDepth(9).setTint(0x1c3552).setAlpha(0).setScale(0.22);
+      .setDepth(9).setTint(0x1c3552).setAlpha(0).setScale(0.22 * (560 / FISH_BAKE.w));
 
     this.buildHud();
     this.buildAction();
@@ -1603,11 +2725,11 @@ class FishingScene extends Phaser.Scene {
     }).setOrigin(0.5).setShadow(0, 3, 'rgba(20,28,60,0.6)', 12));
 
     const art = add(this.add.image(W / 2, cy - 60, `fish-${this.fish.id}`));
-    const finalScale = 1.05 + this.sizeRatio * 0.2;
+    const finalScale = (1.05 + this.sizeRatio * 0.2) * (560 / FISH_BAKE.w);
     if (REDUCE_MOTION) {
       art.setScale(finalScale);
     } else {
-      art.setScale(0.15).setAngle(-24);
+      art.setScale(0.1).setAngle(-24);
       this.tweens.add({ targets: art, scale: finalScale, angle: 0, duration: 520, ease: 'Back.easeOut' });
       this.tweens.add({ targets: art, y: art.y - 12, duration: 900, delay: 520, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
       this.spray(W / 2, cy - 60);
@@ -1623,11 +2745,20 @@ class FishingScene extends Phaser.Scene {
       fontFamily: FONT_BODY, fontSize: '32px', color: COLOR.cream,
     }).setOrigin(0.5));
 
-    const again = createButton(this, W / 2, Math.round(H * 0.875), 'もう一回投げる', () => {
+    let leaving = false;
+    const take = createButton(this, W / 2, Math.round(H * 0.82), '持ち帰る', () => {
+      if (leaving) return;
+      leaving = true;
+      changeScene(this, 'Cooler', { fish: this.fish, sizeCm: this.sizeCm, weight });
+    }, 48);
+    take.setDepth(70);
+    items.push(take);
+    const again = createTextButton(this, W / 2, Math.round(H * 0.925), '海に帰して、もう一回投げる', () => {
+      if (leaving) return;
       for (const item of this.overlay) item.destroy();
       this.overlay = [];
       this.enterReady();
-    }, 44);
+    }, 0.5);
     again.setDepth(70);
     items.push(again);
     this.overlay = items;
@@ -1942,7 +3073,639 @@ class FishingScene extends Phaser.Scene {
   }
 }
 
-return [TitleScene, HarborScene, FishingScene];
+/* ---------- 持ち帰る → さばく → 料理 → 食べる ---------- */
+
+const FISH_ID_KEYS = ['aji', 'saba', 'kasago'];
+
+// 下の画面で使う写真を読み込む（読めなかったときは、図形の絵で続ける）
+function preloadFishPhotos(scene) {
+  for (const id of FISH_ID_KEYS) {
+    const key = `fish-${id}`;
+    if (!scene.textures.exists(key)) scene.load.image(key, `images/${key}.webp`);
+  }
+}
+function preloadDishPhotos(scene, fish) {
+  for (const dish of fish.dishes || []) {
+    const key = `dish-${fish.id}-${dish.id}`;
+    if (!scene.textures.exists(key)) scene.load.image(key, dish.image);
+  }
+}
+
+// 文章の窓（読むものは画面に重ねたHTMLで出す。スクロールと選択ができる）
+function showSheet(title, blocks) {
+  const sheet = document.getElementById('sheet');
+  sheet.textContent = '';
+  const box = document.createElement('div');
+  box.className = 'sheet-box';
+  const h = document.createElement('h2');
+  h.textContent = title;
+  box.appendChild(h);
+  for (const block of blocks) {
+    if (block.heading) {
+      const el = document.createElement('h3');
+      el.textContent = block.heading;
+      box.appendChild(el);
+    }
+    if (block.text) {
+      const el = document.createElement('p');
+      el.textContent = block.text;
+      box.appendChild(el);
+    }
+    if (block.list || block.steps) {
+      const el = document.createElement(block.steps ? 'ol' : 'ul');
+      for (const item of block.list || block.steps) {
+        const li = document.createElement('li');
+        li.textContent = item;
+        el.appendChild(li);
+      }
+      box.appendChild(el);
+    }
+    if (block.source) {
+      const el = document.createElement('p');
+      el.className = 'sheet-source';
+      el.textContent = '出典：';
+      const a = document.createElement('a');
+      a.href = block.source.url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = block.source.name;
+      el.appendChild(a);
+      box.appendChild(el);
+    }
+  }
+  const close = document.createElement('button');
+  close.textContent = 'とじる';
+  close.addEventListener('click', () => { sheet.style.display = 'none'; });
+  box.appendChild(close);
+  sheet.appendChild(box);
+  sheet.style.display = 'block';
+  sheet.scrollTop = 0;
+}
+
+function safetySheet() {
+  const s = window.fishData.sources;
+  showSheet('生で食べるときの注意', [
+    { text: 'アニサキスという寄生虫は、サバやアジなどの魚にいます。食べてしまうと、激しい腹痛や吐き気が出ることがあります。' },
+    { heading: '対策', list: [
+      '釣ったら早く内臓を取りのぞく',
+      '内臓は生で食べない',
+      '身をよく見て、虫がいたら取りのぞく（身の中に入ると見つけにくい）',
+      '-20℃で24時間以上の冷凍、または70℃以上か60℃で1分の加熱で死ぬ',
+      'ふつうの料理で使う酢、塩、しょうゆ、わさびでは死なない',
+      '内臓に虫がたくさんいたら、身にも移っているかもしれないので刺身にしない',
+    ] },
+    { text: '鮮度がよくても、寄生虫がいないとは言えません。' },
+    { text: '3日はゲームのルールで、現実の日持ちの目安ではありません。' },
+    { source: s.mhlw_anisakis },
+    { source: s.hiroshima_anisakis },
+  ]);
+}
+
+function recipeSheet(fish, dish) {
+  const s = window.fishData.sources;
+  if (!dish.recipe) {
+    showSheet(`${dish.name}を実際に作るなら`, [
+      { text: 'この料理は、作り方を確かめられる出典がまだ見つかっていません。まちがった手順を伝えないよう、準備中にしています。' },
+    ]);
+    return;
+  }
+  const r = dish.recipe;
+  const blocks = [
+    { heading: `材料（${r.serves}）`, list: r.ingredients },
+    { heading: '作り方', steps: r.steps },
+  ];
+  if (r.note) blocks.push({ text: r.note });
+  blocks.push({ text: '魚の中まで火を通してね。' });
+  blocks.push({ source: s[r.source] });
+  showSheet(`${dish.name}を実際に作るなら`, blocks);
+}
+
+function wrapJapanese(text, size, width) {
+  const noStart = '、。）」』！？・ー…';
+  const lines = [];
+  for (const para of text.split('\n')) {
+    let line = '', used = 0;
+    for (const ch of para) {
+      const w = ch.charCodeAt(0) < 128 ? size * 0.55 : size;
+      if (used + w > width && line && !noStart.includes(ch)) {
+        lines.push(line);
+        line = '';
+        used = 0;
+      }
+      line += ch;
+      used += w;
+    }
+    lines.push(line);
+  }
+  return lines.join('\n');
+}
+
+function bodyText(scene, x, y, rawText, size, opts = {}) {
+  const text = rawText ? wrapJapanese(rawText, size, opts.width || W - 80) : '';
+  return scene.add.text(x, y, text, {
+    fontFamily: FONT_BODY, fontSize: `${size}px`, color: opts.color || COLOR.cream, align: opts.align || 'center',
+    lineSpacing: opts.lineSpacing === undefined ? 10 : opts.lineSpacing,
+  }).setOrigin(opts.originX === undefined ? 0.5 : opts.originX, opts.originY === undefined ? 0 : opts.originY)
+    .setDepth(opts.depth || 30).setShadow(0, 2, 'rgba(10,8,8,0.75)', 8);
+}
+
+function titleText(scene, y, text) {
+  return scene.add.text(W / 2, y, text, {
+    fontFamily: FONT_TITLE, fontSize: '68px', fontStyle: '600', color: COLOR.cream, padding: { x: 10, y: 10 },
+  }).setOrigin(0.5).setDepth(30).setShadow(0, 3, 'rgba(10,8,8,0.75)', 12);
+}
+
+// クーラーボックスの中の氷（大きなかけらが、すき間なく並ぶ）
+function paintIce(ctx, w, h) {
+  const size = 15;
+  paintPixels(ctx, w, h, (x, y, o) => {
+    const gx = Math.floor(x / size), gy = Math.floor(y / size);
+    let d1 = 1e9, d2 = 1e9, id = 0;
+    for (let j = -1; j <= 1; j++) {
+      for (let i = -1; i <= 1; i++) {
+        const cx = (gx + i + hash2(gx + i, gy + j)) * size;
+        const cy = (gy + j + hash2(gy + j, gx + i + 7)) * size;
+        const d = (x - cx) * (x - cx) + (y - cy) * (y - cy);
+        if (d < d1) { d2 = d1; d1 = d; id = hash2(gx + i + 3, gy + j + 5); } else if (d < d2) d2 = d;
+      }
+    }
+    const crack = sstep(0, 3, Math.sqrt(d2) - Math.sqrt(d1));
+    const cloud = fbm(x * 0.012, y * 0.012, 3);
+    const v = lerp(0.8, 1, id) * lerp(0.74, 1.08, cloud) * lerp(0.84, 1, crack);
+    const shine = id > 0.9 ? 30 : 0;
+    o[0] = 196 * v + 34 + shine; o[1] = 218 * v + 30 + shine; o[2] = 232 * v + 22 + shine;
+  });
+}
+
+// まな板
+function paintBoard(ctx, w, h) {
+  paintPixels(ctx, w, h, (x, y, o) => {
+    const warp = fbm(x * 0.005, y * 0.03, 3);
+    const ring = Math.sin(y * 0.14 + warp * 20) * 0.5 + 0.5;
+    const fine = fbm(x * 0.03, y * 0.4, 3);
+    const c = lerp3([214, 178, 132], [232, 202, 160], clamp01(ring * 0.28 + fine * 0.62 + 0.08));
+    const dx = (x / w - 0.5) * 1.3, dy = (y / h - 0.5) * 1.5;
+    const lamp = 1.08 - sstep(0.2, 1, Math.sqrt(dx * dx + dy * dy)) * 0.5;
+    o[0] = c[0] * lamp; o[1] = c[1] * lamp; o[2] = c[2] * lamp;
+  });
+}
+
+function bakeFull(scene, key, paint) {
+  bake(scene, key, Math.round(W / 2), Math.round(H / 2), paint);
+  return scene.add.image(0, 0, key).setOrigin(0).setDisplaySize(W, H).setDepth(0);
+}
+
+// 鮮度のゲージ
+function drawMeter(g, x, y, width, value, color) {
+  g.clear();
+  g.fillStyle(0x10202e, 0.65);
+  g.fillRoundedRect(x, y, width, 24, 12);
+  g.fillStyle(color, 1);
+  g.fillRoundedRect(x + 3, y + 3, Math.max(18, (width - 6) * value), 18, 9);
+}
+
+class CoolerScene extends Phaser.Scene {
+  constructor() { super('Cooler'); }
+
+  init(data) {
+    this.catchData = data;
+    this.fresh = 0.45;
+    this.leaving = false;
+  }
+
+  create() {
+    this.cameras.main.fadeIn(REDUCE_MOTION ? 0 : 320, 60, 71, 112);
+    bakeFull(this, 'ice', paintIce);
+    this.add.rectangle(0, 0, W, H, 0x16304a, 0.42).setOrigin(0).setDepth(1);
+
+    const fish = this.catchData.fish;
+    titleText(this, H * 0.075, 'クーラーに入れる');
+    const art = this.add.image(W / 2, H * 0.245, `fish-${fish.id}`).setScale(0.82).setDepth(10);
+    this.art = art;
+
+    bodyText(this, W / 2, H * 0.378, `鮮度`, 30);
+    this.meter = this.add.graphics().setDepth(30);
+    this.meterBox = { x: 150, y: H * 0.378 + 46, w: W - 300 };
+    drawMeter(this.meter, this.meterBox.x, this.meterBox.y, this.meterBox.w, this.fresh, 0x7fe0c0);
+
+    const y1 = Math.round(H * 0.5);
+    this.addAction(y1, '氷締めする', 0.3, '氷水で一気に冷やした！');
+    this.addAction(y1 + 120, '血抜きする', 0.25, 'きれいに血を抜いた！');
+
+    this.say = bodyText(this, W / 2, y1 + 188, '', 32, { color: '#ffe0a6' });
+
+    const noteY = y1 + 248;
+    bodyText(this, W / 2, noteY,
+      '「鮮度」はこのゲームの数字だよ。\n実際の魚も常温に置かず、すぐ冷やそう。\nヒスタミンという食中毒の原因は、火を通しても消えません。\n釣ってから3日たつと、生の料理は作れません。\n3日はゲームのルールで、現実の日持ちの目安ではありません。',
+      25, { lineSpacing: 8, width: 750 });
+    createTextButton(this, W / 2, Math.min(H - 180, noteY + 270), '生で食べるときの注意を読む', () => safetySheet(), 0.5);
+
+    createButton(this, W / 2, H - 92, '家へ帰ってさばく', () => {
+      if (this.leaving) return;
+      this.leaving = true;
+      changeScene(this, 'Prep', { ...this.catchData, fresh: this.fresh });
+    }, 40);
+  }
+
+  addAction(y, label, gain, message) {
+    const button = createButton(this, W / 2, y, label, () => {
+      if (button.used) return;
+      button.used = true;
+      button.setAlpha(0.45);
+      this.fresh = Math.min(1, this.fresh + gain);
+      drawMeter(this.meter, this.meterBox.x, this.meterBox.y, this.meterBox.w, this.fresh, 0x7fe0c0);
+      this.say.setText(message);
+      Buzz.pulse(30);
+      if (!REDUCE_MOTION) {
+        this.tweens.add({ targets: this.art, angle: 3, duration: 70, yoyo: true, repeat: 3 });
+      }
+    }, 42);
+    return button;
+  }
+}
+
+// 魚の絵のどこに何があるか（絵の幅に対する割合）。さばく画面の線の場所に使う
+const PREP_ART = {
+  aji: { gill: 0.25, midY: 0.5, half: 100 },
+  saba: { gill: 0.24, midY: 0.52, half: 100 },
+  kasago: { gill: 0.35, midY: 0.5, half: 130 },
+};
+
+class PrepScene extends Phaser.Scene {
+  constructor() { super('Prep'); }
+
+  init(data) {
+    this.catchData = data;
+    this.fish = data.fish;
+    this.step = 0;
+    this.scores = [];
+    this.leaving = false;
+  }
+
+  create() {
+    this.cameras.main.fadeIn(REDUCE_MOTION ? 0 : 320, 60, 71, 112);
+    bakeFull(this, 'board', paintBoard);
+
+    this.fishW = 720;
+    this.fishScale = this.fishW / FISH_BAKE.w;
+    this.fishX = W / 2;
+    this.fishY = Math.round(H * 0.44);
+    this.left = this.fishX - this.fishW / 2;
+    this.art = PREP_ART[this.fish.id] || PREP_ART.aji;
+    this.bandTop = this.fishY - this.art.half - 40;
+    this.bandBottom = this.fishY + this.art.half + 40;
+
+    this.body = this.add.image(this.fishX, this.fishY, `fish-${this.fish.id}`).setScale(this.fishScale).setDepth(5);
+
+    this.heading = titleText(this, H * 0.08, '');
+    this.hint = bodyText(this, W / 2, H * 0.13, '', 32, { color: '#3b2412' }).setShadow(0, 1, 'rgba(255,240,210,0.7)', 3);
+    this.progress = this.add.graphics().setDepth(30);
+    this.heading.setColor('#3b2412').setShadow(0, 1, 'rgba(255,240,210,0.7)', 3);
+
+    const cautions = this.fish.safety.cautions.value || [];
+    if (this.fish.id === 'kasago' && cautions.length) {
+      bodyText(this, W / 2, H * 0.68, cautions[0], 28, { color: '#7a1f10' }).setShadow(0, 1, 'rgba(255,240,210,0.7)', 3);
+    }
+
+    this.guide = this.add.graphics().setDepth(20);
+    this.trail = this.add.graphics().setDepth(21);
+    this.input.on('pointerdown', (p) => this.onDown(p));
+    this.input.on('pointermove', (p) => this.onMove(p));
+    this.input.on('pointerup', (p) => this.onUp(p));
+    this.startScale();
+  }
+
+  /* ウロコ取り：魚の上をまんべんなくこする */
+  startScale() {
+    this.step = 1;
+    this.heading.setText('ウロコを取る');
+    this.hint.setText('魚の上を、左右にこすろう');
+    this.bins = new Array(14).fill(0);
+    this.lastX = null;
+    this.drawBins();
+  }
+
+  drawBins() {
+    const g = this.progress;
+    g.clear();
+    const y = this.bandBottom + 26;
+    const w = this.fishW / this.bins.length;
+    this.bins.forEach((v, i) => {
+      g.fillStyle(0x3b2412, 0.2);
+      g.fillRect(this.left + i * w + 2, y, w - 4, 16);
+      g.fillStyle(0xc2562e, 1);
+      g.fillRect(this.left + i * w + 2, y, (w - 4) * Math.min(1, v), 16);
+    });
+  }
+
+  rubScale(p) {
+    if (p.y < this.bandTop || p.y > this.bandBottom) { this.lastX = null; return; }
+    if (this.lastX !== null) {
+      const d = Math.abs(p.x - this.lastX);
+      const toBin = (x) => Math.floor(((x - this.left) / this.fishW) * this.bins.length);
+      const from = Math.max(0, Math.min(toBin(p.x), toBin(this.lastX)));
+      const to = Math.min(this.bins.length - 1, Math.max(toBin(p.x), toBin(this.lastX)));
+      if (d > 0) for (let bin = from; bin <= to; bin++) this.bins[bin] += 0.2;
+      if (d > 4 && Math.random() < 0.7 && !REDUCE_MOTION) this.flake(p.x, p.y);
+    }
+    this.lastX = p.x;
+    this.drawBins();
+    if (this.bins.every((v) => v >= 1)) {
+      const worst = Math.max(...this.bins);
+      this.finishStep(clamp01(1.2 - (worst - 1) * 0.1));
+    }
+  }
+
+  flake(x, y) {
+    const dot = this.add.ellipse(x, y, 10, 7, 0xeef2f0, 0.9).setDepth(22);
+    this.tweens.add({
+      targets: dot, x: x + randBetween(-70, 70), y: y - randBetween(30, 110), alpha: 0, angle: randBetween(-180, 180),
+      duration: 460, ease: 'Cubic.easeOut', onComplete: () => dot.destroy(),
+    });
+  }
+
+  /* 頭を落とす：エラの後ろの線を、上から下へ */
+  startHead() {
+    this.step = 2;
+    this.progress.clear();
+    this.heading.setText('頭を落とす');
+    this.hint.setText('赤い線にそって、上から下へスッとなぞろう');
+    this.cutX = this.left + this.fishW * this.art.gill;
+    const g = this.guide;
+    g.clear();
+    g.lineStyle(5, 0xd63a26, 0.9);
+    for (let y = this.bandTop; y < this.bandBottom; y += 26) g.lineBetween(this.cutX, y, this.cutX, y + 15);
+  }
+
+  finishHead(score) {
+    this.guide.clear();
+    this.trail.clear();
+    const key = `fish-${this.fish.id}`;
+    const split = this.art.gill * FISH_BAKE.w;
+    this.head = this.add.image(this.fishX, this.fishY, key).setScale(this.fishScale).setCrop(0, 0, split, FISH_BAKE.h).setDepth(5);
+    this.body.setCrop(split, 0, FISH_BAKE.w - split, FISH_BAKE.h);
+    Buzz.pulse(40);
+    if (!REDUCE_MOTION) {
+      this.tweens.add({ targets: this.head, x: this.head.x - 90, y: this.head.y + 80, angle: -14, alpha: 0, duration: 620, ease: 'Cubic.easeIn' });
+    } else {
+      this.head.setAlpha(0);
+    }
+    this.finishStep(score);
+  }
+
+  /* 三枚おろし：背骨にそって、頭の方から尾まで */
+  startFillet() {
+    this.step = 3;
+    this.heading.setText('三枚におろす');
+    this.hint.setText('赤い線にそって、左から尾までなぞろう');
+    this.lineY = this.fishY + (this.art.midY - 0.5) * 100;
+    this.lineStart = this.left + this.fishW * this.art.gill + 8;
+    this.lineEnd = this.left + this.fishW * 0.88;
+    const g = this.guide;
+    g.clear();
+    g.lineStyle(5, 0xd63a26, 0.9);
+    for (let x = this.lineStart; x < this.lineEnd; x += 26) g.lineBetween(x, this.lineY, x + 15, this.lineY);
+    this.traceAt = this.lineStart;
+    this.traceDev = 0;
+    this.traceCount = 0;
+  }
+
+  traceFillet(p) {
+    if (p.x <= this.traceAt || p.x > this.traceAt + 90) return;
+    if (Math.abs(p.y - this.lineY) > 90) return;
+    this.trail.lineStyle(7, 0xfff4d8, 0.9);
+    this.trail.lineBetween(this.traceAt, this.lineY, p.x, p.y);
+    this.traceAt = p.x;
+    this.traceDev += Math.abs(p.y - this.lineY);
+    this.traceCount++;
+    if (this.traceAt >= this.lineEnd) {
+      this.finishFillet(clamp01(1.1 - (this.traceDev / Math.max(1, this.traceCount)) / 55));
+    }
+  }
+
+  finishFillet(score) {
+    this.guide.clear();
+    this.trail.clear();
+    const key = `fish-${this.fish.id}`;
+    const split = this.art.gill * FISH_BAKE.w;
+    const cut = FISH_BAKE.h * this.art.midY;
+    const under = this.add.image(this.fishX, this.fishY, key).setScale(this.fishScale)
+      .setCrop(split, cut, FISH_BAKE.w - split, FISH_BAKE.h - cut).setDepth(5);
+    this.body.setCrop(split, 0, FISH_BAKE.w - split, cut);
+    // 真ん中に背骨が残る
+    const bone = this.add.graphics().setDepth(4);
+    bone.fillStyle(0xf1e7d0, 1);
+    bone.fillRoundedRect(this.left + this.fishW * this.art.gill, this.fishY - 8, this.fishW * 0.68, 16, 8);
+    bone.lineStyle(3, 0xcdbd9b, 1);
+    for (let x = this.left + this.fishW * this.art.gill + 10; x < this.left + this.fishW * 0.9; x += 16) {
+      bone.lineBetween(x, this.fishY - 18, x, this.fishY + 18);
+    }
+    Buzz.pulse(40);
+    if (REDUCE_MOTION) {
+      this.body.y -= 90;
+      under.y += 90;
+    } else {
+      this.tweens.add({ targets: this.body, y: this.body.y - 90, duration: 520, ease: 'Sine.easeOut' });
+      this.tweens.add({ targets: under, y: under.y + 90, duration: 520, ease: 'Sine.easeOut' });
+    }
+    this.finishStep(score);
+  }
+
+  finishStep(score) {
+    this.scores.push(score);
+    const finished = this.step;
+    this.step = 0;       // 次の工程が始まるまで操作を受けない
+    Sound.caught();
+    const praise = score >= 0.85 ? 'うまい！' : score >= 0.55 ? 'いいね！' : 'できた！';
+    this.hint.setText(praise);
+    this.time.delayedCall(REDUCE_MOTION ? 400 : 850, () => {
+      if (finished === 1) this.startHead();
+      else if (finished === 2) this.startFillet();
+      else this.finishAll();
+    });
+  }
+
+  finishAll() {
+    const skill = this.scores.reduce((a, b) => a + b, 0) / this.scores.length;
+    this.heading.setText('さばけた！');
+    this.hint.setText('次は、何を作ろう？');
+    this.progress.clear();
+    createButton(this, W / 2, H - 92, '料理する', () => {
+      if (this.leaving) return;
+      this.leaving = true;
+      changeScene(this, 'Cook', { ...this.catchData, skill });
+    }, 44);
+  }
+
+  onDown(p) {
+    if (this.step === 1) this.lastX = p.x;
+    if (this.step === 2) this.swipe = { x: p.x, y: p.y, sum: p.x, n: 1 };
+    if (this.step === 3 && Math.abs(p.x - this.traceAt) > 90) this.hint.setText('線の左はしから、なぞり始めよう');
+  }
+
+  onMove(p) {
+    if (!p.isDown) return;
+    if (this.step === 1) this.rubScale(p);
+    else if (this.step === 2 && this.swipe) {
+      this.swipe.sum += p.x;
+      this.swipe.n++;
+      this.trail.lineStyle(7, 0xfff4d8, 0.85);
+      this.trail.lineBetween(p.prevPosition.x, p.prevPosition.y, p.x, p.y);
+    } else if (this.step === 3) {
+      this.traceFillet(p);
+    }
+  }
+
+  onUp(p) {
+    if (this.step === 1) this.lastX = null;
+    if (this.step === 2 && this.swipe) {
+      const s = this.swipe;
+      this.swipe = null;
+      const mean = s.sum / s.n;
+      const off = Math.abs(mean - this.cutX);
+      if (p.y - s.y < this.art.half * 1.1 || off > 150) {
+        this.trail.clear();
+        this.hint.setText('赤い線にそって、上から下まで長くなぞろう');
+        return;
+      }
+      this.finishHead(clamp01(1.1 - off / 110));
+    }
+  }
+}
+
+class CookScene extends Phaser.Scene {
+  constructor() { super('Cook'); }
+
+  init(data) {
+    this.catchData = data;
+    this.fish = data.fish;
+    this.leaving = false;
+  }
+
+  preload() { preloadDishPhotos(this, this.fish); }
+
+  create() {
+    this.cameras.main.fadeIn(REDUCE_MOTION ? 0 : 320, 60, 71, 112);
+    bakeFull(this, 'table', paintTable);
+    titleText(this, H * 0.09, `${this.fish.name}を料理する`);
+
+    const dishes = this.fish.dishes;
+    const cardH = 280;
+    const top = H * 0.17;
+    dishes.forEach((dish, i) => this.addCard(dish, top + i * (cardH + 30), cardH));
+  }
+
+  addCard(dish, y, height) {
+    const box = this.add.container(0, y).setDepth(20);
+    const bg = this.add.rectangle(40, 0, W - 80, height, 0x1c120c, 0.72).setOrigin(0).setStrokeStyle(2, 0xd8bc90, 0.5);
+    box.add(bg);
+    const key = `dish-${this.fish.id}-${dish.id}`;
+    if (this.textures.exists(key)) {
+      box.add(this.add.image(54, 14, key).setOrigin(0).setDisplaySize(height - 28, height - 28));
+    }
+    box.add(this.add.text(height + 44, height / 2, dish.name, {
+      fontFamily: FONT_TITLE, fontSize: '52px', fontStyle: '600', color: COLOR.cream,
+      wordWrap: { width: W - height - 130, useAdvancedWrap: true },
+    }).setOrigin(0, 0.5));
+    bg.setInteractive({ useHandCursor: true });
+    bg.on('pointerup', () => this.cook(dish));
+  }
+
+  cook(dish) {
+    if (this.leaving) return;
+    this.leaving = true;
+    Sound.unlock();
+    Buzz.pulse(20);
+    const veil = this.add.rectangle(0, 0, W, H, 0x120b07, 0.86).setOrigin(0).setDepth(60);
+    const text = bodyText(this, W / 2, H * 0.46, `${dish.name}を作っています…`, 44, { depth: 61 });
+    const bar = this.add.graphics().setDepth(61);
+    let progress = { v: 0 };
+    this.tweens.add({
+      targets: progress, v: 1, duration: REDUCE_MOTION ? 300 : 1400,
+      onUpdate: () => drawMeter(bar, 180, H * 0.54, W - 360, progress.v, 0xf0a860),
+      onComplete: () => {
+        veil.setAlpha(1);
+        text.setAlpha(0);
+        changeScene(this, 'Eat', { ...this.catchData, dish });
+      },
+    });
+  }
+}
+
+class EatScene extends Phaser.Scene {
+  constructor() { super('Eat'); }
+
+  init(data) {
+    this.catchData = data;
+    this.fish = data.fish;
+    this.dish = data.dish;
+    this.leaving = false;
+  }
+
+  preload() { preloadDishPhotos(this, this.fish); }
+
+  create() {
+    this.cameras.main.fadeIn(REDUCE_MOTION ? 0 : 500, 20, 12, 8);
+    this.add.rectangle(0, 0, W, H, 0x170e09).setOrigin(0).setDepth(0);
+
+    const fish = this.fish, dish = this.dish;
+    const photoH = Math.min(W, Math.round(H * 0.5));
+    const key = `dish-${fish.id}-${dish.id}`;
+    const photo = this.add.image(W / 2, photoH / 2, key).setDisplaySize(W, W).setDepth(1);
+    if (photoH < W) photo.setCrop(0, (W - photoH) / 2, W, photoH);
+
+    // 写真の下を、背景へなじませる
+    bake(this, 'fade-down', 16, 160, (ctx, w, h) => {
+      const g = ctx.createLinearGradient(0, 0, 0, h);
+      g.addColorStop(0, 'rgba(23,14,9,0)');
+      g.addColorStop(1, 'rgba(23,14,9,1)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, w, h);
+    });
+    this.add.image(0, photoH - 160, 'fade-down').setOrigin(0).setDisplaySize(W, 160).setDepth(2);
+
+    if (!REDUCE_MOTION) {
+      // 湯気がゆっくり立ちのぼる
+      bake(this, 'steam', 200, 440, paintSteam);
+      [0.34, 0.5, 0.66].forEach((fx, i) => {
+        const puff = this.add.image(W * fx, photoH * 0.58, 'steam').setOrigin(0.5, 1).setAlpha(0).setDepth(3).setBlendMode(Phaser.BlendModes.SCREEN);
+        const rise = () => {
+          puff.setPosition(W * fx + randBetween(-20, 20), photoH * 0.58).setScale(randBetween(0.7, 1)).setAlpha(0);
+          this.tweens.add({ targets: puff, y: photoH * 0.58 - 130, duration: 3400, ease: 'Sine.easeOut', onComplete: rise });
+          this.tweens.add({ targets: puff, alpha: 0.55, duration: 1300, yoyo: true, hold: 600 });
+        };
+        this.time.delayedCall(300 + i * 800, rise);
+      });
+      photo.setAlpha(0);
+      this.tweens.add({ targets: photo, alpha: 1, duration: 700 });
+    }
+
+    const quality = this.catchData.fresh * 0.5 + this.catchData.skill * 0.5;
+    const rank = quality >= 0.85 ? '絶品' : quality >= 0.6 ? '上手にできた' : 'ふつうにおいしい';
+    const stars = quality >= 0.85 ? '★★★' : quality >= 0.6 ? '★★☆' : '★☆☆';
+
+    this.add.text(W - 22, photoH - 8, '絵はAIで作成', {
+      fontFamily: FONT_BODY, fontSize: '22px', color: COLOR.cream,
+    }).setOrigin(1, 1).setAlpha(0.7).setDepth(4);
+
+    titleText(this, photoH + 40, dish.name);
+    bodyText(this, W / 2, photoH + 90, `${stars}　${rank}`, 34, { color: '#ffd27a' });
+    const report = bodyText(this, W / 2, photoH + 150, dish.foodReport, 32);
+    const best = fish.facts.bestWay;
+    if (best.status === '確認済み') {
+      bodyText(this, W / 2, report.y + report.height + 20, `豆知識：${best.value}`, 26, { color: '#e6d3b4' });
+    }
+
+    createButton(this, W / 2, H - 212, '実際に作るなら', () => recipeSheet(fish, dish), 40).setDepth(40);
+    createButton(this, W / 2, H - 86, 'また釣りに行く', () => {
+      if (this.leaving) return;
+      this.leaving = true;
+      changeScene(this, 'Fishing', {});
+    }, 40).setDepth(40);
+  }
+}
+
+return [TitleScene, HarborScene, FishingScene, CoolerScene, PrepScene, CookScene, EatScene];
 }
 
 /* ============================================================
