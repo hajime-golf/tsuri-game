@@ -3557,27 +3557,6 @@ function showSheet(title, blocks) {
   sheet.scrollTop = 0;
 }
 
-const PARASITE_LIST = [
-  '釣ったら早く内臓を取りのぞく',
-  '内臓は生で食べない',
-  '身をよく見て、虫がいたら取りのぞく（身の中に入ると見つけにくい）',
-  '-20℃で24時間以上の冷凍、または70℃以上か60℃で1分の加熱で死ぬ',
-  'ふつうの料理で使う酢、塩、しょうゆ、わさびでは死なない',
-  '内臓に虫がたくさんいたら、身にも移っているかもしれないので刺身にしない',
-];
-
-function safetySheet() {
-  const s = window.fishData.sources;
-  showSheet('生で食べるときの注意', [
-    { text: 'アニサキスという寄生虫は、サバやアジなどの魚にいます。食べてしまうと、激しい腹痛や吐き気が出ることがあります。' },
-    { heading: '対策', list: PARASITE_LIST },
-    { text: '鮮度がよくても、寄生虫がいないとは言えません。' },
-    { text: '3日はゲームのルールで、現実の日持ちの目安ではありません。' },
-    { source: s.mhlw_anisakis },
-    { source: s.hiroshima_anisakis },
-  ]);
-}
-
 function recipeSheet(fish, dish) {
   const s = window.fishData.sources;
   if (!dish.recipe) {
@@ -3592,14 +3571,7 @@ function recipeSheet(fish, dish) {
     { heading: '作り方', steps: r.steps },
   ];
   if (r.note) blocks.push({ text: r.note });
-  if (dish.raw) {
-    if (dish.rawNote) blocks.push({ text: dish.rawNote });
-    blocks.push({ heading: '生で食べるときの注意', list: PARASITE_LIST });
-    blocks.push({ text: '新鮮でも、寄生虫がいないとは言えません。' });
-    blocks.push({ source: s.mhlw_anisakis });
-  } else {
-    blocks.push({ text: '魚の中まで火を通してね。' });
-  }
+  if (!dish.raw) blocks.push({ text: '魚の中まで火を通してね。' });
   blocks.push({ source: s[r.source] });
   showSheet(`${dish.name}を実際に作るなら`, blocks);
 }
@@ -3742,7 +3714,7 @@ function bookDetail(fish, onClose) {
   factBlock(box, 'どこで・どう釣るか', fish.facts.howToCatch);
   factBlock(box, '見分け方', fish.facts.identify);
 
-  // 生の料理の寄生虫の注意は、料理を選ぶ画面とレシピにまとめる（図鑑には出さない）
+  // 寄生虫の注意は、サバの釣れた画面だけに出す（図鑑には出さない）
   box.appendChild(makeEl('h3', '', '注意点'));
   const cautions = fish.safety.cautions;
   const shown = cautions.status === '確認済み'
@@ -4346,9 +4318,8 @@ class CookScene extends Phaser.Scene {
 
     if (hasRaw) {
       bodyText(this, W / 2, H - 205,
-        '生の魚には、アニサキスという寄生虫がいることがあります。新鮮でも安全とは限りません。\n釣ってから3日たつか冷凍すると、生の料理は作れません。これはゲームのルールで、現実の日持ちの目安ではありません。',
+        '釣ってから3日たつか冷凍すると、生の料理は作れません。これはゲームのルールで、現実の日持ちの目安ではありません。',
         24, { color: '#ffd27a', lineSpacing: 6, width: 720 });
-      createTextButton(this, W / 2, H - 42, '寄生虫の注意と対策を読む', () => safetySheet(), 0.5);
     }
 
     // 冷蔵庫から来たときは、料理をやめてもどれる（魚は食べるまで冷蔵庫に残る）
@@ -4376,7 +4347,7 @@ class CookScene extends Phaser.Scene {
       fontFamily: FONT_TITLE, fontSize: '46px', fontStyle: '600', color: COLOR.cream,
     }).setOrigin(0, 0.5));
     if (dish.raw) {
-      box.add(this.add.text(height + 44, height / 2 + 34, blocked ? (frozen ? '冷凍したので生では作れない' : '3日たったので作れない') : '生の料理：寄生虫に注意', {
+      box.add(this.add.text(height + 44, height / 2 + 34, blocked ? (frozen ? '冷凍したので生では作れない' : '3日たったので作れない') : '生の料理', {
         fontFamily: FONT_BODY, fontSize: '26px', color: '#ffd27a',
       }).setOrigin(0, 0.5));
     }
