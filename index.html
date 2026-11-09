@@ -115,6 +115,21 @@
       "name": "JAとうと アジの塩焼きポン酢浸し",
       "url": "https://www.jatouto.or.jp/life/resipi20160621100822.html",
       "confirmedOn": "2026-11-09"
+    },
+    "mie_maaji": {
+      "name": "三重県水産研究所 みえのおさかな マアジ",
+      "url": "https://www.pref.mie.lg.jp/suigi/hp/87018017310.htm",
+      "confirmedOn": "2026-11-09"
+    },
+    "shimane_maaji": {
+      "name": "島根県 6月のおすすめ料理 マアジ",
+      "url": "https://www.pref.shimane.lg.jp/industry/suisan/chiho_kikan/matsue_suisan/suisansinkou/shun/maaji.html",
+      "confirmedOn": "2026-11-09"
+    },
+    "miegyoren_maaji": {
+      "name": "三重県漁連 マアジ",
+      "url": "http://www.miegyoren.or.jp/fisheries-in-mie/uopedia/maaji/",
+      "confirmedOn": "2026-11-09"
     }
   },
   "fish": [
@@ -123,19 +138,28 @@
       "name": "アジ",
       "facts": {
         "season": {
-          "value": "要確認",
-          "status": "要確認",
-          "sources": []
+          "value": "おいしい旬は資料によって違います（三重県は夏、島根県は春先から初夏、三重の漁連は秋）。マアジが釣れる時期は3〜12月ごろで、夏場が最盛期。",
+          "status": "確認済み",
+          "sources": [
+            "mie_maaji",
+            "shimane_maaji",
+            "miegyoren_maaji",
+            "honda_maaji"
+          ]
         },
         "howToCatch": {
-          "value": "要確認",
-          "status": "要確認",
-          "sources": []
+          "value": "岩場にすみつくものと、沖を群れで回遊するものがいる。群れが岸に寄っているときは、堤防からサビキ釣り、ウキ釣り、ルアー釣りでねらえる。沖ではビシアジ釣り、ウイリー釣りなど。",
+          "status": "確認済み",
+          "sources": [
+            "honda_maaji"
+          ]
         },
         "identify": {
-          "value": "要確認",
-          "status": "要確認",
-          "sources": []
+          "value": "マアジは、背中が暗い緑色、横は金色、おなかは銀白色。尾ビレの前に「ぜんご（ぜいご）」というトゲのようなウロコが並ぶ。",
+          "status": "確認済み",
+          "sources": [
+            "honda_maaji"
+          ]
         },
         "bestWay": {
           "value": "塩焼き、干物、なめろう、フライなど、いろいろな食べ方で楽しまれている魚。",
@@ -281,21 +305,25 @@
       "name": "サバ",
       "facts": {
         "season": {
-          "value": "旬は脂がのった冬。",
+          "value": "旬は脂がのった冬。マサバはほぼ1年中釣れて、冬が最盛期とされる。",
           "status": "確認済み",
           "sources": [
             "honda_masaba"
           ]
         },
         "howToCatch": {
-          "value": "要確認",
-          "status": "要確認",
-          "sources": []
+          "value": "岸の近くから沖までの、海の上のほうを大きな群れで回遊する。群れが岸に寄っているときは、堤防からサビキ釣りで数がねらえる。沖ではカゴ釣り、ウイリー釣りなど。ルアーでも釣れる。",
+          "status": "確認済み",
+          "sources": [
+            "honda_masaba"
+          ]
         },
         "identify": {
-          "value": "要確認",
-          "status": "要確認",
-          "sources": []
+          "value": "マサバは体が細長く、ゴマサバによく似ているが、体の断面がやや平たい。背中は青緑色に黒い波のような模様があり、おなかは銀白色で模様はない。",
+          "status": "確認済み",
+          "sources": [
+            "honda_masaba"
+          ]
         },
         "bestWay": {
           "value": "塩焼き、味噌煮、フライなどが定番。",
@@ -443,21 +471,26 @@
       "name": "カサゴ",
       "facts": {
         "season": {
-          "value": "旬は冬から初春。",
+          "value": "旬は冬から初春。1年を通して釣ることができる。",
           "status": "確認済み",
           "sources": [
-            "kngyoren_kasago"
+            "kngyoren_kasago",
+            "honda_kasago"
           ]
         },
         "howToCatch": {
-          "value": "要確認",
-          "status": "要確認",
-          "sources": []
+          "value": "海底の岩のすき間やテトラの間にひそんでいることが多い。堤防や磯では、ドウヅキ仕掛けのブッコミ釣り、探り釣りやルアーで足もとの障害物をねらう。沖釣りでは2〜3本バリのドウヅキ仕掛けが主流。",
+          "status": "確認済み",
+          "sources": [
+            "honda_kasago"
+          ]
         },
         "identify": {
-          "value": "要確認",
-          "status": "要確認",
-          "sources": []
+          "value": "頭が大きく、頭やエラぶたに鋭いトゲが多い。体の横に、暗い茶色のななめの帯が5本ある。岸の近くのものは黒っぽい茶色、沖のものは暗い赤色をおびる。同じ海にウッカリカサゴなど似た魚もいる。",
+          "status": "確認済み",
+          "sources": [
+            "ifarc_kasago"
+          ]
         },
         "bestWay": {
           "value": "火を通しても身が硬くなりにくく、煮付けが定番。",
@@ -673,6 +706,35 @@
     border-radius: 24px;
     font: inherit;
   }
+  /* 図鑑と冷蔵庫の画面 */
+  .sheet-note { font-size: 14px; line-height: 1.7; color: #6a4a2c; }
+  .sheet-bar { height: 14px; margin: 6px 0 12px; overflow: hidden; background: #e6d3b4; border-radius: 7px; }
+  .sheet-bar i { display: block; height: 100%; background: #2f8f7a; }
+  .sheet-box button.card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin: 10px 0 0;
+    padding: 10px;
+    color: inherit;
+    text-align: left;
+    background: #f3e4c8;
+    border-radius: 12px;
+  }
+  .card-img, .detail-img { display: block; flex: none; object-fit: contain; }
+  .card-img { width: 96px; height: 56px; }
+  .detail-img { width: 100%; max-width: 320px; margin: 0 auto; }
+  .unknown { filter: brightness(0); opacity: 0.45; }
+  .card-name { font-weight: bold; font-size: 18px; }
+  .stamps { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 2px; }
+  .stamp { padding: 0 8px; font-size: 13px; color: #8a7760; background: #e6d3b4; border-radius: 10px; }
+  .stamp.on { color: #fff6e6; background: #2f8f7a; }
+  .keep-item { display: flex; align-items: center; gap: 12px; margin-top: 10px; padding: 10px; background: #f3e4c8; border-radius: 12px; }
+  .keep-body { flex: 1; min-width: 0; font-size: 14px; line-height: 1.6; }
+  .keep-warn { color: #a23a1a; font-weight: bold; }
+  .keep-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .sheet-box .keep-actions button { display: inline-block; margin: 0; padding: 6px 16px; font-size: 14px; }
   #notice button {
     padding: 12px 24px;
     color: #27406a;
@@ -695,7 +757,7 @@
 /* ============================================================
    2. ゲームの設定
    ============================================================ */
-const GAME_VERSION = 'v0.3';
+const GAME_VERSION = 'v0.4';
 const TAU = Math.PI * 2;
 
 // 横幅は固定し、高さを端末の縦横比に合わせる（スマホで上下左右に余白を出さないため）
@@ -834,7 +896,14 @@ function loadFishData() {
    ============================================================ */
 const Save = (() => {
   const KEY = 'tsuri-game/save/v1';
-  const DEFAULTS = { version: 1, plays: 0, sound: true };
+  const DEFAULTS = {
+    version: 1, plays: 0, sound: true,
+    day: 1, money: 0, nextStockId: 1,
+    book: {},        // 魚ごとの図鑑の記録
+    stock: [],       // 冷蔵庫と冷凍庫の魚
+    catchLog: [],    // 釣った記録
+    cookLog: [],     // 料理した記録
+  };
   let state = { ...DEFAULTS };
   let available = false;
 
@@ -852,6 +921,15 @@ const Save = (() => {
     // 保存が使えない、または中身が壊れている場合は、最初の状態で続ける
   }
 
+  // 中身の形がおかしい欄は、その欄だけ最初の状態に戻す（前の版の保存もそのまま使える）
+  for (const name of ['stock', 'catchLog', 'cookLog']) {
+    if (!Array.isArray(state[name])) state[name] = [];
+  }
+  if (!state.book || typeof state.book !== 'object' || Array.isArray(state.book)) state.book = {};
+  for (const name of ['day', 'money', 'nextStockId']) {
+    if (!Number.isFinite(state[name])) state[name] = DEFAULTS[name];
+  }
+
   return {
     get data() { return state; },
     get available() { return available; },
@@ -865,6 +943,149 @@ const Save = (() => {
     },
   };
 })();
+
+// 魚をとっておくルール（ゲームの調整用の数字で、現実の保存の目安ではない）
+const RULES = {
+  rawDays: 3,          // 冷蔵で、この日数がたつと生の料理は作れない
+  fridgeDays: 7,       // 冷蔵で、この日数がたつと腐る
+  freezerDays: 30,     // 冷凍してから、この日数がたつと捨てるしかない
+  fridgeFade: 0.1,     // 冷蔵で1日ごとに下がる鮮度の割合
+  fridgeFloor: 0.3,    // 冷蔵の鮮度が下がる下限の割合
+  frozenTaste: 0.6,    // 冷凍すると、味（鮮度）にかかる割合
+  frozenPrice: 0.6,    // 冷凍すると、売値にかかる割合（売る機能は段階5で作る）
+};
+const RULE_NOTE = '生の料理は釣ってから3日まで、冷蔵は7日まで、冷凍は1か月まで、冷凍した魚は生で使えない、というのはゲームのルールです。現実の保存の目安ではありません。';
+
+// 図鑑の達成ごほうび（お金D）。数字はゲーム用で、あとから直してよい
+const BOOK_REWARDS = { caught: 100, cooked: 200, eaten: 100, fishComplete: 500, allComplete: 3000 };
+const LOG_LIMIT = 200;   // 記録をいくつまで残すか
+
+// 冷蔵庫と冷凍庫
+const Keep = {
+  items() { return Save.data.stock; },
+
+  add(catchData) {
+    const d = Save.data;
+    d.stock.push({
+      id: d.nextStockId++,
+      fishId: catchData.fish.id,
+      sizeCm: catchData.sizeCm,
+      weight: catchData.weight,
+      fresh: catchData.fresh,
+      caughtDay: d.day,
+      frozenDay: null,
+    });
+    Save.commit();
+  },
+
+  // いまの状態（あと何日もつか、生で使えるか、鮮度はいくつか）
+  info(item) {
+    const today = Save.data.day;
+    const days = today - item.caughtDay;
+    if (item.frozenDay !== null) {
+      const left = RULES.freezerDays - (today - item.frozenDay);
+      return { frozen: true, days, left, rotten: left <= 0, rawOk: false, fresh: item.fresh * RULES.frozenTaste };
+    }
+    const left = RULES.fridgeDays - days;
+    const fade = Math.max(RULES.fridgeFloor, 1 - days * RULES.fridgeFade);
+    return { frozen: false, days, left, rotten: left <= 0, rawOk: days < RULES.rawDays, fresh: item.fresh * fade };
+  },
+
+  // 冷凍する。凍らせた時点の鮮度をとっておく
+  freeze(id) {
+    const item = Save.data.stock.find((x) => x.id === id);
+    if (!item || item.frozenDay !== null) return;
+    item.fresh *= Math.max(RULES.fridgeFloor, 1 - (Save.data.day - item.caughtDay) * RULES.fridgeFade);
+    item.frozenDay = Save.data.day;
+    Save.commit();
+  },
+
+  remove(id) {
+    Save.data.stock = Save.data.stock.filter((x) => x.id !== id);
+    Save.commit();
+  },
+
+  // 腐った魚と、あと1日で腐る魚の数
+  worryCount() {
+    return Save.data.stock.filter((item) => this.info(item).left <= 1).length;
+  },
+
+  nextDay() {
+    Save.data.day += 1;
+    Save.commit();
+  },
+};
+
+// 図鑑の記録と達成ごほうび。ごほうびの知らせを文字の配列で返す
+const Book = {
+  entry(id) {
+    const book = Save.data.book;
+    if (!book[id]) book[id] = { caught: 0, cooked: 0, eaten: 0, maxCm: 0, dishes: {} };
+    return book[id];
+  },
+
+  stampCount() {
+    let n = 0;
+    for (const fish of window.fishData.fish) {
+      const e = this.entry(fish.id);
+      n += (e.caught > 0 ? 1 : 0) + (e.cooked > 0 ? 1 : 0) + (e.eaten > 0 ? 1 : 0);
+    }
+    return n;
+  },
+  stampTotal() { return window.fishData.fish.length * 3; },
+  rate() { return Math.floor((this.stampCount() / this.stampTotal()) * 100); },
+
+  // 3段階のどれかを初めて達成したときだけ、ごほうびを出す
+  stamp(fish, kind, label) {
+    const e = this.entry(fish.id);
+    const first = e[kind] === 0;
+    e[kind] += 1;
+    const notes = [];
+    if (first) {
+      Save.data.money += BOOK_REWARDS[kind];
+      notes.push(`図鑑「${fish.name}」${label}　+${BOOK_REWARDS[kind]}D`);
+      if (e.caught > 0 && e.cooked > 0 && e.eaten > 0) {
+        Save.data.money += BOOK_REWARDS.fishComplete;
+        notes.push(`${fish.name}をコンプリート！　+${BOOK_REWARDS.fishComplete}D`);
+      }
+      if (this.stampCount() === this.stampTotal()) {
+        Save.data.money += BOOK_REWARDS.allComplete;
+        notes.push(`図鑑コンプリート！　+${BOOK_REWARDS.allComplete}D`);
+      }
+    }
+    return notes;
+  },
+
+  pushLog(name, row) {
+    const log = Save.data[name];
+    log.push(row);
+    if (log.length > LOG_LIMIT) log.splice(0, log.length - LOG_LIMIT);
+  },
+
+  recordCatch(fish, sizeCm, weight) {
+    const e = this.entry(fish.id);
+    e.maxCm = Math.max(e.maxCm, sizeCm);
+    this.pushLog('catchLog', { day: Save.data.day, fishId: fish.id, sizeCm, weight: Math.round(weight) });
+    const notes = this.stamp(fish, 'caught', '釣れた');
+    Save.commit();
+    return notes;
+  },
+
+  recordCook(fish, dish, stars) {
+    const e = this.entry(fish.id);
+    e.dishes[dish.id] = (e.dishes[dish.id] || 0) + 1;
+    this.pushLog('cookLog', { day: Save.data.day, fishId: fish.id, dishId: dish.id, stars });
+    const notes = this.stamp(fish, 'cooked', '料理した');
+    Save.commit();
+    return notes;
+  },
+
+  recordEat(fish) {
+    const notes = this.stamp(fish, 'eaten', '食べた');
+    Save.commit();
+    return notes;
+  },
+};
 
 /* ============================================================
    4. 音と振動、スマホを振る操作
@@ -2285,6 +2506,39 @@ function createTextButton(scene, x, y, label, onPress, originX = 0) {
   return text;
 }
 
+// 横に2つ並べられる小さめのボタン
+function createSmallButton(scene, x, y, label, onPress, fontSize = 34) {
+  bake(scene, 'button-s', 360, 108, paintButton);
+  const box = scene.add.container(x, y).setDepth(40);
+  box.add(scene.add.image(0, 0, 'button-s'));
+  box.label = scene.add.text(0, -2, label, {
+    fontFamily: FONT_BODY, fontSize: `${fontSize}px`, fontStyle: 'bold', color: COLOR.ink,
+  }).setOrigin(0.5);
+  box.add(box.label);
+  box.setSize(360, 108);
+  box.setInteractive({ useHandCursor: true });
+  box.on('pointerdown', () => box.setScale(0.96));
+  box.on('pointerout', () => box.setScale(1));
+  box.on('pointerup', () => {
+    box.setScale(1);
+    Sound.unlock();
+    onPress();
+  });
+  return box;
+}
+
+// 図鑑のごほうびを、画面の上に少しのあいだ出す
+function rewardToast(scene, notes) {
+  if (!notes || !notes.length) return;
+  if (scene.toast) scene.toast.destroy();
+  const text = scene.add.text(W / 2, Math.round(H * 0.075) + 56, notes.join('\n'), {
+    fontFamily: FONT_BODY, fontSize: '32px', fontStyle: 'bold', color: '#ffe0a6', align: 'center',
+    backgroundColor: 'rgba(20,28,60,0.88)', padding: { x: 24, y: 14 }, lineSpacing: 8,
+  }).setOrigin(0.5, 0).setDepth(90);
+  scene.toast = text;
+  scene.tweens.add({ targets: text, alpha: 0, delay: 2800, duration: 500, onComplete: () => text.destroy() });
+}
+
 function changeScene(scene, nextKey, data) {
   scene.cameras.main.fadeOut(REDUCE_MOTION ? 0 : 320, 60, 71, 112);
   scene.cameras.main.once('camerafadeoutcomplete', () => scene.scene.start(nextKey, data));
@@ -2476,6 +2730,36 @@ class HarborScene extends Phaser.Scene {
       this.leaving = true;
       changeScene(this, 'Title');
     });
+
+    this.add.text(W - 22, 56, `${Save.data.day}日目　${Save.data.money}D`, {
+      fontFamily: FONT_BODY, fontSize: '30px', fontStyle: 'bold', color: COLOR.cream,
+    }).setOrigin(1, 0.5).setDepth(40).setShadow(0, 2, 'rgba(26,40,80,0.6)', 6);
+
+    // 図鑑と冷蔵庫
+    const smallY = Math.round(H * 0.68) - 132;
+    createSmallButton(this, W / 2 - 185, smallY, '魚図鑑', () => bookPanel());
+    this.keepButton = createSmallButton(this, W / 2 + 185, smallY, '', () => this.openKeep());
+    this.keepWarn = this.add.text(W / 2, smallY - 74, '', {
+      fontFamily: FONT_BODY, fontSize: '28px', fontStyle: 'bold', color: '#ffd27a',
+    }).setOrigin(0.5).setDepth(40).setShadow(0, 2, 'rgba(26,40,80,0.7)', 6);
+    this.refreshKeep();
+  }
+
+  refreshKeep() {
+    this.keepButton.label.setText(`冷蔵庫（${Keep.items().length}）`);
+    const worry = Keep.worryCount();
+    this.keepWarn.setText(worry ? `傷みそうな魚が${worry}ひきいるよ` : '');
+  }
+
+  openKeep() {
+    keepPanel((item, fish, info) => {
+      if (this.leaving) return;
+      this.leaving = true;
+      changeScene(this, 'Cook', {
+        fish, sizeCm: item.sizeCm, weight: item.weight, fresh: info.fresh,
+        days: info.days, frozen: info.frozen, stockId: item.id,
+      });
+    }, () => this.refreshKeep());
   }
 
   // iPhoneの許可は、ボタンを押した流れの中で聞く必要がある
@@ -2694,6 +2978,11 @@ class FishingScene extends Phaser.Scene {
   }
 
   cast(power) {
+    // 釣りに1回行くと1日進む（港へもどるだけなら進まないよう、最初に投げたときに数える）
+    if (!this.dayCounted) {
+      this.dayCounted = true;
+      Keep.nextDay();
+    }
     this.state = 'flying';
     const p = Math.max(0.08, power);
     this.castD = 0.22 + 0.78 * p;
@@ -2812,6 +3101,7 @@ class FishingScene extends Phaser.Scene {
     const weight = game.weightA * Math.pow(this.sizeCm, 3);
     const count = (this.registry.get('todayCount') || 0) + 1;
     this.registry.set('todayCount', count);
+    const bookNotes = Book.recordCatch(this.fish, this.sizeCm, weight);
 
     this.setFightHud(false);
     this.say('');
@@ -2859,7 +3149,7 @@ class FishingScene extends Phaser.Scene {
     const take = createButton(this, W / 2, Math.round(H * 0.82), '持ち帰る', () => {
       if (leaving) return;
       leaving = true;
-      changeScene(this, 'Cooler', { fish: this.fish, sizeCm: this.sizeCm, weight });
+      changeScene(this, 'Cooler', { fish: this.fish, sizeCm: this.sizeCm, weight, bookNotes });
     }, 48);
     take.setDepth(70);
     items.push(take);
@@ -3299,6 +3589,213 @@ function recipeSheet(fish, dish) {
   showSheet(`${dish.name}を実際に作るなら`, blocks);
 }
 
+/* ---------- 図鑑と冷蔵庫の画面（読むものなので、画面に重ねたHTMLで出す） ---------- */
+
+function makeEl(tag, className, text) {
+  const el = document.createElement(tag);
+  if (className) el.className = className;
+  if (text !== undefined) el.textContent = text;
+  return el;
+}
+
+function openPanel(title) {
+  const sheet = document.getElementById('sheet');
+  sheet.textContent = '';
+  const box = makeEl('div', 'sheet-box');
+  box.appendChild(makeEl('h2', '', title));
+  sheet.appendChild(box);
+  sheet.style.display = 'block';
+  sheet.scrollTop = 0;
+  return box;
+}
+
+function closePanel() { document.getElementById('sheet').style.display = 'none'; }
+
+function panelButton(box, label, onClick) {
+  const button = makeEl('button', '', label);
+  button.addEventListener('click', onClick);
+  box.appendChild(button);
+  return button;
+}
+
+function fishImage(fishId, className) {
+  const img = makeEl('img', className);
+  img.src = `images/fish-${fishId}.webp`;
+  img.alt = '';
+  return img;
+}
+
+function stampRow(entry) {
+  const row = makeEl('div', 'stamps');
+  for (const [key, label] of [['caught', '釣れた'], ['cooked', '料理した'], ['eaten', '食べた']]) {
+    row.appendChild(makeEl('span', entry[key] > 0 ? 'stamp on' : 'stamp', label));
+  }
+  return row;
+}
+
+function fishById(id) { return window.fishData.fish.find((f) => f.id === id); }
+
+// 図鑑の一覧
+function bookPanel(onClose) {
+  const box = openPanel('魚図鑑');
+  const rate = Book.rate();
+  box.appendChild(makeEl('p', '', `コンプリート率 ${rate}%（${Book.stampCount()} / ${Book.stampTotal()}）　所持金 ${Save.data.money}D`));
+  const bar = makeEl('div', 'sheet-bar');
+  const fill = makeEl('i');
+  fill.style.width = `${rate}%`;
+  bar.appendChild(fill);
+  box.appendChild(bar);
+
+  for (const fish of window.fishData.fish) {
+    const entry = Book.entry(fish.id);
+    const known = entry.caught > 0;
+    const card = makeEl('button', 'card');
+    card.appendChild(fishImage(fish.id, known ? 'card-img' : 'card-img unknown'));
+    const text = makeEl('div');
+    text.appendChild(makeEl('div', 'card-name', known ? fish.name : '？？？'));
+    text.appendChild(stampRow(entry));
+    card.appendChild(text);
+    if (known) card.addEventListener('click', () => bookDetail(fish, onClose));
+    box.appendChild(card);
+  }
+
+  const r = BOOK_REWARDS;
+  box.appendChild(makeEl('h3', '', 'ごほうび'));
+  box.appendChild(makeEl('p', 'sheet-note',
+    `初めて達成すると、もらえるよ。釣れた ${r.caught}D／料理した ${r.cooked}D／食べた ${r.eaten}D／1種類そろう ${r.fishComplete}D／全部そろう ${r.allComplete}D`));
+
+  const catches = Save.data.catchLog.slice(-3).reverse().map((c) =>
+    `${c.day}日目　${fishById(c.fishId) ? fishById(c.fishId).name : ''}　${c.sizeCm.toFixed(1)}cm`);
+  const cooks = Save.data.cookLog.slice(-3).reverse().map((c) => {
+    const fish = fishById(c.fishId);
+    const dish = fish && fish.dishes.find((d) => d.id === c.dishId);
+    return `${c.day}日目　${dish ? dish.name : ''}　${c.stars}`;
+  });
+  if (catches.length) {
+    box.appendChild(makeEl('h3', '', '最近釣った魚'));
+    const list = makeEl('ul');
+    catches.forEach((t) => list.appendChild(makeEl('li', '', t)));
+    box.appendChild(list);
+  }
+  if (cooks.length) {
+    box.appendChild(makeEl('h3', '', '最近作った料理'));
+    const list = makeEl('ul');
+    cooks.forEach((t) => list.appendChild(makeEl('li', '', t)));
+    box.appendChild(list);
+  }
+  box.appendChild(makeEl('p', 'sheet-note', '魚の絵はAIで作成しました。'));
+  panelButton(box, 'とじる', () => { closePanel(); if (onClose) onClose(); });
+}
+
+// 出典の本文で確かめた項目だけを言い切る。確かめていない項目は断定しない
+function factBlock(box, heading, fact) {
+  box.appendChild(makeEl('h3', '', heading));
+  if (!fact || fact.status !== '確認済み') {
+    box.appendChild(makeEl('p', '', 'まだ資料で確かめているところです。'));
+    return;
+  }
+  box.appendChild(makeEl('p', '', fact.value));
+  sourceLine(box, fact.sources);
+}
+
+function sourceLine(box, ids) {
+  const line = makeEl('p', 'sheet-source', '出典：');
+  (ids || []).forEach((id, i) => {
+    const s = window.fishData.sources[id];
+    if (!s) return;
+    if (i > 0) line.appendChild(document.createTextNode('、'));
+    const a = makeEl('a', '', s.name);
+    a.href = s.url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    line.appendChild(a);
+  });
+  box.appendChild(line);
+}
+
+// 図鑑の1ページ
+function bookDetail(fish, onClose) {
+  const box = openPanel(fish.name);
+  const entry = Book.entry(fish.id);
+  box.appendChild(fishImage(fish.id, 'detail-img'));
+  box.appendChild(stampRow(entry));
+  box.appendChild(makeEl('p', '', `釣った数 ${entry.caught}ひき　いちばん大きい魚 ${entry.maxCm.toFixed(1)}cm`));
+  const made = fish.dishes.filter((d) => entry.dishes[d.id]).map((d) => `${d.name} ${entry.dishes[d.id]}回`);
+  if (made.length) box.appendChild(makeEl('p', '', `作った料理：${made.join('、')}`));
+
+  factBlock(box, '旬', fish.facts.season);
+  factBlock(box, 'どこで・どう釣るか', fish.facts.howToCatch);
+  factBlock(box, '見分け方', fish.facts.identify);
+
+  // 生の料理の寄生虫の注意は、料理を選ぶ画面とレシピにまとめる（図鑑には出さない）
+  box.appendChild(makeEl('h3', '', '注意点'));
+  const cautions = fish.safety.cautions;
+  const shown = cautions.status === '確認済み'
+    ? (cautions.value || []).filter((c) => !/アニサキス|寄生虫/.test(c)) : [];
+  if (shown.length) {
+    const list = makeEl('ul');
+    shown.forEach((c) => list.appendChild(makeEl('li', '', c)));
+    box.appendChild(list);
+    sourceLine(box, cautions.sources.filter((id) => !/anisakis/.test(id)));
+  } else {
+    box.appendChild(makeEl('p', '', 'まだ資料で確かめているところです。'));
+  }
+  if (fish.dishes.some((d) => d.raw)) {
+    box.appendChild(makeEl('p', 'sheet-note', '生で食べるときの注意は、料理を選ぶ画面とレシピで読めます。'));
+  }
+
+  factBlock(box, 'おすすめの食べ方', fish.facts.bestWay);
+  box.appendChild(makeEl('p', 'sheet-note', '旬や釣りのルールは、地域で違うことがあります。釣りに行くときは、地域のルールを確かめよう。'));
+  panelButton(box, '一覧にもどる', () => bookPanel(onClose));
+}
+
+// 冷蔵庫と冷凍庫。料理するときは onCook に魚を渡す
+function keepPanel(onCook, onClose) {
+  const box = openPanel('冷蔵庫と冷凍庫');
+  box.appendChild(makeEl('p', '', `今日は${Save.data.day}日目。釣りに1回行くと、1日進むよ。`));
+  box.appendChild(makeEl('p', 'sheet-note', RULE_NOTE));
+
+  const items = Keep.items().slice();
+  const groups = [
+    ['冷蔵庫', items.filter((x) => x.frozenDay === null)],
+    ['冷凍庫', items.filter((x) => x.frozenDay !== null)],
+  ];
+  for (const [heading, list] of groups) {
+    box.appendChild(makeEl('h3', '', heading));
+    if (!list.length) box.appendChild(makeEl('p', 'sheet-note', 'まだ何も入っていないよ。'));
+    list.forEach((item) => box.appendChild(keepRow(item, onCook, onClose)));
+  }
+  panelButton(box, 'とじる', () => { closePanel(); if (onClose) onClose(); });
+}
+
+function keepRow(item, onCook, onClose) {
+  const fish = fishById(item.fishId);
+  const info = Keep.info(item);
+  const row = makeEl('div', 'keep-item');
+  row.appendChild(fishImage(item.fishId, info.rotten ? 'card-img unknown' : 'card-img'));
+  const body = makeEl('div', 'keep-body');
+  body.appendChild(makeEl('div', 'card-name', `${fish ? fish.name : '魚'} ${item.sizeCm.toFixed(1)}cm`));
+
+  let status;
+  if (info.rotten) status = info.frozen ? '長く置きすぎた…捨てるしかない' : '腐ってしまった…捨てるしかない';
+  else if (info.frozen) status = `冷凍中。あと${info.left}日もつ。生では使えず、味と売値が下がる`;
+  else if (info.rawOk) status = `釣ってから${info.days}日。あと${info.left}日で腐る。生の料理はあと${RULES.rawDays - info.days}日`;
+  else status = `釣ってから${info.days}日。あと${info.left}日で腐る。もう生では使えない`;
+  body.appendChild(makeEl('div', info.rotten || info.left <= 1 ? 'keep-warn' : '', status));
+
+  const actions = makeEl('div', 'keep-actions');
+  const redraw = () => keepPanel(onCook, onClose);
+  if (info.rotten) {
+    panelButton(actions, '捨てる', () => { Keep.remove(item.id); redraw(); });
+  } else {
+    panelButton(actions, '料理する', () => { closePanel(); onCook(item, fish, info); });
+    if (!info.frozen) panelButton(actions, '冷凍する', () => { Keep.freeze(item.id); redraw(); });
+  }
+  body.appendChild(actions);
+  row.appendChild(body);
+  return row;
+}
+
 function wrapJapanese(text, size, width) {
   const noStart = '、。）」』！？・ー…';
   const lines = [];
@@ -3418,11 +3915,19 @@ class CoolerScene extends Phaser.Scene {
       '「鮮度」はこのゲームの数字だよ。\n実際の魚も常温に置かず、すぐ冷やそう。\nヒスタミンという食中毒の原因は、火を通しても消えません。',
       25, { lineSpacing: 8, width: 750 });
 
-    createButton(this, W / 2, H - 92, '家へ帰る', () => {
+    createSmallButton(this, W / 2 - 185, H - 92, '家で料理する', () => {
       if (this.leaving) return;
       this.leaving = true;
       changeScene(this, 'Cook', { ...this.catchData, fresh: this.fresh });
-    }, 40);
+    });
+    createSmallButton(this, W / 2 + 185, H - 92, '冷蔵庫にしまう', () => {
+      if (this.leaving) return;
+      this.leaving = true;
+      Keep.add({ ...this.catchData, fresh: this.fresh });
+      changeScene(this, 'Harbor');
+    });
+
+    rewardToast(this, this.catchData.bookNotes);
   }
 
   addAction(y, label, gain, message) {
@@ -3803,10 +4308,16 @@ class CookScene extends Phaser.Scene {
     this.leaving = false;
   }
 
-  preload() { preloadDishPhotos(this, this.fish); }
+  preload() {
+    preloadFishPhotos(this);   // 冷蔵庫から来たときは、まだ読み込んでいないことがある
+    preloadDishPhotos(this, this.fish);
+  }
 
   create() {
     this.cameras.main.fadeIn(REDUCE_MOTION ? 0 : 320, 60, 71, 112);
+    for (const fish of window.fishData.fish) {
+      bake(this, `fish-${fish.id}`, FISH_BAKE.w, FISH_BAKE.h, (ctx, w, h) => paintFish(ctx, w, h, fish.id));
+    }
     bakeFull(this, 'table', paintTable);
     titleText(this, H * 0.075, `${this.fish.name}をどう食べる？`);
 
@@ -3820,15 +4331,25 @@ class CookScene extends Phaser.Scene {
 
     if (hasRaw) {
       bodyText(this, W / 2, H - 205,
-        '生の魚には、アニサキスという寄生虫がいることがあります。新鮮でも安全とは限りません。\n釣ってから3日たつと、生の料理は作れません。3日はゲームのルールで、現実の日持ちの目安ではありません。',
+        '生の魚には、アニサキスという寄生虫がいることがあります。新鮮でも安全とは限りません。\n釣ってから3日たつか冷凍すると、生の料理は作れません。これはゲームのルールで、現実の日持ちの目安ではありません。',
         24, { color: '#ffd27a', lineSpacing: 6, width: 720 });
       createTextButton(this, W / 2, H - 42, '寄生虫の注意と対策を読む', () => safetySheet(), 0.5);
+    }
+
+    // 冷蔵庫から来たときは、料理をやめてもどれる（魚は食べるまで冷蔵庫に残る）
+    if (this.catchData.stockId) {
+      createTextButton(this, 22, H - 42, '← もどる', () => {
+        if (this.leaving) return;
+        this.leaving = true;
+        changeScene(this, 'Harbor');
+      });
     }
   }
 
   addCard(dish, y, height) {
     const days = this.catchData.days || 0;
-    const blocked = dish.raw && days >= 3;   // 3日はゲームのルール
+    const frozen = !!this.catchData.frozen;
+    const blocked = dish.raw && (frozen || days >= RULES.rawDays);   // ゲームのルール
     const box = this.add.container(0, y).setDepth(20);
     const bg = this.add.rectangle(40, 0, W - 80, height, 0x1c120c, 0.72).setOrigin(0).setStrokeStyle(2, 0xd8bc90, 0.5);
     box.add(bg);
@@ -3840,7 +4361,7 @@ class CookScene extends Phaser.Scene {
       fontFamily: FONT_TITLE, fontSize: '46px', fontStyle: '600', color: COLOR.cream,
     }).setOrigin(0, 0.5));
     if (dish.raw) {
-      box.add(this.add.text(height + 44, height / 2 + 34, blocked ? '3日たったので作れない' : '生の料理：寄生虫に注意', {
+      box.add(this.add.text(height + 44, height / 2 + 34, blocked ? (frozen ? '冷凍したので生では作れない' : '3日たったので作れない') : '生の料理：寄生虫に注意', {
         fontFamily: FONT_BODY, fontSize: '26px', color: '#ffd27a',
       }).setOrigin(0, 0.5));
     }
@@ -3912,7 +4433,22 @@ class EatScene extends Phaser.Scene {
     }).setOrigin(1, 1).setAlpha(0.7).setDepth(4);
 
     titleText(this, photoH + 40, dish.name);
-    bodyText(this, W / 2, photoH + 90, `${stars}　${rank}`, 34, { color: '#ffd27a' });
+    bodyText(this, W / 2, photoH + 90, `${stars}　${rank}${this.catchData.frozen ? '（冷凍）' : ''}`, 34, { color: '#ffd27a' });
+
+    // ここまで来たら「料理した」。冷蔵庫の魚はここで使い切る
+    rewardToast(this, Book.recordCook(fish, dish, stars));
+    if (this.catchData.stockId) Keep.remove(this.catchData.stockId);
+
+    // 「いただきます」を押すと「食べた」になり、食レポが出る
+    const eat = createButton(this, W / 2, H - 150, 'いただきます', () => {
+      eat.setVisible(false).disableInteractive();
+      rewardToast(this, Book.recordEat(fish));
+      this.showTasting(photoH);
+    }, 46).setDepth(40);
+  }
+
+  showTasting(photoH) {
+    const fish = this.fish, dish = this.dish;
     const report = bodyText(this, W / 2, photoH + 150, dish.foodReport, 32);
     const best = fish.facts.bestWay;
     if (best.status === '確認済み' && !dish.raw) {
@@ -3920,11 +4456,16 @@ class EatScene extends Phaser.Scene {
     }
 
     createButton(this, W / 2, H - 212, '実際に作るなら', () => recipeSheet(fish, dish), 40).setDepth(40);
-    createButton(this, W / 2, H - 86, 'また釣りに行く', () => {
+    createSmallButton(this, W / 2 - 185, H - 76, '港へもどる', () => {
+      if (this.leaving) return;
+      this.leaving = true;
+      changeScene(this, 'Harbor');
+    });
+    createSmallButton(this, W / 2 + 185, H - 76, 'また釣りに行く', () => {
       if (this.leaving) return;
       this.leaving = true;
       changeScene(this, 'Fishing', {});
-    }, 40).setDepth(40);
+    });
   }
 }
 
