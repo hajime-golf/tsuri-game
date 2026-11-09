@@ -16,7 +16,65 @@
 {
   "dataVersion": 1,
   "sources": {},
-  "fish": []
+  "fish": [
+    {
+      "id": "aji",
+      "name": "アジ",
+      "facts": {
+        "season":     { "value": "要確認", "status": "要確認", "sources": [] },
+        "howToCatch": { "value": "要確認", "status": "要確認", "sources": [] },
+        "identify":   { "value": "要確認", "status": "要確認", "sources": [] },
+        "bestWay":    { "value": "要確認", "status": "要確認", "sources": [] }
+      },
+      "safety": {
+        "rawOk":    { "value": "要確認", "status": "要確認", "sources": [] },
+        "cautions": { "value": [], "status": "要確認", "sources": [] },
+        "prepType": "要確認",
+        "poisonParts": null,
+        "treatment": null
+      },
+      "dishes": [],
+      "game": { "spots": ["teibo"], "sizeCm": [15, 35], "fight": "dart", "power": 3, "biteWindowMs": 700, "nibbles": [1, 2], "bestRange": [0.35, 0.8], "weightA": 0.0115 }
+    },
+    {
+      "id": "saba",
+      "name": "サバ",
+      "facts": {
+        "season":     { "value": "要確認", "status": "要確認", "sources": [] },
+        "howToCatch": { "value": "要確認", "status": "要確認", "sources": [] },
+        "identify":   { "value": "要確認", "status": "要確認", "sources": [] },
+        "bestWay":    { "value": "要確認", "status": "要確認", "sources": [] }
+      },
+      "safety": {
+        "rawOk":    { "value": "要確認", "status": "要確認", "sources": [] },
+        "cautions": { "value": [], "status": "要確認", "sources": [] },
+        "prepType": "要確認",
+        "poisonParts": null,
+        "treatment": null
+      },
+      "dishes": [],
+      "game": { "spots": ["teibo"], "sizeCm": [25, 45], "fight": "run", "power": 5, "biteWindowMs": 600, "nibbles": [0, 1], "bestRange": [0.62, 1], "weightA": 0.0105 }
+    },
+    {
+      "id": "kasago",
+      "name": "カサゴ",
+      "facts": {
+        "season":     { "value": "要確認", "status": "要確認", "sources": [] },
+        "howToCatch": { "value": "要確認", "status": "要確認", "sources": [] },
+        "identify":   { "value": "要確認", "status": "要確認", "sources": [] },
+        "bestWay":    { "value": "要確認", "status": "要確認", "sources": [] }
+      },
+      "safety": {
+        "rawOk":    { "value": "要確認", "status": "要確認", "sources": [] },
+        "cautions": { "value": [], "status": "要確認", "sources": [] },
+        "prepType": "要確認",
+        "poisonParts": null,
+        "treatment": null
+      },
+      "dishes": [],
+      "game": { "spots": ["teibo"], "sizeCm": [14, 30], "fight": "dive", "power": 4, "biteWindowMs": 900, "nibbles": [2, 3], "bestRange": [0.2, 0.5], "weightA": 0.02 }
+    }
+  ]
 }
 </script>
 
@@ -77,7 +135,7 @@
 /* ============================================================
    2. ゲームの設定
    ============================================================ */
-const GAME_VERSION = 'v0.1';
+const GAME_VERSION = 'v0.2';
 const TAU = Math.PI * 2;
 
 // 横幅は固定し、高さを端末の縦横比に合わせる（スマホで上下左右に余白を出さないため）
@@ -103,6 +161,33 @@ const COLOR = {
 
 // 動きを減らす設定の端末では、波やふわっと出る動きを控えめにする
 const REDUCE_MOTION = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+// やり取りの調整用の数字（ゲームの手応えを決めるもので、現実の魚のデータではない）
+// calm：おとなしい時間（秒）／warn：合図の時間／surge：強く引く時間／reel：巻いて寄る速さ
+// out：緩めたときに糸が出る速さ／extra：どこまで糸を出されるとにげられるか
+const FIGHT_STYLES = {
+  dart: {
+    calm: [0.9, 1.9], warn: 0.38, surge: 0.38, reel: 0.12, out: 0.08, extra: 0.4, side: 0.3, dive: false,
+    warnText: 'ピクッときた！', surgeText: '小きざみに引いてる！',
+    escapeText: '遠くへにげられた…',
+  },
+  run: {
+    calm: [1.4, 2.8], warn: 0.6, surge: 1.2, reel: 0.15, out: 0.09, extra: 0.6, side: 1, dive: false,
+    warnText: '横に走るぞ！', surgeText: '走った！ はなして！',
+    escapeText: '糸を出されすぎた…',
+  },
+  dive: {
+    calm: [1.1, 2.2], warn: 0.5, surge: 0.9, reel: 0.09, out: 0.26, extra: 0.3, side: 0, dive: true, first: 0.5,
+    warnText: '潜るぞ！', surgeText: 'こらえて！ はなすな！',
+    escapeText: '岩のすきまに潜られた…',
+  },
+};
+const TENSION_SLACK = 0.18;   // これより下は「ゆるい」
+const TENSION_DANGER = 0.82;  // これより上は「切れそう」
+const HOLD_STRAIN = 0.09;     // 押し続けた1秒ごとに、糸の張りの目標が上がる量
+const METERS_PER_DIST = 40;   // 画面の距離1が何mに見えるか
+
+function randBetween(a, b) { return a + Math.random() * (b - a); }
 
 // 失敗したときの案内を、画面いっぱいに出す
 function showNotice(title, lines, code) {
@@ -161,6 +246,26 @@ function loadFishData() {
     showNotice('魚データの形が違います', ['魚データには「sources」と「fish」の欄が必要です。']);
     return null;
   }
+  if (data.fish.length === 0) {
+    showNotice('魚データが空です', ['魚データの「fish」に、魚を1種類以上入れてください。']);
+    return null;
+  }
+  // ゲームに必要な数字がそろっているかを、魚ごとに確かめる
+  for (const fish of data.fish) {
+    const g = fish && fish.game;
+    const ok = g && Array.isArray(g.sizeCm) && g.sizeCm.length === 2 && FIGHT_STYLES[g.fight]
+      && Number.isFinite(g.power) && Number.isFinite(g.biteWindowMs) && Number.isFinite(g.weightA)
+      && Array.isArray(g.nibbles) && g.nibbles.length === 2
+      && Array.isArray(g.bestRange) && g.bestRange.length === 2;
+    if (!ok) {
+      showNotice(
+        '魚データの「game」の欄に足りないものがあります',
+        ['sizeCm、fight（dart / run / dive）、power、biteWindowMs、nibbles、bestRange、weightA を見てください。'],
+        fish && fish.name ? String(fish.name) : null
+      );
+      return null;
+    }
+  }
   return data;
 }
 
@@ -169,7 +274,7 @@ function loadFishData() {
    ============================================================ */
 const Save = (() => {
   const KEY = 'tsuri-game/save/v1';
-  const DEFAULTS = { version: 1, plays: 0 };
+  const DEFAULTS = { version: 1, plays: 0, sound: true };
   let state = { ...DEFAULTS };
   let available = false;
 
@@ -202,8 +307,212 @@ const Save = (() => {
 })();
 
 /* ============================================================
-   4. 音と振動（段階2以降で作る）
+   4. 音と振動、スマホを振る操作
    ============================================================ */
+
+// 音はファイルを使わず、その場で作る
+const Sound = (() => {
+  let ctx = null;
+  let master = null;
+  let noiseBuffer = null;
+  let sea = null;
+
+  function ensure() {
+    if (ctx) return ctx;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return null;
+    try {
+      ctx = new AC();
+      master = ctx.createGain();
+      master.gain.value = Save.data.sound ? 1 : 0;
+      master.connect(ctx.destination);
+      noiseBuffer = ctx.createBuffer(1, ctx.sampleRate * 2, ctx.sampleRate);
+      const samples = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < samples.length; i++) samples[i] = Math.random() * 2 - 1;
+    } catch (err) {
+      ctx = null;  // 音が使えない環境では、音なしで続ける
+    }
+    return ctx;
+  }
+
+  // 高さを変えられる1音
+  function tone(freq, dur, { type = 'sine', vol = 0.2, slideTo = null, delay = 0 } = {}) {
+    if (!ctx) return;
+    const t = ctx.currentTime + delay;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, t);
+    if (slideTo) osc.frequency.exponentialRampToValueAtTime(slideTo, t + dur);
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(vol, t + 0.012);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    osc.connect(gain).connect(master);
+    osc.start(t);
+    osc.stop(t + dur + 0.02);
+  }
+
+  // 水や風の「ザーッ」という音
+  function noise(dur, { from = 1200, to = 300, vol = 0.2, type = 'lowpass', delay = 0 } = {}) {
+    if (!ctx) return;
+    const t = ctx.currentTime + delay;
+    const src = ctx.createBufferSource();
+    const filter = ctx.createBiquadFilter();
+    const gain = ctx.createGain();
+    src.buffer = noiseBuffer;
+    filter.type = type;
+    filter.frequency.setValueAtTime(from, t);
+    filter.frequency.exponentialRampToValueAtTime(to, t + dur);
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(vol, t + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    src.connect(filter).connect(gain).connect(master);
+    src.start(t, Math.random());
+    src.stop(t + dur + 0.02);
+  }
+
+  return {
+    // 指で押した流れで呼ぶ（ブラウザは、押されるまで音を出させてくれない）
+    unlock() {
+      if (!ensure()) return;
+      if (ctx.state === 'suspended') ctx.resume();
+    },
+    setEnabled(on) {
+      Save.data.sound = on;
+      Save.commit();
+      if (master) master.gain.value = on ? 1 : 0;
+    },
+    startSea() {
+      if (!ctx || sea) return;
+      const src = ctx.createBufferSource();
+      const filter = ctx.createBiquadFilter();
+      const gain = ctx.createGain();
+      const lfo = ctx.createOscillator();
+      const lfoGain = ctx.createGain();
+      src.buffer = noiseBuffer;
+      src.loop = true;
+      filter.type = 'lowpass';
+      filter.frequency.value = 520;
+      gain.gain.value = 0.05;
+      lfo.frequency.value = 0.13;   // ゆっくり寄せては返す
+      lfoGain.gain.value = 0.025;
+      lfo.connect(lfoGain).connect(gain.gain);
+      src.connect(filter).connect(gain).connect(master);
+      src.start();
+      lfo.start();
+      sea = { src, lfo };
+    },
+    stopSea() {
+      if (!sea) return;
+      try { sea.src.stop(); sea.lfo.stop(); } catch (err) { /* すでに止まっている */ }
+      sea = null;
+    },
+    cast()   { noise(0.42, { from: 2600, to: 500, vol: 0.14, type: 'bandpass' }); },
+    splash() { noise(0.36, { from: 1800, to: 260, vol: 0.2 }); tone(240, 0.1, { slideTo: 90, vol: 0.12 }); },
+    nibble() { tone(620, 0.07, { vol: 0.12, slideTo: 420 }); },
+    bite()   { noise(0.3, { from: 1400, to: 200, vol: 0.28 }); tone(170, 0.24, { slideTo: 70, vol: 0.3 }); },
+    hook()   { tone(330, 0.09, { type: 'triangle', vol: 0.2 }); tone(495, 0.14, { type: 'triangle', vol: 0.2, delay: 0.07 }); },
+    warn()   { tone(880, 0.08, { type: 'triangle', vol: 0.16 }); tone(880, 0.08, { type: 'triangle', vol: 0.16, delay: 0.12 }); },
+    surge()  { noise(0.3, { from: 900, to: 220, vol: 0.2 }); tone(130, 0.3, { type: 'sawtooth', vol: 0.08, slideTo: 90 }); },
+    tick(t)  { tone(300 + t * 420, 0.025, { type: 'square', vol: 0.03 }); },
+    snap()   { noise(0.12, { from: 5000, to: 1500, vol: 0.3, type: 'highpass' }); tone(1200, 0.12, { slideTo: 200, vol: 0.16 }); },
+    miss()   { tone(300, 0.26, { type: 'triangle', slideTo: 170, vol: 0.14 }); },
+    caught() {
+      noise(0.42, { from: 2200, to: 300, vol: 0.2 });
+      [523, 659, 784, 1047].forEach((f, i) => tone(f, 0.34, { type: 'triangle', vol: 0.2, delay: 0.12 + i * 0.11 }));
+    },
+  };
+})();
+
+// 振動。Androidは本物の振動、iPhoneのSafariには振動の機能がないので小さな手応えだけ試す
+const Buzz = (() => {
+  const canVibrate = typeof navigator.vibrate === 'function';
+  let iosSwitch = null;
+
+  function tapIos() {
+    if (!iosSwitch) {
+      iosSwitch = document.createElement('label');
+      iosSwitch.style.cssText = 'position:fixed;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none;';
+      const input = document.createElement('input');
+      input.type = 'checkbox';
+      input.setAttribute('switch', '');
+      iosSwitch.appendChild(input);
+      document.body.appendChild(iosSwitch);
+    }
+    iosSwitch.click();
+  }
+
+  return {
+    pulse(pattern) {
+      if (!canVibrate) return;
+      try { navigator.vibrate(pattern); } catch (err) { /* 振動できなくても続ける */ }
+    },
+    // 指で押した瞬間だけ呼ぶ
+    tap() {
+      if (canVibrate) this.pulse(10);
+      else if (navigator.maxTouchPoints > 0) tapIos();
+    },
+  };
+})();
+
+// スマホを振った動きを見つける
+const Motion = (() => {
+  const THRESHOLD = 15;      // これより強く動いたら「振った」とする（m/s²）
+  const PEAK_WINDOW = 160;   // いちばん強いところを探す時間（ミリ秒）
+  const COOLDOWN = 500;      // 1回振ったあと、次を受けつけない時間（ミリ秒）
+  const supported = 'DeviceMotionEvent' in window && navigator.maxTouchPoints > 0;
+  let listening = false;
+  let callback = null;
+  let peak = 0;
+  let peakEnd = 0;
+  let coolUntil = 0;
+
+  function strengthOf(event) {
+    const a = event.acceleration;
+    if (a && a.x !== null && a.x !== undefined) return Math.hypot(a.x, a.y, a.z);
+    const g = event.accelerationIncludingGravity;
+    if (g && g.x !== null && g.x !== undefined) return Math.abs(Math.hypot(g.x, g.y, g.z) - 9.8);
+    return 0;
+  }
+
+  function onMotion(event) {
+    const now = performance.now();
+    if (now < coolUntil) return;
+    const m = strengthOf(event);
+    if (peak === 0) {
+      if (m >= THRESHOLD) { peak = m; peakEnd = now + PEAK_WINDOW; }
+      return;
+    }
+    peak = Math.max(peak, m);
+    if (now >= peakEnd) {
+      const strength = Math.min(1, (peak - THRESHOLD) / 25);
+      peak = 0;
+      coolUntil = now + COOLDOWN;
+      if (callback) callback(strength);
+    }
+  }
+
+  return {
+    supported,
+    // iPhoneは、ボタンを押した流れの中で許可を求める必要がある
+    async request() {
+      try {
+        if (typeof DeviceMotionEvent.requestPermission === 'function') {
+          const answer = await DeviceMotionEvent.requestPermission();
+          if (answer !== 'granted') return false;
+        }
+        if (!listening) {
+          window.addEventListener('devicemotion', onMotion);
+          listening = true;
+        }
+        return true;
+      } catch (err) {
+        return false;  // 許可されなくても、ボタンで遊べる
+      }
+    },
+    onSwing(fn) { callback = fn; peak = 0; },
+  };
+})();
 
 /* ============================================================
    5. 図形の絵（水彩風の絵は、最初に一度だけ描いてとっておく）
@@ -382,7 +691,7 @@ function paintWave(ctx, w, h, seed, top, deep, amp) {
 const SHORE_TOP = Math.round(H * 0.74) - 300;
 const ROD_TIP = { x: 430, y: SHORE_TOP + 70 };
 
-function paintShore(ctx, w) {
+function paintShore(ctx, w, h, noRod) {
   const rnd = seeded(23);
   ctx.fillStyle = rgba(COLOR.shore, 0.2);
   for (let pass = 0; pass < 6; pass++) {
@@ -431,6 +740,7 @@ function paintShore(ctx, w) {
   ctx.moveTo(226, 148);
   ctx.lineTo(266, 148);
   ctx.stroke();
+  if (noRod) return;             // 釣りの画面では、竿は動かすので別に描く
   ctx.lineWidth = 4;             // 竿
   ctx.beginPath();
   ctx.moveTo(270, 232);
@@ -463,6 +773,182 @@ function paintGull(ctx, w, h) {
   ctx.moveTo(4, h * 0.65);
   ctx.quadraticCurveTo(w * 0.25, 2, w / 2, h * 0.75);
   ctx.quadraticCurveTo(w * 0.75, 2, w - 4, h * 0.65);
+  ctx.stroke();
+}
+
+// 魚の絵の違い（体の太さ、色、ヒレの形）
+const FISH_ART = {
+  aji:    { top: 62, belly: 60, tail: 11, back: '#5d7d93', mid: '#b9c9cc', low: '#f3efe3', fin: '#a9b48e', tailFork: 54 },
+  saba:   { top: 52, belly: 52, tail: 8,  back: '#2c6877', mid: '#9dbbbe', low: '#f6f2e7', fin: '#476f79', tailFork: 62 },
+  kasago: { top: 78, belly: 62, tail: 18, back: '#7a382b', mid: '#b9553e', low: '#edc8a5', fin: '#a2452f', tailFork: 8 },
+};
+
+function fishBodyPath(ctx, h, a) {
+  const cy = h / 2;
+  ctx.beginPath();
+  ctx.moveTo(34, cy + 6);
+  ctx.bezierCurveTo(130, cy - a.top * 1.3, 300, cy - a.top * 1.25, 452, cy - a.tail);
+  ctx.lineTo(452, cy + a.tail);
+  ctx.bezierCurveTo(300, cy + a.belly * 1.25, 130, cy + a.belly * 1.3, 34, cy + 6);
+  ctx.closePath();
+}
+
+// 横向きの魚（頭が左）。尾→ヒレ→体→模様→目の順に重ねる
+function paintFish(ctx, w, h, id) {
+  const a = FISH_ART[id] || FISH_ART.aji;
+  const cy = h / 2;
+  const rnd = seeded(id.length * 97);
+
+  // 尾びれ
+  ctx.fillStyle = a.fin;
+  ctx.beginPath();
+  ctx.moveTo(444, cy - a.tail);
+  ctx.quadraticCurveTo(490, cy - 40, 534, cy - 76);
+  ctx.quadraticCurveTo(534 - a.tailFork, cy, 534, cy + 76);
+  ctx.quadraticCurveTo(490, cy + 40, 444, cy + a.tail);
+  ctx.closePath();
+  ctx.fill();
+
+  // 背びれ・しりびれ
+  ctx.fillStyle = a.fin;
+  if (id === 'kasago') {
+    // カサゴはトゲのある背びれ
+    ctx.beginPath();
+    ctx.moveTo(160, cy - a.top + 2);
+    for (let i = 0; i <= 11; i++) {
+      const x = 160 + i * 22;
+      ctx.lineTo(x + 10, cy - a.top - 34 + i * 2.4);
+      ctx.lineTo(x + 22, cy - a.top + 6 + i * 3);
+    }
+    ctx.lineTo(420, cy - 20);
+    ctx.lineTo(160, cy - 30);
+    ctx.closePath();
+    ctx.fill();
+  } else {
+    ctx.beginPath();
+    ctx.moveTo(190, cy - a.top + 4);
+    ctx.lineTo(214, cy - a.top - 36);
+    ctx.lineTo(262, cy - a.top + 2);
+    ctx.closePath();
+    ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(288, cy - a.top + 8);
+    ctx.quadraticCurveTo(320, cy - a.top - 24, 400, cy - 22);
+    ctx.lineTo(380, cy - 10);
+    ctx.closePath();
+    ctx.fill();
+  }
+  ctx.beginPath();
+  ctx.moveTo(290, cy + a.belly - 6);
+  ctx.quadraticCurveTo(330, cy + a.belly + 24, 400, cy + 22);
+  ctx.lineTo(370, cy + 10);
+  ctx.closePath();
+  ctx.fill();
+
+  // サバは尾の近くに小さいヒレが並ぶ
+  if (id === 'saba') {
+    for (let i = 0; i < 4; i++) {
+      const x = 400 + i * 13;
+      for (const dir of [-1, 1]) {
+        ctx.beginPath();
+        ctx.moveTo(x, cy + dir * 15);
+        ctx.lineTo(x + 8, cy + dir * 30);
+        ctx.lineTo(x + 11, cy + dir * 11);
+        ctx.closePath();
+        ctx.fill();
+      }
+    }
+  }
+
+  // 体（背中が濃く、おなかが淡い）
+  const body = ctx.createLinearGradient(0, cy - a.top, 0, cy + a.belly);
+  body.addColorStop(0, a.back);
+  body.addColorStop(0.46, a.mid);
+  body.addColorStop(1, a.low);
+  fishBodyPath(ctx, h, a);
+  ctx.fillStyle = body;
+  ctx.fill();
+
+  // 模様は体の内側だけに描く
+  ctx.save();
+  fishBodyPath(ctx, h, a);
+  ctx.clip();
+  if (id === 'aji') {
+    // 尾に向かうトゲトゲのうろこの列
+    ctx.fillStyle = 'rgba(232,212,126,0.9)';
+    for (let i = 0; i < 18; i++) {
+      const x = 268 + i * 11;
+      ctx.beginPath();
+      ctx.moveTo(x, cy - 2);
+      ctx.lineTo(x + 7, cy - 8);
+      ctx.lineTo(x + 12, cy - 2);
+      ctx.lineTo(x + 7, cy + 5);
+      ctx.closePath();
+      ctx.fill();
+    }
+    blob(ctx, 170, cy - 22, 15, 11, '#2d3a48', 0.85);
+  } else if (id === 'saba') {
+    // 背中の波のような模様
+    ctx.strokeStyle = 'rgba(24,52,66,0.8)';
+    ctx.lineWidth = 6;
+    ctx.lineCap = 'round';
+    for (let i = 0; i < 17; i++) {
+      const x = 120 + i * 20;
+      ctx.beginPath();
+      ctx.moveTo(x, cy - 72);
+      ctx.quadraticCurveTo(x + 18, cy - 44, x - 4, cy - 28 + (i % 3) * 5);
+      ctx.stroke();
+    }
+  } else {
+    // まだらの模様
+    for (let i = 0; i < 26; i++) {
+      blob(ctx, 90 + rnd() * 350, cy - 70 + rnd() * 105, 16 + rnd() * 26, 10 + rnd() * 18, '#54231c', 0.55);
+    }
+    for (let i = 0; i < 12; i++) {
+      blob(ctx, 110 + rnd() * 310, cy - 20 + rnd() * 60, 8 + rnd() * 12, 6 + rnd() * 9, '#f1d3b6', 0.5);
+    }
+  }
+  // 体のつやと水彩のにじみ
+  blob(ctx, 220, cy - 14, 190, 16, '#ffffff', 0.32);
+  for (let i = 0; i < 10; i++) {
+    blob(ctx, 60 + rnd() * 400, cy - 60 + rnd() * 120, 40 + rnd() * 50, 20 + rnd() * 26, a.mid, 0.14);
+  }
+  ctx.restore();
+
+  // エラ・胸びれ
+  ctx.strokeStyle = 'rgba(30,40,60,0.45)';
+  ctx.lineWidth = 3.5;
+  ctx.beginPath();
+  ctx.arc(120, cy, a.top * 0.72, -0.9, 0.9);
+  ctx.stroke();
+  ctx.fillStyle = rgba(a.fin, 0.92);
+  ctx.beginPath();
+  ctx.moveTo(150, cy + 8);
+  ctx.quadraticCurveTo(204, cy + 6, 222, cy + 36);
+  ctx.quadraticCurveTo(178, cy + 42, 150, cy + 22);
+  ctx.closePath();
+  ctx.fill();
+
+  // 目と口
+  const eyeR = id === 'kasago' ? 20 : 16;
+  ctx.fillStyle = '#fff6e6';
+  ctx.beginPath();
+  ctx.arc(84, cy - 16, eyeR, 0, TAU);
+  ctx.fill();
+  ctx.fillStyle = '#20263c';
+  ctx.beginPath();
+  ctx.arc(82, cy - 16, eyeR * 0.6, 0, TAU);
+  ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath();
+  ctx.arc(79, cy - 20, eyeR * 0.2, 0, TAU);
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(30,30,50,0.65)';
+  ctx.lineWidth = 3.5;
+  ctx.lineCap = 'round';
+  ctx.beginPath();
+  ctx.moveTo(38, cy + 7);
+  ctx.quadraticCurveTo(62, cy + (id === 'kasago' ? 26 : 16), id === 'kasago' ? 92 : 78, cy + (id === 'kasago' ? 22 : 12));
   ctx.stroke();
 }
 
@@ -540,12 +1026,12 @@ function createDawn(scene) {
 }
 
 // 丸いボタン。押すと少し沈む
-function createButton(scene, x, y, label, onPress) {
+function createButton(scene, x, y, label, onPress, fontSize = 50) {
   bake(scene, 'button', 420, 136, paintButton);
   const box = scene.add.container(x, y).setDepth(40);
   box.add(scene.add.image(0, 0, 'button'));
   box.add(scene.add.text(0, -2, label, {
-    fontFamily: FONT_BODY, fontSize: '50px', fontStyle: 'bold', color: COLOR.ink,
+    fontFamily: FONT_BODY, fontSize: `${fontSize}px`, fontStyle: 'bold', color: COLOR.ink,
   }).setOrigin(0.5));
   box.setSize(420, 136);
   box.setInteractive({ useHandCursor: true });
@@ -553,14 +1039,46 @@ function createButton(scene, x, y, label, onPress) {
   box.on('pointerout', () => box.setScale(1));
   box.on('pointerup', () => {
     box.setScale(1);
+    Sound.unlock();
     onPress();
   });
   return box;
 }
 
-function changeScene(scene, nextKey) {
+// 文字だけの小さいボタン（「港へ」「音」など）
+function createTextButton(scene, x, y, label, onPress, originX = 0) {
+  const text = scene.add.text(x, y, label, {
+    fontFamily: FONT_BODY, fontSize: '30px', color: COLOR.cream, padding: { x: 14, y: 12 },
+  }).setOrigin(originX, 0.5).setDepth(45).setShadow(0, 2, 'rgba(40,44,96,0.5)', 6);
+  text.setInteractive({ useHandCursor: true });
+  text.on('pointerup', () => {
+    Sound.unlock();
+    onPress(text);
+  });
+  return text;
+}
+
+function changeScene(scene, nextKey, data) {
   scene.cameras.main.fadeOut(REDUCE_MOTION ? 0 : 320, 60, 71, 112);
-  scene.cameras.main.once('camerafadeoutcomplete', () => scene.scene.start(nextKey));
+  scene.cameras.main.once('camerafadeoutcomplete', () => scene.scene.start(nextKey, data));
+}
+
+// 投げた距離（0〜1くらい）を、画面の海の上の場所に直す。遠いほど上で小さい
+function waterPoint(d) {
+  const t = Math.min(1.15, Math.max(0, d));
+  return { x: 470 + t * 150, y: HORIZON + SEA_H * (0.55 - 0.45 * t), scale: 1.15 - 0.6 * t };
+}
+
+// 投げた距離に合う魚が来やすいように、くじを引く
+function pickFish(d) {
+  const list = window.fishData.fish;
+  const weights = list.map((f) => (d >= f.game.bestRange[0] && d <= f.game.bestRange[1] ? 1 : 0.15));
+  let r = Math.random() * weights.reduce((a, b) => a + b, 0);
+  for (let i = 0; i < list.length; i++) {
+    r -= weights[i];
+    if (r <= 0) return list[i];
+  }
+  return list[list.length - 1];
 }
 
 /* ============================================================
@@ -682,7 +1200,7 @@ class TitleScene extends Phaser.Scene {
   }
 }
 
-// 段階2で釣りの入口に作り変える、仮の画面
+// 釣りの入口。遊び方の案内と、ボタンか「振る」かを選ぶ
 class HarborScene extends Phaser.Scene {
   constructor() { super('Harbor'); }
 
@@ -691,17 +1209,56 @@ class HarborScene extends Phaser.Scene {
     this.cameras.main.fadeIn(REDUCE_MOTION ? 0 : 400, 60, 71, 112);
     this.dawn = createDawn(this);
 
-    const text = this.add.text(W / 2, H * 0.3, '港は、まだじゅんび中です', {
-      fontFamily: FONT_TITLE, fontSize: '56px', fontStyle: '600', color: COLOR.cream,
+    const heading = this.add.text(W / 2, H * 0.14, '堤防で釣ろう', {
+      fontFamily: FONT_TITLE, fontSize: '72px', fontStyle: '600', color: COLOR.cream,
     }).setOrigin(0.5).setDepth(30).setShadow(0, 3, 'rgba(40,44,96,0.45)', 12);
-    this.add.text(W / 2, text.y + 92, '次の更新で、ここから堤防へ\n釣りに行けるようになります', {
-      fontFamily: FONT_BODY, fontSize: '32px', color: COLOR.cream, align: 'center', lineSpacing: 14,
-    }).setOrigin(0.5, 0).setDepth(30).setShadow(0, 2, 'rgba(40,44,96,0.45)', 8);
 
-    createButton(this, W / 2, Math.round(H * 0.875), 'タイトルへ', () => {
+    const howTo = [
+      '① 押してためて、はなすと投げる',
+      '② ウキがしずんだら、すぐ合わせる',
+      '③ 押すと巻く、はなすと緩む',
+      '　 押しっぱなしだと、糸が切れるよ',
+      '',
+      '投げる強さで、寄ってくる魚が変わるよ',
+    ].join('\n');
+    this.add.text(W / 2, heading.y + 84, howTo, {
+      fontFamily: FONT_BODY, fontSize: '34px', color: COLOR.cream, lineSpacing: 16,
+    }).setOrigin(0.5, 0).setDepth(30).setShadow(0, 2, 'rgba(40,44,96,0.55)', 8);
+
+    const go = (motion) => {
+      if (this.leaving) return;
+      this.leaving = true;
+      changeScene(this, 'Fishing', { motion });
+    };
+
+    createButton(this, W / 2, Math.round(H * 0.68), 'ボタンで遊ぶ', () => go(false), 46);
+
+    if (Motion.supported) {
+      createButton(this, W / 2, Math.round(H * 0.68) + 132, 'スマホを振って遊ぶ', () => this.askMotion(go), 38);
+      this.caution = this.add.text(W / 2, Math.round(H * 0.68) + 212,
+        '振るときはスマホをしっかり持って、\nまわりに人や物がない場所で。強く振らなくてOK', {
+          fontFamily: FONT_BODY, fontSize: '28px', color: COLOR.cream, align: 'center', lineSpacing: 10,
+        }).setOrigin(0.5, 0).setDepth(40).setShadow(0, 2, 'rgba(26,40,80,0.7)', 6);
+    }
+
+    createTextButton(this, 22, 56, '← タイトルへ', () => {
       if (this.leaving) return;
       this.leaving = true;
       changeScene(this, 'Title');
+    });
+  }
+
+  // iPhoneの許可は、ボタンを押した流れの中で聞く必要がある
+  askMotion(go) {
+    if (this.asking || this.leaving) return;
+    this.asking = true;
+    Motion.request().then((granted) => {
+      this.asking = false;
+      if (granted) {
+        go(true);
+      } else if (this.caution) {
+        this.caution.setText('振る操作が使えませんでした。\n「ボタンで遊ぶ」で同じように楽しめます');
+      }
     });
   }
 
@@ -710,7 +1267,682 @@ class HarborScene extends Phaser.Scene {
   }
 }
 
-return [TitleScene, HarborScene];
+// 堤防での釣り。投げる → アタリ → 合わせる → やり取り → 釣れた
+class FishingScene extends Phaser.Scene {
+  constructor() { super('Fishing'); }
+
+  init(data) {
+    this.useMotion = !!(data && data.motion);
+  }
+
+  create() {
+    this.leaving = false;
+    this.cameras.main.fadeIn(REDUCE_MOTION ? 0 : 400, 60, 71, 112);
+    this.dawn = createDawn(this);
+    this.motionPace = REDUCE_MOTION ? 0.15 : 1;
+
+    bake(this, 'shoreNoRod', W, 500, (ctx, w, h) => paintShore(ctx, w, h, true));
+    this.add.image(0, SHORE_TOP, 'shoreNoRod').setOrigin(0).setDepth(5);
+    bake(this, 'float', 26, 56, paintFloat);
+    for (const fish of window.fishData.fish) {
+      bake(this, `fish-${fish.id}`, 560, 280, (ctx, w, h) => paintFish(ctx, w, h, fish.id));
+    }
+
+    this.world = this.add.graphics().setDepth(9);
+    this.float = this.add.image(0, 0, 'float').setDepth(9);
+    this.shadow = this.add.image(0, 0, `fish-${window.fishData.fish[0].id}`)
+      .setDepth(9).setTint(0x1c3552).setAlpha(0).setScale(0.22);
+
+    this.buildHud();
+    this.buildAction();
+
+    // 動きの状態
+    this.pressed = false;
+    this.rodBack = 0;
+    this.bend = 0;
+    this.dip = 0;
+    this.dipTarget = 0;
+    this.side = 0;
+    this.sink = 0;
+    this.jitter = 0;
+    this.overlay = [];
+
+    this.setupInput();
+    Sound.startSea();
+    this.enterReady();
+  }
+
+  /* ---------- 画面の部品 ---------- */
+
+  buildHud() {
+    const shadow = (t) => t.setDepth(31).setShadow(0, 2, 'rgba(26,40,80,0.6)', 6);
+    this.hud = this.add.graphics().setDepth(30);
+    this.message = this.add.text(W / 2, Math.max(330, H * 0.22), '', {
+      fontFamily: FONT_BODY, fontSize: '46px', fontStyle: 'bold', color: COLOR.cream, align: 'center', padding: { x: 8, y: 8 },
+    }).setOrigin(0.5).setDepth(31).setShadow(0, 3, 'rgba(26,40,80,0.65)', 10);
+    this.tensionLabel = shadow(this.add.text(90, 132, '糸の張り', {
+      fontFamily: FONT_BODY, fontSize: '28px', color: COLOR.cream,
+    }).setOrigin(0, 0.5));
+    this.distLabel = shadow(this.add.text(W - 90, 132, '', {
+      fontFamily: FONT_BODY, fontSize: '30px', fontStyle: 'bold', color: COLOR.cream,
+    }).setOrigin(1, 0.5));
+    this.status = shadow(this.add.text(W / 2, 228, '', {
+      fontFamily: FONT_BODY, fontSize: '30px', fontStyle: 'bold', color: COLOR.cream,
+    }).setOrigin(0.5));
+
+    createTextButton(this, 22, 56, '← 港へ', () => {
+      if (this.leaving) return;
+      this.leaving = true;
+      changeScene(this, 'Harbor');
+    });
+    const soundLabel = () => (Save.data.sound ? '音：あり' : '音：なし');
+    createTextButton(this, W - 22, 56, soundLabel(), (t) => {
+      Sound.setEnabled(!Save.data.sound);
+      t.setText(soundLabel());
+    }, 1);
+  }
+
+  // 下の大きいボタン。画面のどこを押しても同じ動きをする
+  buildAction() {
+    bake(this, 'button', 420, 136, paintButton);
+    const y = Math.round(H * 0.875);
+    this.actionY = y;
+    this.actionBox = this.add.container(W / 2, y).setDepth(40);
+    this.actionImage = this.add.image(0, 0, 'button');
+    this.actionText = this.add.text(0, -2, '', {
+      fontFamily: FONT_BODY, fontSize: '50px', fontStyle: 'bold', color: COLOR.ink,
+    }).setOrigin(0.5);
+    this.actionBox.add([this.actionImage, this.actionText]);
+    this.hint = this.add.text(W / 2, y + 92, '', {
+      fontFamily: FONT_BODY, fontSize: '28px', color: COLOR.cream, align: 'center',
+    }).setOrigin(0.5).setDepth(40).setShadow(0, 2, 'rgba(26,40,80,0.7)', 6);
+  }
+
+  setAction(label, urgent = false) {
+    this.actionText.setText(label);
+    this.actionBox.setVisible(true);
+    if (urgent) this.actionImage.setTint(0xffc65c);
+    else this.actionImage.clearTint();
+  }
+
+  say(text) { this.message.setText(text); }
+
+  setupInput() {
+    this.input.on('pointerdown', (pointer, over) => {
+      if (over.length > 0) return;   // 「港へ」などの上で押したときは、釣りの操作にしない
+      this.onPress();
+    });
+    const release = () => this.onRelease();
+    this.input.on('pointerup', release);
+    this.input.on('pointerupoutside', release);
+
+    const space = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+    space.on('down', () => this.onPress());
+    space.on('up', release);
+
+    // 途中で別のアプリに切りかえたら、押しっぱなしのままにしない
+    const onHidden = () => {
+      this.pressed = false;
+      if (this.state === 'charging') this.enterReady();
+    };
+    this.game.events.on('hidden', onHidden);
+    this.game.events.on('blur', onHidden);
+
+    if (this.useMotion) Motion.onSwing((s) => this.onSwing(s));
+
+    this.events.once('shutdown', () => {
+      this.game.events.off('hidden', onHidden);
+      this.game.events.off('blur', onHidden);
+      Motion.onSwing(null);
+      Sound.stopSea();
+    });
+  }
+
+  /* ---------- 操作 ---------- */
+
+  onPress() {
+    Sound.unlock();
+    Sound.startSea();
+    if (this.pressed) return;
+    this.pressed = true;
+    Buzz.tap();
+    switch (this.state) {
+      case 'ready':
+        this.state = 'charging';
+        this.chargeT = 0;
+        this.charge = 0;
+        this.setAction('はなすと飛ぶ');
+        this.hint.setText('強いほど遠くへ飛ぶよ');
+        break;
+      case 'waiting':
+      case 'nibble':
+        this.earlyStrike();
+        break;
+      case 'bite':
+        this.strike();
+        break;
+      default:
+        break;
+    }
+  }
+
+  onRelease() {
+    if (!this.pressed) return;
+    this.pressed = false;
+    if (this.state === 'charging') this.cast(this.charge);
+  }
+
+  onSwing(strength) {
+    if (this.state === 'ready') {
+      this.cast(0.35 + 0.65 * strength);
+    } else if (this.state === 'bite') {
+      this.strike();
+    } else if ((this.state === 'waiting' || this.state === 'nibble') && this.fishNear) {
+      this.earlyStrike();
+    }
+  }
+
+  /* ---------- 段取り ---------- */
+
+  enterReady() {
+    this.state = 'ready';
+    this.castD = 0;
+    this.fish = null;
+    this.fishNear = false;
+    this.dipTarget = 0;
+    this.side = 0;
+    this.sink = 0;
+    this.float.setAlpha(1);
+    this.shadow.setAlpha(0);
+    this.say('');
+    this.status.setText('');
+    this.setFightHud(false);
+    this.setAction('投げる');
+    this.hint.setText(this.useMotion ? '押してためて、はなす（スマホを振ってもOK）' : '押してためて、はなす');
+  }
+
+  cast(power) {
+    this.state = 'flying';
+    const p = Math.max(0.08, power);
+    this.castD = 0.22 + 0.78 * p;
+    const tip = this.rodTip(this.time.now);
+    this.fly = { t: 0, dur: 0.55 + 0.45 * p, x: tip.x, y: tip.y + 84 };
+    this.flyKick = 0.16;
+    this.hint.setText('');
+    this.setAction('…');
+    Sound.cast();
+  }
+
+  enterWaiting() {
+    this.state = 'waiting';
+    const p = waterPoint(this.castD);
+    this.ripple(p.x, p.y, 3.2);
+    Sound.splash();
+    this.fish = pickFish(this.castD);
+    this.shadow.setTexture(`fish-${this.fish.id}`);
+    this.fishNear = false;
+    this.nibblesLeft = Phaser.Math.Between(this.fish.game.nibbles[0], this.fish.game.nibbles[1]);
+    this.waitT = randBetween(2.2, 5.2);
+    this.say('');
+    this.setAction('合わせる');
+    this.hint.setText(this.useMotion ? 'ウキがしずんだら、押すか振る' : 'ウキがしずんだら押す');
+  }
+
+  startNibble() {
+    this.state = 'nibble';
+    this.nibbleT = 0.38;
+    this.fishNear = true;
+    this.dipTarget = 0.34;
+    const p = waterPoint(this.castD);
+    this.ripple(p.x, p.y, 1.8);
+    Sound.nibble();
+    Buzz.pulse(15);
+    this.say('ピクッ…まだ待って');
+  }
+
+  startBite() {
+    this.state = 'bite';
+    const extra = this.useMotion ? 0.25 : 0;   // 振るのは押すより時間がかかるので少し長く待つ
+    this.biteTotal = this.fish.game.biteWindowMs / 1000 + extra;
+    this.biteT = this.biteTotal;
+    this.dipTarget = 1;
+    const p = waterPoint(this.castD);
+    this.ripple(p.x, p.y, 4.2);
+    Sound.bite();
+    Buzz.pulse([60, 30, 90]);
+    this.shake(120, 0.008);
+    this.say('今だ！');
+    this.setAction('合わせる！', true);
+  }
+
+  earlyStrike() {
+    if (this.fishNear) {
+      this.fail('早すぎて、にげられた…');
+      return;
+    }
+    this.say('まだアタリがないよ');
+    this.waitT += 0.3;
+    this.time.delayedCall(800, () => {
+      if (this.state === 'waiting' && this.message.text === 'まだアタリがないよ') this.say('');
+    });
+  }
+
+  strike() {
+    const quick = this.biteT / this.biteTotal > 0.6;
+    const game = this.fish.game;
+    const style = FIGHT_STYLES[game.fight];
+    const r = Math.pow(Math.random(), 1.6);   // 小さめが多く、大物はたまに
+    this.sizeRatio = r;
+    this.sizeCm = game.sizeCm[0] + (game.sizeCm[1] - game.sizeCm[0]) * r;
+    this.pullScale = 0.9 + 0.25 * r;
+
+    this.state = 'fight';
+    this.style = style;
+    this.D = Math.max(0.18, this.castD - (quick ? 0.06 : 0));
+    this.startD = this.D;
+    this.T = 0.5;
+    this.holdTime = 0;
+    this.slack = 0;
+    this.over = 0;
+    this.phase = 'calm';
+    this.phaseT = style.first || randBetween(style.calm[0], style.calm[1]);
+    this.dir = Math.random() < 0.5 ? -1 : 1;
+    this.tickT = 0;
+    this.buzzT = 0;
+    this.dipTarget = 0;
+
+    Sound.hook();
+    Buzz.pulse(70);
+    this.shake(160, 0.01);
+    this.say(quick ? 'いいタイミング！' : 'かかった！');
+    this.setAction('押して巻く');
+    this.hint.setText('押すと巻く・はなすと緩む');
+    this.setFightHud(true);
+  }
+
+  fail(text, snapped = false) {
+    this.state = 'failed';
+    this.failT = 1.7;
+    this.dipTarget = 0;
+    this.say(text);
+    this.status.setText('');
+    this.hint.setText('');
+    this.actionBox.setVisible(false);
+    this.setFightHud(false);
+    this.shadow.setAlpha(0);
+    if (snapped) { Sound.snap(); Buzz.pulse(120); this.shake(180, 0.012); }
+    else Sound.miss();
+  }
+
+  landFish() {
+    this.state = 'caught';
+    const game = this.fish.game;
+    const weight = game.weightA * Math.pow(this.sizeCm, 3);
+    const count = (this.registry.get('todayCount') || 0) + 1;
+    this.registry.set('todayCount', count);
+
+    this.setFightHud(false);
+    this.say('');
+    this.status.setText('');
+    this.hint.setText('');
+    this.actionBox.setVisible(false);
+    this.float.setAlpha(0);
+    this.shadow.setAlpha(0);
+    Sound.caught();
+    Buzz.pulse([40, 40, 40, 40, 160]);
+    if (!REDUCE_MOTION) this.cameras.main.flash(260, 255, 246, 230);
+
+    const items = [];
+    const add = (obj) => { obj.setDepth(62); items.push(obj); return obj; };
+    const dim = this.add.rectangle(0, 0, W, H, 0x24305a, 0.72).setOrigin(0).setDepth(60);
+    items.push(dim);
+
+    const cy = H * 0.42;
+    add(this.add.text(W / 2, cy - 330, this.sizeRatio >= 0.72 ? '大物だ！' : '釣れた！', {
+      fontFamily: FONT_TITLE, fontSize: '84px', fontStyle: '600', color: COLOR.cream, padding: { x: 10, y: 10 },
+    }).setOrigin(0.5).setShadow(0, 3, 'rgba(20,28,60,0.6)', 12));
+
+    const art = add(this.add.image(W / 2, cy - 60, `fish-${this.fish.id}`));
+    const finalScale = 1.05 + this.sizeRatio * 0.2;
+    if (REDUCE_MOTION) {
+      art.setScale(finalScale);
+    } else {
+      art.setScale(0.15).setAngle(-24);
+      this.tweens.add({ targets: art, scale: finalScale, angle: 0, duration: 520, ease: 'Back.easeOut' });
+      this.tweens.add({ targets: art, y: art.y - 12, duration: 900, delay: 520, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
+      this.spray(W / 2, cy - 60);
+    }
+
+    add(this.add.text(W / 2, cy + 112, this.fish.name, {
+      fontFamily: FONT_TITLE, fontSize: '92px', fontStyle: '600', color: COLOR.cream, padding: { x: 10, y: 10 },
+    }).setOrigin(0.5));
+    add(this.add.text(W / 2, cy + 214, `${this.sizeCm.toFixed(1)} cm　/　${Math.round(weight)} g`, {
+      fontFamily: FONT_BODY, fontSize: '50px', fontStyle: 'bold', color: '#ffe0a6',
+    }).setOrigin(0.5));
+    add(this.add.text(W / 2, cy + 278, `今日の${count}ひき目`, {
+      fontFamily: FONT_BODY, fontSize: '32px', color: COLOR.cream,
+    }).setOrigin(0.5));
+
+    const again = createButton(this, W / 2, Math.round(H * 0.875), 'もう一回投げる', () => {
+      for (const item of this.overlay) item.destroy();
+      this.overlay = [];
+      this.enterReady();
+    }, 44);
+    again.setDepth(70);
+    items.push(again);
+    this.overlay = items;
+  }
+
+  /* ---------- 演出 ---------- */
+
+  shake(ms, power) {
+    if (!REDUCE_MOTION) this.cameras.main.shake(ms, power);
+  }
+
+  ripple(x, y, size) {
+    const g = this.add.graphics({ x, y }).setDepth(9);
+    g.lineStyle(3, 0xfff6e6, 0.85);
+    g.strokeEllipse(0, 0, 52, 15);
+    this.tweens.add({
+      targets: g, scaleX: size, scaleY: size, alpha: 0, duration: 760, ease: 'Sine.easeOut',
+      onComplete: () => g.destroy(),
+    });
+  }
+
+  // 釣れた瞬間の水しぶき
+  spray(x, y) {
+    for (let i = 0; i < 22; i++) {
+      const dot = this.add.circle(x, y, 4 + Math.random() * 9, 0xfff6e6, 0.9).setDepth(61);
+      const a = Math.random() * TAU;
+      const r = 180 + Math.random() * 240;
+      this.tweens.add({
+        targets: dot, x: x + Math.cos(a) * r, y: y + Math.sin(a) * r * 0.75 + 70, alpha: 0, scale: 0.3,
+        duration: 620 + Math.random() * 300, ease: 'Cubic.easeOut', onComplete: () => dot.destroy(),
+      });
+    }
+  }
+
+  setFightHud(on) {
+    this.fightHud = on;
+    this.tensionLabel.setVisible(on);
+    this.distLabel.setVisible(on);
+    this.status.setVisible(on);
+  }
+
+  // 竿の先の場所。ためると後ろへ、魚がかかるとしなる
+  rodTip(time) {
+    const shakeWarn = this.state === 'fight' && this.phase === 'warn' ? Math.sin(time * 0.07) * 9 : 0;
+    return {
+      x: ROD_TIP.x - this.rodBack * 190 - this.bend * 12,
+      y: ROD_TIP.y - this.rodBack * 60 + this.bend * 85 + shakeWarn,
+    };
+  }
+
+  /* ---------- 毎フレームの処理 ---------- */
+
+  update(time, delta) {
+    this.dawn.update(time);
+    const dt = Math.min(delta, 50) / 1000;
+
+    switch (this.state) {
+      case 'charging': this.updateCharging(dt); break;
+      case 'flying':
+        this.fly.t += dt / this.fly.dur;
+        this.flyKick -= dt;
+        if (this.fly.t >= 1) this.enterWaiting();
+        break;
+      case 'waiting':
+        this.waitT -= dt;
+        if (this.waitT <= 0) {
+          if (this.nibblesLeft > 0) this.startNibble();
+          else this.startBite();
+        }
+        break;
+      case 'nibble':
+        this.nibbleT -= dt;
+        if (this.nibbleT <= 0) {
+          this.nibblesLeft -= 1;
+          this.dipTarget = 0;
+          this.state = 'waiting';
+          this.waitT = randBetween(0.7, 1.6);
+          this.say('');
+        }
+        break;
+      case 'bite':
+        this.biteT -= dt;
+        if (this.biteT <= 0) this.fail('エサだけ取られた…');
+        break;
+      case 'fight': this.updateFight(dt); break;
+      case 'failed':
+        this.failT -= dt;
+        if (this.failT <= 0) this.enterReady();
+        break;
+      default: break;
+    }
+
+    this.drawWorld(time, dt);
+    this.drawHud();
+  }
+
+  updateCharging(dt) {
+    this.chargeT += dt;
+    // 0→1→0 をくり返すので、いちばん強いところではなす楽しみがある
+    const phase = (this.chargeT / 1.15) % 2;
+    this.charge = phase <= 1 ? phase : 2 - phase;
+  }
+
+  updateFight(dt) {
+    const style = this.style;
+    const power = this.fish.game.power;
+
+    // おとなしい → 合図 → 強く引く、をくり返す
+    this.phaseT -= dt;
+    if (this.phaseT <= 0) {
+      if (this.phase === 'calm') {
+        this.phase = 'warn';
+        this.phaseT = style.warn;
+        this.dir = Math.random() < 0.5 ? -1 : 1;
+        this.say(style.warnText);
+        Sound.warn();
+        Buzz.pulse(30);
+      } else if (this.phase === 'warn') {
+        this.phase = 'surge';
+        this.phaseT = style.surge;
+        this.say(style.surgeText);
+        Sound.surge();
+        Buzz.pulse(Math.round(style.surge * 1000 * 0.5));
+        this.shake(style.surge * 400, 0.005);
+      } else {
+        this.phase = 'calm';
+        this.phaseT = randBetween(style.calm[0], style.calm[1]);
+        this.say('');
+      }
+    }
+
+    const surging = this.phase === 'surge';
+    const pull = (surging ? 0.55 + power * 0.1 : 0.12 + power * 0.03) * this.pullScale;
+    const holding = this.pressed;
+
+    // 糸の張りは、目標の値へなめらかに近づく
+    // 押しっぱなしだと張りがじわじわ上がるので、ときどき緩める必要がある
+    this.holdTime = holding ? this.holdTime + dt : Math.max(0, this.holdTime - dt * 2.5);
+    let target = holding ? 0.5 + pull * 0.6 + this.holdTime * HOLD_STRAIN : pull * 0.45;
+    if (surging && style.dive) target = Math.min(target, 0.97);   // 潜るときは、こらえれば切れない
+    this.T += (target - this.T) * (1 - Math.exp(-(holding ? 1.6 : 2.2) * dt));
+    this.T = Math.min(1, Math.max(0, this.T));
+
+    // 巻くと寄り、緩めると糸が出る
+    if (holding) this.D -= style.reel * (surging ? 0.1 : 1) * dt;
+    else this.D += style.out * (surging ? 1 : 0.12) * dt;
+
+    // 走る・潜るの見た目
+    const follow = 1 - Math.exp(-3.2 * dt);
+    this.side += ((surging ? this.dir * style.side : 0) - this.side) * follow;
+    this.sink += ((surging && style.dive ? 1 : 0) - this.sink) * follow;
+
+    // リールの音と、引いているときの振動
+    if (holding) {
+      this.tickT -= dt;
+      if (this.tickT <= 0) {
+        this.tickT = 0.09 - this.T * 0.04;
+        Sound.tick(this.T);
+      }
+    }
+    this.buzzT -= dt;
+    if (holding && surging && this.buzzT <= 0) {
+      this.buzzT = 0.16;
+      Buzz.pulse(60);
+    }
+
+    // 切れそう・ゆるいの声かけ
+    if (surging && style.dive) this.status.setText('');   // 潜るときは「こらえて」の声かけを優先する
+    else if (this.T >= TENSION_DANGER) this.status.setText('切れそう！ はなして！').setColor('#ffb3a0');
+    else if (this.T <= TENSION_SLACK) this.status.setText('ゆるい！ 巻いて！').setColor('#bfe0ff');
+    else this.status.setText('');
+
+    // 勝ち負けの判定
+    this.over = this.T >= 1 ? this.over + dt : 0;
+    this.slack = this.T < TENSION_SLACK ? this.slack + dt : Math.max(0, this.slack - dt * 2);
+
+    if (this.over >= 0.25) this.fail('糸が切れた…', true);
+    else if (this.slack >= 1.3) this.fail('糸がゆるんで、バレた…');
+    else if (this.D > this.startD + style.extra) this.fail(style.escapeText, true);
+    else if (this.D <= 0) this.landFish();
+  }
+
+  drawWorld(time, dt) {
+    // 竿のしなりと、投げるときの動き
+    let rodTarget = 0;
+    if (this.state === 'charging') rodTarget = 0.25 + this.charge * 0.75;
+    else if (this.state === 'flying' && this.flyKick > 0) rodTarget = -0.22;
+    this.rodBack += (rodTarget - this.rodBack) * (1 - Math.exp(-(this.state === 'charging' ? 16 : 22) * dt));
+    const bendTarget = this.state === 'fight' ? this.T : (this.state === 'bite' ? 0.3 : 0);
+    this.bend += (bendTarget - this.bend) * (1 - Math.exp(-9 * dt));
+    this.dip += (this.dipTarget - this.dip) * (1 - Math.exp(-26 * dt));
+
+    const tip = this.rodTip(time);
+    const bob = Math.sin(time * 0.0016 * this.motionPace);
+
+    // ウキの場所
+    let fx;
+    let fy;
+    let scale = 1;
+    let sag = 40;
+    let taut = false;
+    if (this.state === 'ready' || this.state === 'charging') {
+      fx = tip.x + bob * 2;
+      fy = tip.y + 84;
+      scale = 0.8;
+      sag = 0;
+      taut = true;
+    } else if (this.state === 'flying') {
+      const t = Math.min(1, this.fly.t);
+      const to = waterPoint(this.castD);
+      fx = this.fly.x + (to.x - this.fly.x) * t;
+      fy = this.fly.y + (to.y - this.fly.y) * t - Math.sin(t * Math.PI) * (200 + this.castD * 170);
+      scale = 0.8 + (to.scale - 0.8) * t;
+      sag = 20;
+    } else if (this.state === 'fight') {
+      const p = waterPoint(this.D);
+      const wiggle = this.phase === 'surge' ? Math.sin(time * 0.05) * 6 : Math.sin(time * 0.012) * 3;
+      fx = p.x + this.side * 130 + wiggle;
+      fy = p.y + this.sink * 26 + bob * 3;
+      scale = p.scale;
+      sag = Math.pow(1 - this.T, 2) * 90;
+      this.float.setAlpha(1 - this.sink * 0.65);
+      // 岸に近づくと魚の影が見える
+      if (this.D < 0.3) {
+        this.shadow.setPosition(fx - 8, fy + 40).setAlpha(((0.3 - this.D) / 0.3) * 0.6);
+        this.shadow.setFlipX(this.side > 0.1);
+      }
+    } else {
+      const p = waterPoint(this.castD);
+      fx = p.x;
+      fy = p.y + bob * 6 + this.dip * 36 * p.scale;
+      scale = p.scale;
+      this.float.setAlpha(1 - this.dip * 0.55);
+    }
+    if (this.state === 'failed') this.float.setAlpha(Math.max(0, this.failT / 1.7));
+    this.float.setPosition(fx, fy).setScale(scale);
+
+    // 竿と糸
+    const g = this.world;
+    g.clear();
+    if (this.state === 'caught') return;
+    const baseX = 270;
+    const baseY = SHORE_TOP + 232;
+    g.lineStyle(4.5, 0x343757, 1);
+    g.beginPath();
+    g.moveTo(baseX, baseY);
+    const ctrl = { x: 350 - this.rodBack * 110, y: SHORE_TOP + 110 - this.rodBack * 30 - this.bend * 10 };
+    for (let i = 1; i <= 14; i++) {
+      const t = i / 14;
+      const u = 1 - t;
+      g.lineTo(u * u * baseX + 2 * u * t * ctrl.x + t * t * tip.x, u * u * baseY + 2 * u * t * ctrl.y + t * t * tip.y);
+    }
+    g.strokePath();
+
+    const warn = this.state === 'fight' && this.phase !== 'calm';
+    g.lineStyle(warn ? 3 : 2, warn ? 0xffb04a : 0xfff6e6, warn ? 1 : 0.75);
+    const endY = fy - 26 * scale;
+    if (this.state !== 'failed' || this.failT > 1.2) {
+      g.beginPath();
+      g.moveTo(tip.x, tip.y);
+      const midX = (tip.x + fx) / 2;
+      const midY = (tip.y + endY) / 2 + (taut ? 0 : sag);
+      for (let i = 1; i <= 18; i++) {
+        const t = i / 18;
+        const u = 1 - t;
+        g.lineTo(u * u * tip.x + 2 * u * t * midX + t * t * fx, u * u * tip.y + 2 * u * t * midY + t * t * endY);
+      }
+      g.strokePath();
+    }
+  }
+
+  drawHud() {
+    const g = this.hud;
+    g.clear();
+
+    // 投げる強さのゲージ
+    if (this.state === 'charging') {
+      const bw = 460;
+      const x = (W - bw) / 2;
+      const y = this.actionY - 112;
+      g.fillStyle(0x24305a, 0.6);
+      g.fillRoundedRect(x - 8, y - 8, bw + 16, 42, 21);
+      g.fillStyle(0xffc65c, 1);
+      g.fillRoundedRect(x, y, Math.max(26, bw * this.charge), 26, 13);
+    }
+
+    if (!this.fightHud) return;
+
+    const x = 90;
+    const bw = W - 180;
+    const y = 158;
+    const bh = 34;
+    g.fillStyle(0x24305a, 0.62);
+    g.fillRoundedRect(x - 30, 104, bw + 60, 150, 20);
+    // ゆるい／ちょうどいい／切れそう の3つの帯
+    const a = bw * TENSION_SLACK;
+    const b = bw * TENSION_DANGER;
+    g.fillStyle(0x7fb2e0, 1);
+    g.fillRect(x, y, a, bh);
+    g.fillStyle(0x8fcf9b, 1);
+    g.fillRect(x + a, y, b - a, bh);
+    g.fillStyle(0xe2705c, 1);
+    g.fillRect(x + b, y, bw - b, bh);
+    // 今の張り
+    const mx = x + bw * this.T;
+    g.fillStyle(0xffffff, 1);
+    g.fillRect(mx - 6, y - 9, 12, bh + 18);
+    g.lineStyle(2, 0x27406a, 1);
+    g.strokeRect(mx - 6, y - 9, 12, bh + 18);
+
+    this.distLabel.setText(`岸まで ${Math.max(0, Math.ceil(this.D * METERS_PER_DIST))} m`);
+  }
+}
+
+return [TitleScene, HarborScene, FishingScene];
 }
 
 /* ============================================================
@@ -732,6 +1964,7 @@ return [TitleScene, HarborScene];
     height: H,
     backgroundColor: '#3c4770',
     banner: false,
+    audio: { noAudio: true },   // 音は「4. 音と振動」で作るので、Phaserの音は使わない
     scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
     scene: makeScenes(),
   });
