@@ -3430,9 +3430,9 @@ const PREP_ART = {
 function prepPlan(dish) {
   const plans = {
     whole: ['scale', 'guts'],
-    hiraki: ['scale', 'head', 'hiraki'],
-    nimai: ['scale', 'head', 'nimai'],
-    sanmai: ['scale', 'head', 'sanmai1', 'sanmai2'],
+    hiraki: ['scale', 'head', 'turn', 'hiraki'],
+    nimai: ['scale', 'head', 'belly', 'turn', 'back2'],
+    sanmai: ['scale', 'head', 'belly', 'turn', 'back', 'flip', 'belly2', 'turn', 'back2'],
   };
   const plan = plans[dish.prep].slice();
   if (dish.raw) plan.push('skin');   // 刺身は皮を引く
@@ -3451,6 +3451,7 @@ class PrepScene extends Phaser.Scene {
     this.step = '';
     this.scores = [];
     this.leaving = false;
+    this.headLeft = true;     // いま頭が左を向いているか
   }
 
   preload() {
@@ -3519,21 +3520,24 @@ class PrepScene extends Phaser.Scene {
         this.say('内臓を取る', 'おなかの線にそって、左から右へなぞろう');
         this.startTrace(this.fishY + a.half * 0.62, gillX, this.left + this.fishW * 0.6);
         break;
+      case 'turn': this.turnFish(); break;
+      case 'flip': this.flipFish(); break;
+      case 'belly':
+        this.say(this.cutTitle(), 'おなか側を、赤い丸から頭→尾へなぞろう');
+        this.traceSide(a.gill, 0.88);
+        break;
+      case 'back':
+      case 'back2':
+        this.say(this.cutTitle(), '向きを変えて、背中側を赤い丸から尾→頭へなぞろう');
+        this.traceSide(0.88, a.gill);
+        break;
+      case 'belly2':
+        this.say(this.cutTitle(), '裏返して、おなか側を赤い丸から頭→尾へなぞろう');
+        this.traceSide(a.gill, 0.88);
+        break;
       case 'hiraki':
-        this.say('背から開く', '背中の線にそって、左から尾までなぞろう');
-        this.startTrace(this.fishY - a.half * 0.62, gillX + 6, endX);
-        break;
-      case 'nimai':
-        this.say('二枚におろす', '中骨の線にそって、左から尾までなぞろう');
-        this.startTrace(this.fishY, gillX + 6, endX);
-        break;
-      case 'sanmai1':
-        this.say('三枚におろす', 'まず片側。中骨の線を、左から尾までなぞろう');
-        this.startTrace(this.fishY, gillX + 6, endX);
-        break;
-      case 'sanmai2':
-        this.say('三枚におろす', '次は反対側。もう一度なぞろう');
-        this.startTrace(this.fishY, gillX + 6, endX);
+        this.say('背から開く', '背中側を、赤い丸から頭→尾へ切り開こう');
+        this.traceSide(a.gill, 0.88);
         break;
       case 'skin':
         this.say('皮を引く', '身と皮のあいだを、左から右へなぞろう');
@@ -3541,6 +3545,40 @@ class PrepScene extends Phaser.Scene {
         break;
       default: this.nextStep();
     }
+  }
+
+  cutTitle() {
+    return this.dish.prep === 'nimai' ? '二枚におろす' : '三枚におろす';
+  }
+
+  // 絵の左はしからの割合を、いまの向きでの画面の場所に直す
+  xOf(frac) {
+    return this.headLeft ? this.left + this.fishW * frac : this.left + this.fishW * (1 - frac);
+  }
+
+  // 手前（画面の下側）の線をなぞる。from から to へ
+  traceSide(from, to) {
+    this.startTrace(this.fishY + this.art.half * 0.72, this.xOf(from), this.xOf(to));
+  }
+
+  // 魚を半回転させて、頭と尾、背中とおなかの向きを入れかえる
+  turnFish() {
+    this.step = '';
+    this.setHint('向きを変えるよ');
+    this.headLeft = !this.headLeft;
+    const done = () => this.nextStep();
+    if (REDUCE_MOTION) { this.body.angle += 180; done(); return; }
+    this.tweens.add({ targets: this.body, angle: this.body.angle + 180, duration: 480, ease: 'Sine.easeInOut', onComplete: done });
+  }
+
+  // 魚を裏返す（頭の向きはそのまま、背中とおなかが入れかわる）
+  flipFish() {
+    this.step = '';
+    this.setHint('裏返すよ');
+    const target = -this.body.scaleY;
+    const done = () => this.nextStep();
+    if (REDUCE_MOTION) { this.body.scaleY = target; done(); return; }
+    this.tweens.add({ targets: this.body, scaleY: target, duration: 480, ease: 'Sine.easeInOut', onComplete: done });
   }
 
   /* ウロコ取り：魚の上をまんべんなくこする */
@@ -3617,25 +3655,31 @@ class PrepScene extends Phaser.Scene {
     this.traceAt = x0;
     this.traceDev = 0;
     this.traceCount = 0;
+    this.traceDir = x1 >= x0 ? 1 : -1;
+    const dir = this.traceDir;
     this.guide.lineStyle(5, 0xd63a26, 0.9);
-    for (let x = x0; x < x1; x += 26) this.guide.lineBetween(x, y, x + 15, y);
+    for (let x = x0; (x1 - x) * dir > 0; x += 26 * dir) this.guide.lineBetween(x, y, x + 15 * dir, y);
+    // なぞり始める場所の印
+    this.guide.fillStyle(0xd63a26, 1);
+    this.guide.fillCircle(x0, y, 15);
   }
 
   traceLine(p) {
-    if (p.x <= this.traceAt || p.x > this.traceAt + 90) return;
+    const moved = (p.x - this.traceAt) * this.traceDir;
+    if (moved <= 0 || moved > 90) return;
     if (Math.abs(p.y - this.lineY) > 90) return;
     this.trail.lineStyle(7, 0xfff4d8, 0.9);
     this.trail.lineBetween(this.traceAt, this.lineY, p.x, p.y);
     this.traceAt = p.x;
     this.traceDev += Math.abs(p.y - this.lineY);
     this.traceCount++;
-    if (this.traceAt >= this.lineEnd) this.finishTrace();
+    if ((this.traceAt - this.lineEnd) * this.traceDir >= 0) this.finishTrace();
   }
 
   finishTrace() {
     const score = clamp01(1.1 - (this.traceDev / Math.max(1, this.traceCount)) / 55);
     Buzz.pulse(40);
-    if (['hiraki', 'nimai', 'sanmai2'].includes(this.step)) this.showResult();
+    if (['hiraki', 'back2'].includes(this.step)) this.showResult();
     this.finishStep(score);
   }
 
@@ -3688,11 +3732,11 @@ class PrepScene extends Phaser.Scene {
   onDown(p) {
     if (this.step === 'scale') this.lastX = p.x;
     if (this.step === 'head') this.swipe = { x: p.x, y: p.y, sum: p.x, n: 1 };
-    if (this.isTrace() && Math.abs(p.x - this.traceAt) > 90) this.setHint('赤い線の左はしから、なぞり始めよう');
+    if (this.isTrace() && Math.abs(p.x - this.traceAt) > 90) this.setHint('赤い丸から、なぞり始めよう');
   }
 
   isTrace() {
-    return ['guts', 'hiraki', 'nimai', 'sanmai1', 'sanmai2', 'skin'].includes(this.step);
+    return ['guts', 'hiraki', 'belly', 'back', 'belly2', 'back2', 'skin'].includes(this.step);
   }
 
   onMove(p) {
