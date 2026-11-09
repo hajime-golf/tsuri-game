@@ -3391,9 +3391,8 @@ class CoolerScene extends Phaser.Scene {
 
     const noteY = y1 + 248;
     bodyText(this, W / 2, noteY,
-      '「鮮度」はこのゲームの数字だよ。\n実際の魚も常温に置かず、すぐ冷やそう。\nヒスタミンという食中毒の原因は、火を通しても消えません。\n釣ってから3日たつと、生の料理は作れません。\n3日はゲームのルールで、現実の日持ちの目安ではありません。',
+      '「鮮度」はこのゲームの数字だよ。\n実際の魚も常温に置かず、すぐ冷やそう。\nヒスタミンという食中毒の原因は、火を通しても消えません。',
       25, { lineSpacing: 8, width: 750 });
-    createTextButton(this, W / 2, Math.min(H - 180, noteY + 270), '生で食べるときの注意を読む', () => safetySheet(), 0.5);
 
     createButton(this, W / 2, H - 92, '家へ帰る', () => {
       if (this.leaving) return;
@@ -3789,10 +3788,18 @@ class CookScene extends Phaser.Scene {
 
     const dishes = this.fish.dishes;
     const gap = 20;
-    const room = H - H * 0.14 - 40;
+    const hasRaw = dishes.some((d) => d.raw);
+    const room = H - H * 0.14 - (hasRaw ? 220 : 40);
     const cardH = Math.min(280, Math.floor((room - gap * (dishes.length - 1)) / dishes.length));
     const top = H * 0.14;
     dishes.forEach((dish, i) => this.addCard(dish, top + i * (cardH + gap), cardH));
+
+    if (hasRaw) {
+      bodyText(this, W / 2, H - 205,
+        '生の魚には、アニサキスという寄生虫がいることがあります。新鮮でも安全とは限りません。\n釣ってから3日たつと、生の料理は作れません。3日はゲームのルールで、現実の日持ちの目安ではありません。',
+        24, { color: '#ffd27a', lineSpacing: 6, width: 720 });
+      createTextButton(this, W / 2, H - 42, '寄生虫の注意と対策を読む', () => safetySheet(), 0.5);
+    }
   }
 
   addCard(dish, y, height) {
@@ -3884,15 +3891,8 @@ class EatScene extends Phaser.Scene {
     bodyText(this, W / 2, photoH + 90, `${stars}　${rank}`, 34, { color: '#ffd27a' });
     const report = bodyText(this, W / 2, photoH + 150, dish.foodReport, 32);
     const best = fish.facts.bestWay;
-    if (best.status === '確認済み') {
+    if (best.status === '確認済み' && !dish.raw) {
       bodyText(this, W / 2, report.y + report.height + 20, `豆知識：${best.value}`, 26, { color: '#e6d3b4' });
-    }
-
-    if (dish.raw) {
-      bodyText(this, W / 2, H - 400,
-        '生の魚には、アニサキスという寄生虫がいることがあります。新鮮でも安全とは限りません。\n3日はゲームのルールで、現実の日持ちの目安ではありません。',
-        25, { color: '#ffd27a', lineSpacing: 8, width: 720 });
-      createTextButton(this, W / 2, H - 300, '寄生虫の注意と対策を読む', () => safetySheet(), 0.5);
     }
 
     createButton(this, W / 2, H - 212, '実際に作るなら', () => recipeSheet(fish, dish), 40).setDepth(40);
