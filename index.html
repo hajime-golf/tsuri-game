@@ -100,6 +100,16 @@
       "name": "船橋市 カサゴの煮付け",
       "url": "https://www.city.funabashi.lg.jp/shisetsu/shiminkatsudo/0003/0001/0005/p004387.html",
       "confirmedOn": "2026-11-09"
+    },
+    "chiba_aji": {
+      "name": "千葉県 アジの基本レシピ",
+      "url": "https://www.pref.chiba.lg.jp/suisan/documents/azikihonresipi.pdf",
+      "confirmedOn": "2026-11-09"
+    },
+    "shimane_kasago": {
+      "name": "島根県 12月のおすすめ料理 カサゴ",
+      "url": "https://www.pref.shimane.lg.jp/industry/suisan/chiho_kikan/matsue_suisan/suisansinkou/shun/kasago.html",
+      "confirmedOn": "2026-11-09"
     }
   },
   "fish": [
@@ -132,9 +142,13 @@
       },
       "safety": {
         "rawOk": {
-          "value": "要確認",
-          "status": "要確認",
-          "sources": []
+          "value": "注意つきで刺身を出す",
+          "status": "確認済み",
+          "sources": [
+            "chiba_aji",
+            "honda_maaji",
+            "mhlw_anisakis"
+          ]
         },
         "cautions": {
           "value": [
@@ -158,7 +172,9 @@
           "raw": false,
           "image": "images/dish-aji-shioyaki.webp",
           "foodReport": "皮はパリッ、身はふっくら。すだちをしぼると、塩の角がふっと丸くなる。",
-          "recipe": null
+          "recipe": null,
+          "prep": "whole",
+          "prepImage": null
         },
         {
           "id": "fry",
@@ -184,6 +200,32 @@
               "卵液にくぐらせて、パン粉をつける",
               "油を熱して、魚を揚げる",
               "完全に火が通ったらできあがり"
+            ]
+          },
+          "prep": "hiraki",
+          "prepImage": "images/prep-aji-hiraki.webp"
+        },
+        {
+          "id": "sashimi",
+          "name": "アジの刺身",
+          "raw": true,
+          "image": "images/dish-aji-sashimi.webp",
+          "prep": "sanmai",
+          "prepImage": "images/prep-aji-sanmai.webp",
+          "foodReport": "とろける脂に、ほんのり甘いうまみ。しょうがの香りがよく合う。",
+          "recipe": {
+            "serves": "4人分",
+            "source": "chiba_aji",
+            "ingredients": [
+              "アジ（刺身用） 2尾",
+              "大根 20cm",
+              "わかめ 40g",
+              "青じそ 4枚"
+            ],
+            "steps": [
+              "アジを三枚におろす",
+              "頭の方から皮をむき、厚さ4〜5mmに切る",
+              "せん切りの大根、適当な大きさに切ったわかめ、青じそを皿に飾り、アジを乗せる"
             ]
           }
         }
@@ -241,9 +283,12 @@
       },
       "safety": {
         "rawOk": {
-          "value": "要確認",
-          "status": "要確認",
-          "sources": []
+          "value": "生の料理は出さない",
+          "status": "確認済み",
+          "sources": [
+            "mhlw_anisakis",
+            "fsc_histamine"
+          ]
         },
         "cautions": {
           "value": [
@@ -282,7 +327,9 @@
               "そのまま焼く",
               "食べるときに、すだちなどをかける"
             ]
-          }
+          },
+          "prep": "nimai",
+          "prepImage": "images/prep-saba-nimai.webp"
         },
         {
           "id": "misoni",
@@ -308,7 +355,9 @@
               "さばと生姜を入れ、煮汁が半分になるまで煮る",
               "味を見ながら残りの味噌を煮汁で溶き、煮立つ寸前で火を止める"
             ]
-          }
+          },
+          "prep": "nimai",
+          "prepImage": "images/prep-saba-nimai.webp"
         },
         {
           "id": "fry",
@@ -338,7 +387,9 @@
               "170〜180℃くらいの油で揚げる",
               "食べやすく切って皿に盛り、キャベツ、マヨネーズ、レモンを添える"
             ]
-          }
+          },
+          "prep": "sanmai",
+          "prepImage": "images/prep-saba-sanmai.webp"
         }
       ],
       "game": {
@@ -394,9 +445,13 @@
       },
       "safety": {
         "rawOk": {
-          "value": "要確認",
-          "status": "要確認",
-          "sources": []
+          "value": "注意つきで刺身を出す（寄生虫の資料は未確認）",
+          "status": "確認済み",
+          "sources": [
+            "ifarc_kasago",
+            "kngyoren_kasago",
+            "shimane_kasago"
+          ]
         },
         "cautions": {
           "value": [
@@ -442,7 +497,9 @@
               "アクを取りながら、煮汁が1/3くらいになるまで煮詰める",
               "鍋を傾けて煮汁を魚にかけながら、さらに煮詰める"
             ]
-          }
+          },
+          "prep": "whole",
+          "prepImage": null
         },
         {
           "id": "karaage",
@@ -450,7 +507,9 @@
           "raw": false,
           "image": "images/dish-kasago-karaage.webp",
           "foodReport": "カリカリに揚がったヒレまで香ばしい。レモンをしぼって、熱いうちに。",
-          "recipe": null
+          "recipe": null,
+          "prep": "whole",
+          "prepImage": null
         },
         {
           "id": "shioyaki",
@@ -458,7 +517,34 @@
           "raw": false,
           "image": "images/dish-kasago-shioyaki.webp",
           "foodReport": "焦げた皮の香りのあと、白身のうまみがじんわり広がる。",
-          "recipe": null
+          "recipe": null,
+          "prep": "whole",
+          "prepImage": null
+        },
+        {
+          "id": "sashimi",
+          "name": "カサゴの刺身",
+          "raw": true,
+          "image": "images/dish-kasago-sashimi.webp",
+          "prep": "sanmai",
+          "prepImage": "images/prep-kasago-sanmai.webp",
+          "rawNote": "カサゴの寄生虫について書いた資料は見つかっていません。いないとは言えません。",
+          "foodReport": "透き通った白身は、噛むほどに甘い。コリッとした歯ごたえがたまらない。",
+          "recipe": {
+            "serves": "1尾分",
+            "source": "shimane_kasago",
+            "ingredients": [
+              "カサゴ 1尾"
+            ],
+            "steps": [
+              "うろこと内臓をとって水洗いし、水気を拭きとる",
+              "三枚におろす",
+              "腹骨をすく",
+              "皮を引く",
+              "真ん中の血合骨をとる",
+              "身を適当な大きさに切り、皿に盛る"
+            ]
+          }
         }
       ],
       "game": {
@@ -3142,18 +3228,20 @@ function showSheet(title, blocks) {
   sheet.scrollTop = 0;
 }
 
+const PARASITE_LIST = [
+  '釣ったら早く内臓を取りのぞく',
+  '内臓は生で食べない',
+  '身をよく見て、虫がいたら取りのぞく（身の中に入ると見つけにくい）',
+  '-20℃で24時間以上の冷凍、または70℃以上か60℃で1分の加熱で死ぬ',
+  'ふつうの料理で使う酢、塩、しょうゆ、わさびでは死なない',
+  '内臓に虫がたくさんいたら、身にも移っているかもしれないので刺身にしない',
+];
+
 function safetySheet() {
   const s = window.fishData.sources;
   showSheet('生で食べるときの注意', [
     { text: 'アニサキスという寄生虫は、サバやアジなどの魚にいます。食べてしまうと、激しい腹痛や吐き気が出ることがあります。' },
-    { heading: '対策', list: [
-      '釣ったら早く内臓を取りのぞく',
-      '内臓は生で食べない',
-      '身をよく見て、虫がいたら取りのぞく（身の中に入ると見つけにくい）',
-      '-20℃で24時間以上の冷凍、または70℃以上か60℃で1分の加熱で死ぬ',
-      'ふつうの料理で使う酢、塩、しょうゆ、わさびでは死なない',
-      '内臓に虫がたくさんいたら、身にも移っているかもしれないので刺身にしない',
-    ] },
+    { heading: '対策', list: PARASITE_LIST },
     { text: '鮮度がよくても、寄生虫がいないとは言えません。' },
     { text: '3日はゲームのルールで、現実の日持ちの目安ではありません。' },
     { source: s.mhlw_anisakis },
@@ -3175,7 +3263,14 @@ function recipeSheet(fish, dish) {
     { heading: '作り方', steps: r.steps },
   ];
   if (r.note) blocks.push({ text: r.note });
-  blocks.push({ text: '魚の中まで火を通してね。' });
+  if (dish.raw) {
+    if (dish.rawNote) blocks.push({ text: dish.rawNote });
+    blocks.push({ heading: '生で食べるときの注意', list: PARASITE_LIST });
+    blocks.push({ text: '新鮮でも、寄生虫がいないとは言えません。' });
+    blocks.push({ source: s.mhlw_anisakis });
+  } else {
+    blocks.push({ text: '魚の中まで火を通してね。' });
+  }
   blocks.push({ source: s[r.source] });
   showSheet(`${dish.name}を実際に作るなら`, blocks);
 }
@@ -3300,10 +3395,10 @@ class CoolerScene extends Phaser.Scene {
       25, { lineSpacing: 8, width: 750 });
     createTextButton(this, W / 2, Math.min(H - 180, noteY + 270), '生で食べるときの注意を読む', () => safetySheet(), 0.5);
 
-    createButton(this, W / 2, H - 92, '家へ帰ってさばく', () => {
+    createButton(this, W / 2, H - 92, '家へ帰る', () => {
       if (this.leaving) return;
       this.leaving = true;
-      changeScene(this, 'Prep', { ...this.catchData, fresh: this.fresh });
+      changeScene(this, 'Cook', { ...this.catchData, fresh: this.fresh });
     }, 40);
   }
 
@@ -3326,10 +3421,23 @@ class CoolerScene extends Phaser.Scene {
 
 // 魚の絵のどこに何があるか（絵の幅に対する割合）。さばく画面の線の場所に使う
 const PREP_ART = {
-  aji: { gill: 0.25, midY: 0.5, half: 100 },
-  saba: { gill: 0.24, midY: 0.52, half: 100 },
-  kasago: { gill: 0.35, midY: 0.5, half: 130 },
+  aji: { gill: 0.25, half: 100 },
+  saba: { gill: 0.24, half: 100 },
+  kasago: { gill: 0.35, half: 130 },
 };
+
+// 料理ごとのさばき方。順番に進める
+function prepPlan(dish) {
+  const plans = {
+    whole: ['scale', 'guts'],
+    hiraki: ['scale', 'head', 'hiraki'],
+    nimai: ['scale', 'head', 'nimai'],
+    sanmai: ['scale', 'head', 'sanmai1', 'sanmai2'],
+  };
+  const plan = plans[dish.prep].slice();
+  if (dish.raw) plan.push('skin');   // 刺身は皮を引く
+  return plan;
+}
 
 class PrepScene extends Phaser.Scene {
   constructor() { super('Prep'); }
@@ -3337,9 +3445,17 @@ class PrepScene extends Phaser.Scene {
   init(data) {
     this.catchData = data;
     this.fish = data.fish;
-    this.step = 0;
+    this.dish = data.dish;
+    this.plan = prepPlan(this.dish);
+    this.planIndex = -1;
+    this.step = '';
     this.scores = [];
     this.leaving = false;
+  }
+
+  preload() {
+    const path = this.dish.prepImage;
+    if (path && !this.textures.exists(path)) this.load.image(path, path);
   }
 
   create() {
@@ -3357,10 +3473,10 @@ class PrepScene extends Phaser.Scene {
 
     this.body = this.add.image(this.fishX, this.fishY, `fish-${this.fish.id}`).setScale(this.fishScale).setDepth(5);
 
-    this.heading = titleText(this, H * 0.08, '');
-    this.hint = bodyText(this, W / 2, H * 0.13, '', 32, { color: '#3b2412' }).setShadow(0, 1, 'rgba(255,240,210,0.7)', 3);
+    const dark = '#3b2412';
+    this.heading = titleText(this, H * 0.08, '').setColor(dark).setShadow(0, 1, 'rgba(255,240,210,0.7)', 3);
+    this.hint = bodyText(this, W / 2, H * 0.13, '', 32, { color: dark }).setShadow(0, 1, 'rgba(255,240,210,0.7)', 3);
     this.progress = this.add.graphics().setDepth(30);
-    this.heading.setColor('#3b2412').setShadow(0, 1, 'rgba(255,240,210,0.7)', 3);
 
     const cautions = this.fish.safety.cautions.value || [];
     if (this.fish.id === 'kasago' && cautions.length) {
@@ -3372,14 +3488,64 @@ class PrepScene extends Phaser.Scene {
     this.input.on('pointerdown', (p) => this.onDown(p));
     this.input.on('pointermove', (p) => this.onMove(p));
     this.input.on('pointerup', (p) => this.onUp(p));
-    this.startScale();
+    this.nextStep();
+  }
+
+  say(title, hint) {
+    this.heading.setText(title);
+    this.setHint(hint);
+  }
+
+  // ヒントは毎回折り返しを計算し直す
+  setHint(text) {
+    this.hint.setText(wrapJapanese(text, 32, W - 80));
+  }
+
+  nextStep() {
+    this.planIndex++;
+    this.trail.clear();
+    this.guide.clear();
+    this.progress.clear();
+    const name = this.plan[this.planIndex];
+    if (!name) { this.finishAll(); return; }
+    this.step = name;
+    const a = this.art;
+    const gillX = this.left + this.fishW * a.gill;
+    const endX = this.left + this.fishW * 0.88;
+    switch (name) {
+      case 'scale': this.startScale(); break;
+      case 'head': this.startHead(); break;
+      case 'guts':
+        this.say('内臓を取る', 'おなかの線にそって、左から右へなぞろう');
+        this.startTrace(this.fishY + a.half * 0.62, gillX, this.left + this.fishW * 0.6);
+        break;
+      case 'hiraki':
+        this.say('背から開く', '背中の線にそって、左から尾までなぞろう');
+        this.startTrace(this.fishY - a.half * 0.62, gillX + 6, endX);
+        break;
+      case 'nimai':
+        this.say('二枚におろす', '中骨の線にそって、左から尾までなぞろう');
+        this.startTrace(this.fishY, gillX + 6, endX);
+        break;
+      case 'sanmai1':
+        this.say('三枚におろす', 'まず片側。中骨の線を、左から尾までなぞろう');
+        this.startTrace(this.fishY, gillX + 6, endX);
+        break;
+      case 'sanmai2':
+        this.say('三枚におろす', '次は反対側。もう一度なぞろう');
+        this.startTrace(this.fishY, gillX + 6, endX);
+        break;
+      case 'skin':
+        this.say('皮を引く', '身と皮のあいだを、左から右へなぞろう');
+        this.startTrace(this.fishY - 95, this.left + 120, this.left + this.fishW - 90);
+        break;
+      default: this.nextStep();
+    }
   }
 
   /* ウロコ取り：魚の上をまんべんなくこする */
   startScale() {
-    this.step = 1;
-    this.heading.setText('ウロコを取る');
-    this.hint.setText('魚の上を、左右にこすろう');
+    this.say('ウロコを取る', '魚の上を、左右にこすろう');
     this.bins = new Array(14).fill(0);
     this.lastX = null;
     this.drawBins();
@@ -3426,51 +3592,36 @@ class PrepScene extends Phaser.Scene {
 
   /* 頭を落とす：エラの後ろの線を、上から下へ */
   startHead() {
-    this.step = 2;
-    this.progress.clear();
-    this.heading.setText('頭を落とす');
-    this.hint.setText('赤い線にそって、上から下へスッとなぞろう');
+    this.say('頭を落とす', '赤い線にそって、上から下へスッとなぞろう');
     this.cutX = this.left + this.fishW * this.art.gill;
-    const g = this.guide;
-    g.clear();
-    g.lineStyle(5, 0xd63a26, 0.9);
-    for (let y = this.bandTop; y < this.bandBottom; y += 26) g.lineBetween(this.cutX, y, this.cutX, y + 15);
+    this.guide.lineStyle(5, 0xd63a26, 0.9);
+    for (let y = this.bandTop; y < this.bandBottom; y += 26) this.guide.lineBetween(this.cutX, y, this.cutX, y + 15);
   }
 
   finishHead(score) {
-    this.guide.clear();
-    this.trail.clear();
     const key = `fish-${this.fish.id}`;
     const split = this.art.gill * FISH_BAKE.w;
-    this.head = this.add.image(this.fishX, this.fishY, key).setScale(this.fishScale).setCrop(0, 0, split, FISH_BAKE.h).setDepth(5);
+    const head = this.add.image(this.fishX, this.fishY, key).setScale(this.fishScale).setCrop(0, 0, split, FISH_BAKE.h).setDepth(5);
     this.body.setCrop(split, 0, FISH_BAKE.w - split, FISH_BAKE.h);
     Buzz.pulse(40);
-    if (!REDUCE_MOTION) {
-      this.tweens.add({ targets: this.head, x: this.head.x - 90, y: this.head.y + 80, angle: -14, alpha: 0, duration: 620, ease: 'Cubic.easeIn' });
-    } else {
-      this.head.setAlpha(0);
-    }
+    if (REDUCE_MOTION) head.setAlpha(0);
+    else this.tweens.add({ targets: head, x: head.x - 90, y: head.y + 80, angle: -14, alpha: 0, duration: 620, ease: 'Cubic.easeIn' });
     this.finishStep(score);
   }
 
-  /* 三枚おろし：背骨にそって、頭の方から尾まで */
-  startFillet() {
-    this.step = 3;
-    this.heading.setText('三枚におろす');
-    this.hint.setText('赤い線にそって、左から尾までなぞろう');
-    this.lineY = this.fishY + (this.art.midY - 0.5) * 100;
-    this.lineStart = this.left + this.fishW * this.art.gill + 8;
-    this.lineEnd = this.left + this.fishW * 0.88;
-    const g = this.guide;
-    g.clear();
-    g.lineStyle(5, 0xd63a26, 0.9);
-    for (let x = this.lineStart; x < this.lineEnd; x += 26) g.lineBetween(x, this.lineY, x + 15, this.lineY);
-    this.traceAt = this.lineStart;
+  /* 線をなぞる工程（内臓、開く、おろす、皮を引く） */
+  startTrace(y, x0, x1) {
+    this.lineY = y;
+    this.lineStart = x0;
+    this.lineEnd = x1;
+    this.traceAt = x0;
     this.traceDev = 0;
     this.traceCount = 0;
+    this.guide.lineStyle(5, 0xd63a26, 0.9);
+    for (let x = x0; x < x1; x += 26) this.guide.lineBetween(x, y, x + 15, y);
   }
 
-  traceFillet(p) {
+  traceLine(p) {
     if (p.x <= this.traceAt || p.x > this.traceAt + 90) return;
     if (Math.abs(p.y - this.lineY) > 90) return;
     this.trail.lineStyle(7, 0xfff4d8, 0.9);
@@ -3478,101 +3629,104 @@ class PrepScene extends Phaser.Scene {
     this.traceAt = p.x;
     this.traceDev += Math.abs(p.y - this.lineY);
     this.traceCount++;
-    if (this.traceAt >= this.lineEnd) {
-      this.finishFillet(clamp01(1.1 - (this.traceDev / Math.max(1, this.traceCount)) / 55));
-    }
+    if (this.traceAt >= this.lineEnd) this.finishTrace();
   }
 
-  finishFillet(score) {
-    this.guide.clear();
-    this.trail.clear();
-    const key = `fish-${this.fish.id}`;
-    const split = this.art.gill * FISH_BAKE.w;
-    const cut = FISH_BAKE.h * this.art.midY;
-    const under = this.add.image(this.fishX, this.fishY, key).setScale(this.fishScale)
-      .setCrop(split, cut, FISH_BAKE.w - split, FISH_BAKE.h - cut).setDepth(5);
-    this.body.setCrop(split, 0, FISH_BAKE.w - split, cut);
-    // 真ん中に背骨が残る
-    const bone = this.add.graphics().setDepth(4);
-    bone.fillStyle(0xf1e7d0, 1);
-    bone.fillRoundedRect(this.left + this.fishW * this.art.gill, this.fishY - 8, this.fishW * 0.68, 16, 8);
-    bone.lineStyle(3, 0xcdbd9b, 1);
-    for (let x = this.left + this.fishW * this.art.gill + 10; x < this.left + this.fishW * 0.9; x += 16) {
-      bone.lineBetween(x, this.fishY - 18, x, this.fishY + 18);
-    }
+  finishTrace() {
+    const score = clamp01(1.1 - (this.traceDev / Math.max(1, this.traceCount)) / 55);
     Buzz.pulse(40);
-    if (REDUCE_MOTION) {
-      this.body.y -= 90;
-      under.y += 90;
-    } else {
-      this.tweens.add({ targets: this.body, y: this.body.y - 90, duration: 520, ease: 'Sine.easeOut' });
-      this.tweens.add({ targets: under, y: under.y + 90, duration: 520, ease: 'Sine.easeOut' });
-    }
+    if (['hiraki', 'nimai', 'sanmai2'].includes(this.step)) this.showResult();
     this.finishStep(score);
+  }
+
+  // さばいた後の写真に切りかえる
+  showResult() {
+    const path = this.dish.prepImage;
+    if (!path || !this.textures.exists(path)) return;
+    const photo = this.add.image(W / 2, this.fishY, path).setDepth(6).setDisplaySize(W, W * 523 / 780);
+    if (REDUCE_MOTION) {
+      this.body.setAlpha(0);
+    } else {
+      photo.setAlpha(0);
+      this.tweens.add({ targets: photo, alpha: 1, duration: 500 });
+      this.tweens.add({ targets: this.body, alpha: 0, duration: 500 });
+    }
   }
 
   finishStep(score) {
     this.scores.push(score);
-    const finished = this.step;
-    this.step = 0;       // 次の工程が始まるまで操作を受けない
+    this.step = '';       // 次の工程が始まるまで操作を受けない
     Sound.caught();
-    const praise = score >= 0.85 ? 'うまい！' : score >= 0.55 ? 'いいね！' : 'できた！';
-    this.hint.setText(praise);
-    this.time.delayedCall(REDUCE_MOTION ? 400 : 850, () => {
-      if (finished === 1) this.startHead();
-      else if (finished === 2) this.startFillet();
-      else this.finishAll();
-    });
+    this.setHint(score >= 0.85 ? 'うまい！' : score >= 0.55 ? 'いいね！' : 'できた！');
+    this.time.delayedCall(REDUCE_MOTION ? 400 : 850, () => this.nextStep());
   }
 
   finishAll() {
     const skill = this.scores.reduce((a, b) => a + b, 0) / this.scores.length;
-    this.heading.setText('さばけた！');
-    this.hint.setText('次は、何を作ろう？');
-    this.progress.clear();
-    createButton(this, W / 2, H - 92, '料理する', () => {
+    const dish = this.dish;
+    this.say('さばけた！', `${dish.name}にしよう`);
+    createButton(this, W / 2, H - 92, dish.raw ? '盛りつける' : '料理する', () => {
       if (this.leaving) return;
       this.leaving = true;
-      changeScene(this, 'Cook', { ...this.catchData, skill });
+      Buzz.pulse(20);
+      const veil = this.add.rectangle(0, 0, W, H, 0x120b07, 0.86).setOrigin(0).setDepth(60);
+      const text = bodyText(this, W / 2, H * 0.46, `${dish.name}を作っています…`, 44, { depth: 61 });
+      const bar = this.add.graphics().setDepth(61);
+      const progress = { v: 0 };
+      this.tweens.add({
+        targets: progress, v: 1, duration: REDUCE_MOTION ? 300 : 1400,
+        onUpdate: () => drawMeter(bar, 180, H * 0.54, W - 360, progress.v, 0xf0a860),
+        onComplete: () => {
+          veil.setAlpha(1);
+          text.setAlpha(0);
+          changeScene(this, 'Eat', { ...this.catchData, skill });
+        },
+      });
     }, 44);
   }
 
   onDown(p) {
-    if (this.step === 1) this.lastX = p.x;
-    if (this.step === 2) this.swipe = { x: p.x, y: p.y, sum: p.x, n: 1 };
-    if (this.step === 3 && Math.abs(p.x - this.traceAt) > 90) this.hint.setText('線の左はしから、なぞり始めよう');
+    if (this.step === 'scale') this.lastX = p.x;
+    if (this.step === 'head') this.swipe = { x: p.x, y: p.y, sum: p.x, n: 1 };
+    if (this.isTrace() && Math.abs(p.x - this.traceAt) > 90) this.setHint('赤い線の左はしから、なぞり始めよう');
+  }
+
+  isTrace() {
+    return ['guts', 'hiraki', 'nimai', 'sanmai1', 'sanmai2', 'skin'].includes(this.step);
   }
 
   onMove(p) {
     if (!p.isDown) return;
-    if (this.step === 1) this.rubScale(p);
-    else if (this.step === 2 && this.swipe) {
+    if (this.step === 'scale') this.rubScale(p);
+    else if (this.step === 'head' && this.swipe) {
       this.swipe.sum += p.x;
       this.swipe.n++;
       this.trail.lineStyle(7, 0xfff4d8, 0.85);
       this.trail.lineBetween(p.prevPosition.x, p.prevPosition.y, p.x, p.y);
-    } else if (this.step === 3) {
-      this.traceFillet(p);
+    } else if (this.isTrace()) {
+      this.traceLine(p);
     }
   }
 
   onUp(p) {
-    if (this.step === 1) this.lastX = null;
-    if (this.step === 2 && this.swipe) {
+    if (this.step === 'scale') this.lastX = null;
+    if (this.step === 'head' && this.swipe) {
       const s = this.swipe;
       this.swipe = null;
-      const mean = s.sum / s.n;
-      const off = Math.abs(mean - this.cutX);
+      const off = Math.abs(s.sum / s.n - this.cutX);
       if (p.y - s.y < this.art.half * 1.1 || off > 150) {
         this.trail.clear();
-        this.hint.setText('赤い線にそって、上から下まで長くなぞろう');
+        this.setHint('赤い線にそって、上から下まで長くなぞろう');
         return;
       }
+      this.trail.clear();
+      this.guide.clear();
       this.finishHead(clamp01(1.1 - off / 110));
     }
   }
 }
 
+// 料理を先に決める（決めた料理で、さばき方が変わる）
 class CookScene extends Phaser.Scene {
   constructor() { super('Cook'); }
 
@@ -3587,15 +3741,19 @@ class CookScene extends Phaser.Scene {
   create() {
     this.cameras.main.fadeIn(REDUCE_MOTION ? 0 : 320, 60, 71, 112);
     bakeFull(this, 'table', paintTable);
-    titleText(this, H * 0.09, `${this.fish.name}を料理する`);
+    titleText(this, H * 0.075, `${this.fish.name}をどう食べる？`);
 
     const dishes = this.fish.dishes;
-    const cardH = 280;
-    const top = H * 0.17;
-    dishes.forEach((dish, i) => this.addCard(dish, top + i * (cardH + 30), cardH));
+    const gap = 20;
+    const room = H - H * 0.14 - 40;
+    const cardH = Math.min(280, Math.floor((room - gap * (dishes.length - 1)) / dishes.length));
+    const top = H * 0.14;
+    dishes.forEach((dish, i) => this.addCard(dish, top + i * (cardH + gap), cardH));
   }
 
   addCard(dish, y, height) {
+    const days = this.catchData.days || 0;
+    const blocked = dish.raw && days >= 3;   // 3日はゲームのルール
     const box = this.add.container(0, y).setDepth(20);
     const bg = this.add.rectangle(40, 0, W - 80, height, 0x1c120c, 0.72).setOrigin(0).setStrokeStyle(2, 0xd8bc90, 0.5);
     box.add(bg);
@@ -3603,31 +3761,21 @@ class CookScene extends Phaser.Scene {
     if (this.textures.exists(key)) {
       box.add(this.add.image(54, 14, key).setOrigin(0).setDisplaySize(height - 28, height - 28));
     }
-    box.add(this.add.text(height + 44, height / 2, dish.name, {
-      fontFamily: FONT_TITLE, fontSize: '52px', fontStyle: '600', color: COLOR.cream,
-      wordWrap: { width: W - height - 130, useAdvancedWrap: true },
+    box.add(this.add.text(height + 44, height / 2 - (dish.raw ? 22 : 0), wrapJapanese(dish.name, 46, W - height - 130), {
+      fontFamily: FONT_TITLE, fontSize: '46px', fontStyle: '600', color: COLOR.cream,
     }).setOrigin(0, 0.5));
+    if (dish.raw) {
+      box.add(this.add.text(height + 44, height / 2 + 34, blocked ? '3日たったので作れない' : '生の料理：寄生虫に注意', {
+        fontFamily: FONT_BODY, fontSize: '26px', color: '#ffd27a',
+      }).setOrigin(0, 0.5));
+    }
+    if (blocked) { box.setAlpha(0.45); return; }
     bg.setInteractive({ useHandCursor: true });
-    bg.on('pointerup', () => this.cook(dish));
-  }
-
-  cook(dish) {
-    if (this.leaving) return;
-    this.leaving = true;
-    Sound.unlock();
-    Buzz.pulse(20);
-    const veil = this.add.rectangle(0, 0, W, H, 0x120b07, 0.86).setOrigin(0).setDepth(60);
-    const text = bodyText(this, W / 2, H * 0.46, `${dish.name}を作っています…`, 44, { depth: 61 });
-    const bar = this.add.graphics().setDepth(61);
-    let progress = { v: 0 };
-    this.tweens.add({
-      targets: progress, v: 1, duration: REDUCE_MOTION ? 300 : 1400,
-      onUpdate: () => drawMeter(bar, 180, H * 0.54, W - 360, progress.v, 0xf0a860),
-      onComplete: () => {
-        veil.setAlpha(1);
-        text.setAlpha(0);
-        changeScene(this, 'Eat', { ...this.catchData, dish });
-      },
+    bg.on('pointerup', () => {
+      if (this.leaving) return;
+      this.leaving = true;
+      Sound.unlock();
+      changeScene(this, 'Prep', { ...this.catchData, dish });
     });
   }
 }
@@ -3694,6 +3842,13 @@ class EatScene extends Phaser.Scene {
     const best = fish.facts.bestWay;
     if (best.status === '確認済み') {
       bodyText(this, W / 2, report.y + report.height + 20, `豆知識：${best.value}`, 26, { color: '#e6d3b4' });
+    }
+
+    if (dish.raw) {
+      bodyText(this, W / 2, H - 400,
+        '生の魚には、アニサキスという寄生虫がいることがあります。新鮮でも安全とは限りません。\n3日はゲームのルールで、現実の日持ちの目安ではありません。',
+        25, { color: '#ffd27a', lineSpacing: 8, width: 720 });
+      createTextButton(this, W / 2, H - 300, '寄生虫の注意と対策を読む', () => safetySheet(), 0.5);
     }
 
     createButton(this, W / 2, H - 212, '実際に作るなら', () => recipeSheet(fish, dish), 40).setDepth(40);
