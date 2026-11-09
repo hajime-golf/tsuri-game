@@ -354,6 +354,13 @@
             "fsc_histamine"
           ]
         },
+        "catchNote": {
+          "value": "アニサキスという寄生虫がいることがあります。早く内臓を取りのぞき、内臓は生で食べないでください。シメサバのように酢でしめても、アニサキスは死にません。",
+          "status": "確認済み",
+          "sources": [
+            "mhlw_anisakis"
+          ]
+        },
         "prepType": "要確認",
         "poisonParts": null,
         "treatment": null
@@ -3119,7 +3126,10 @@ class FishingScene extends Phaser.Scene {
     const dim = this.add.rectangle(0, 0, W, H, 0x24305a, 0.72).setOrigin(0).setDepth(60);
     items.push(dim);
 
-    const cy = H * 0.42;
+    // 注意文がある魚は、短い画面でもボタンに重ならないよう全体を少し上げる
+    const catchNote = this.fish.safety.catchNote;
+    const showNote = !!(catchNote && catchNote.status === '確認済み' && catchNote.value);
+    const cy = H * 0.42 - (showNote ? 70 : 0);
     add(this.add.text(W / 2, cy - 330, this.sizeRatio >= 0.72 ? '大物だ！' : '釣れた！', {
       fontFamily: FONT_TITLE, fontSize: '84px', fontStyle: '600', color: COLOR.cream, padding: { x: 10, y: 10 },
     }).setOrigin(0.5).setShadow(0, 3, 'rgba(20,28,60,0.6)', 12));
@@ -3144,6 +3154,11 @@ class FishingScene extends Phaser.Scene {
     add(this.add.text(W / 2, cy + 278, `今日の${count}ひき目`, {
       fontFamily: FONT_BODY, fontSize: '32px', color: COLOR.cream,
     }).setOrigin(0.5));
+
+    // 釣れた画面の注意。データに catchNote がある魚（今はサバだけ）に出す
+    if (showNote) {
+      add(bodyText(this, W / 2, cy + 322, catchNote.value, 30, { color: '#ffe0a6', width: W - 120, lineSpacing: 6, depth: 62 }));
+    }
 
     let leaving = false;
     const take = createButton(this, W / 2, Math.round(H * 0.82), '持ち帰る', () => {
