@@ -130,7 +130,178 @@
       "name": "三重県漁連 マアジ",
       "url": "http://www.miegyoren.or.jp/fisheries-in-mie/uopedia/maaji/",
       "confirmedOn": "2026-11-09"
+    },
+    "honda_maaji_trap": {
+      "name": "Honda釣り図鑑 マアジの仕掛け",
+      "url": "https://www.honda.co.jp/fishing/picture-book/maaji/trap01/",
+      "confirmedOn": "2026-11-09"
+    },
+    "honda_kasago_trap": {
+      "name": "Honda釣り図鑑 カサゴの仕掛け",
+      "url": "https://www.honda.co.jp/fishing/picture-book/kasago/trap01/",
+      "confirmedOn": "2026-11-09"
+    },
+    "honda_sabiki_tool": {
+      "name": "Honda釣り倶楽部 サビキ釣りの道具（2017年7月の情報）",
+      "url": "https://www.honda.co.jp/fishing/enjoy/season/season-201707/tool/",
+      "confirmedOn": "2026-11-09"
+    },
+    "honda_sabiki_step1": {
+      "name": "Honda釣り倶楽部 サビキ釣りの釣り場（2017年7月の情報）",
+      "url": "https://www.honda.co.jp/fishing/enjoy/season/season-201707/step-1/",
+      "confirmedOn": "2026-11-09"
+    },
+    "honda_sabiki_step3": {
+      "name": "Honda釣り倶楽部 サビキ釣りの実践（2017年7月の情報）",
+      "url": "https://www.honda.co.jp/fishing/enjoy/season/season-201707/step-3/",
+      "confirmedOn": "2026-11-09"
+    },
+    "honda_uki_tool": {
+      "name": "Honda釣り倶楽部 堤防のウキ釣りの道具（2018年3月の情報）",
+      "url": "https://www.honda.co.jp/fishing/enjoy/season/season-201803-02/tool/",
+      "confirmedOn": "2026-11-09"
+    },
+    "honda_choinage_tool": {
+      "name": "Honda釣り倶楽部 ウキ釣りとチョイ投げの道具（2010年4月の情報）",
+      "url": "https://www.honda.co.jp/fishing/enjoy/season/season-201004/tool/",
+      "confirmedOn": "2026-11-09"
+    },
+    "honda_aji_sabiki": {
+      "name": "Honda釣り倶楽部 アジのサビキ釣り（2019年6月の情報）",
+      "url": "https://www.honda.co.jp/fishing/enjoy/season/season-201906/step-1/",
+      "confirmedOn": "2026-11-09"
+    },
+    "honda_light_aji": {
+      "name": "Honda釣り倶楽部 船のライトアジ釣りの道具（2020年6月の情報）",
+      "url": "https://www.honda.co.jp/fishing/enjoy/season/season-202006/tool/",
+      "confirmedOn": "2026-11-09"
+    },
+    "daiwa_glossary": {
+      "name": "DAIWA 釣り用語集",
+      "url": "https://www.daiwa.com/jp/beginner/glossary/",
+      "confirmedOn": "2026-11-09"
+    },
+    "daiwa_masaba": {
+      "name": "DAIWA 釣魚図鑑 マサバ",
+      "url": "https://www.daiwa.com/jp/column/fish_field_guide/sea/045",
+      "confirmedOn": "2026-11-09"
     }
+  },
+  "gear": {
+    "spots": [
+      {
+        "id": "teibo", "name": "堤防", "open": true,
+        "note": { "value": "港の出入り口付近は潮の通しがよく、アジ、イワシ、サバなどの小型の魚の活性も高い。", "status": "確認済み", "sources": ["honda_sabiki_step1"] }
+      },
+      {
+        "id": "fune", "name": "船釣り", "open": true,
+        "note": { "value": "マアジは沖釣りなら1年中楽しめる。カサゴの沖釣りは2〜3本バリのドウヅキ仕掛けが主流。", "status": "確認済み", "sources": ["honda_maaji", "honda_kasago"] }
+      },
+      {
+        "id": "keiryu", "name": "渓流", "open": false,
+        "lockNote": "川の魚は段階6で増えるよ。アジ・サバ・カサゴは海の魚なので、渓流はそれまでお休み。"
+      }
+    ],
+    "times": [
+      {
+        "id": "asa", "name": "朝まずめ", "sky": "dawn",
+        "note": { "value": "日の出の前後のこと。魚の動きが活発になり、釣りに向く時間といわれる。アジは朝夕のまずめに浅いところまで上がってくる。", "status": "確認済み", "sources": ["daiwa_glossary", "honda_aji_sabiki"] }
+      },
+      {
+        "id": "hiru", "name": "昼", "sky": "day",
+        "note": { "value": "アジは日中も釣れるが、泳ぐ深さはやや深めになる。", "status": "確認済み", "sources": ["honda_aji_sabiki"] }
+      },
+      {
+        "id": "yu", "name": "夕まずめ", "sky": "dusk",
+        "note": { "value": "日の入りの前後のこと。魚がよく釣れる時間帯とされる。アジは朝夕のまずめがチャンス。", "status": "確認済み", "sources": ["daiwa_glossary", "honda_aji_sabiki"] }
+      },
+      {
+        "id": "yoru", "name": "夜", "sky": "night",
+        "note": { "value": "カサゴは日中は物かげに隠れ、夜になると活発にエサを追う。アジも夜釣りができる。", "status": "確認済み", "sources": ["honda_kasago_trap", "honda_maaji_trap"] }
+      }
+    ],
+    "rods": [
+      {
+        "id": "compact", "name": "短い竿（2.4〜3m）", "spots": ["teibo"],
+        "note": { "value": "チョイ投げには、2.4〜3mのコンパクトな竿が使われる。", "status": "確認済み", "sources": ["honda_choinage_tool"] }
+      },
+      {
+        "id": "sabiki", "name": "中くらいの竿（3〜3.3m）", "spots": ["teibo"],
+        "note": { "value": "堤防のサビキ釣りは3〜3.3mがよい。水深4〜6mの港なら2号、水深10m以上の海釣り施設なら3号が目安。", "status": "確認済み", "sources": ["honda_sabiki_tool"] }
+      },
+      {
+        "id": "long", "name": "長い竿（3.6〜4.5m）", "spots": ["teibo"],
+        "note": { "value": "堤防のウキ釣りでリールをつけるなら、全長3.6〜4.5mの竿が目安。", "status": "確認済み", "sources": ["honda_uki_tool"] }
+      },
+      {
+        "id": "fune", "name": "船の竿（1.8m前後）", "spots": ["fune"],
+        "note": { "value": "船のライトアジ釣りでは、1.8m前後の船釣り用ライトゲームロッドが標準的。", "status": "確認済み", "sources": ["honda_light_aji"] }
+      }
+    ],
+    "methods": [
+      {
+        "id": "sabiki", "name": "サビキ", "spots": ["teibo", "fune"], "rods": ["sabiki", "fune"], "baits": ["ami"],
+        "fit": { "aji": 1.4, "saba": 1.3, "kasago": 0.15 },
+        "note": { "value": "寄せエサとハリが同じ深さにあることが大前提。まず海面の近くからねらい、アタリがなければ少しずつ深くさぐる。", "status": "確認済み", "sources": ["honda_sabiki_step3"] }
+      },
+      {
+        "id": "uki", "name": "ウキ釣り", "spots": ["teibo"], "rods": ["long"], "baits": ["okiami", "aosome"],
+        "fit": { "aji": 1.1, "saba": 0.5, "kasago": 0.5 },
+        "note": { "value": "堤防のウキ釣りは、袖型の3〜5号のハリ、0.8〜1号のハリスが基本。", "status": "確認済み", "sources": ["honda_uki_tool"] }
+      },
+      {
+        "id": "lure", "name": "ルアー", "spots": ["teibo"], "rods": ["compact"], "baits": ["worm"],
+        "fit": { "aji": 0.8, "saba": 1.2, "kasago": 1.0 },
+        "note": { "value": "アジをねらう軽いルアーは1〜2gが標準で、潮が速いときは重くする。カサゴには、岩に引っかかりにくいルアーを選ぶのが大事。", "status": "確認済み", "sources": ["honda_maaji_trap", "honda_kasago_trap"] }
+      },
+      {
+        "id": "blakuri", "name": "ブラクリ（穴釣り）", "spots": ["teibo"], "rods": ["compact"], "baits": ["kirimi", "aosome"],
+        "fit": { "aji": 0.1, "saba": 0.1, "kasago": 1.6 },
+        "note": { "value": "穴釣りは、底に着けて2〜3回誘ったら、次の穴へ移る。", "status": "確認済み", "sources": ["honda_kasago_trap"] }
+      },
+      {
+        "id": "bishi", "name": "ビシ釣り", "spots": ["fune"], "rods": ["fune"], "baits": ["mametan", "aosome"],
+        "fit": { "aji": 1.5, "saba": 0.9, "kasago": 0.2 },
+        "note": { "value": "沖のビシアジ釣りは、ふつう130号前後の重いビシ（寄せエサのカゴ）を使う。", "status": "確認済み", "sources": ["honda_maaji_trap"] }
+      },
+      {
+        "id": "doduki", "name": "ドウヅキ", "spots": ["fune"], "rods": ["fune"], "baits": ["kirimi", "aosome"],
+        "fit": { "aji": 0.3, "saba": 0.3, "kasago": 1.5 },
+        "note": { "value": "コツコツという小さなアタリは、エサに噛みついているだけ。食い込むまで待とう。", "status": "確認済み", "sources": ["honda_kasago_trap"] }
+      }
+    ],
+    "baits": [
+      {
+        "id": "ami", "name": "アミエビ",
+        "fit": { "aji": 1.2, "saba": 1.1, "kasago": 0.4 },
+        "note": { "value": "冷凍アミは16分の1サイズが使いやすい。大人1人が半日釣りをするなら1ブロックが目安。", "status": "確認済み", "sources": ["honda_sabiki_tool"] }
+      },
+      {
+        "id": "okiami", "name": "オキアミ",
+        "fit": { "aji": 1.1, "saba": 1.0, "kasago": 0.7 },
+        "note": { "value": "S・M・Lの大きさがあり、堤防のウキ釣りにはMサイズが万能。", "status": "確認済み", "sources": ["honda_uki_tool"] }
+      },
+      {
+        "id": "aosome", "name": "アオイソメ",
+        "fit": { "aji": 1.1, "saba": 0.9, "kasago": 1.1 },
+        "note": { "value": "チョイ投げなら、半日の釣りで1パック（約50g）くらいが目安。", "status": "確認済み", "sources": ["honda_choinage_tool"] }
+      },
+      {
+        "id": "kirimi", "name": "魚の切り身",
+        "fit": { "aji": 0.3, "saba": 0.4, "kasago": 1.5 },
+        "note": { "value": "カサゴのブラクリには、サバやサンマの切り身を使う。", "status": "確認済み", "sources": ["honda_kasago_trap"] }
+      },
+      {
+        "id": "worm", "name": "ワーム",
+        "fit": { "aji": 0.9, "saba": 1.1, "kasago": 0.9 },
+        "note": { "value": "カサゴには、1〜2gのジグヘッドに2インチほどのワームをつける方法がある。", "status": "確認済み", "sources": ["honda_kasago_trap"] }
+      },
+      {
+        "id": "mametan", "name": "豆タン",
+        "fit": { "aji": 1.3, "saba": 1.0, "kasago": 0.4 },
+        "note": { "value": "赤く染めたイカを小さく切ったエサ。沖のアジ釣りでアオイソメとならぶメインのエサ。", "status": "確認済み", "sources": ["honda_maaji_trap"] }
+      }
+    ]
   },
   "fish": [
     {
@@ -280,7 +451,8 @@
       ],
       "game": {
         "spots": [
-          "teibo"
+          "teibo",
+          "fune"
         ],
         "sizeCm": [
           15,
@@ -297,7 +469,10 @@
           0.35,
           0.8
         ],
-        "weightA": 0.0115
+        "weightA": 0.0115,
+        "seasonRate": { "teibo": [0.5, 1.4, 1.2, 0.15], "fune": [1, 1.2, 1.1, 0.9] },
+        "timeRate": [1.5, 0.7, 1.5, 0.7],
+        "pricePerKg": 320
       }
     },
     {
@@ -453,7 +628,8 @@
       ],
       "game": {
         "spots": [
-          "teibo"
+          "teibo",
+          "fune"
         ],
         "sizeCm": [
           25,
@@ -470,7 +646,10 @@
           0.62,
           1
         ],
-        "weightA": 0.0105
+        "weightA": 0.0105,
+        "seasonRate": { "teibo": [0.8, 1, 1.1, 1.2], "fune": [0.9, 1, 1.1, 1.3] },
+        "timeRate": [1.3, 1, 1.3, 0.4],
+        "pricePerKg": 260
       }
     },
     {
@@ -613,7 +792,8 @@
       ],
       "game": {
         "spots": [
-          "teibo"
+          "teibo",
+          "fune"
         ],
         "sizeCm": [
           14,
@@ -630,7 +810,10 @@
           0.2,
           0.5
         ],
-        "weightA": 0.02
+        "weightA": 0.02,
+        "seasonRate": { "teibo": [1, 1, 1, 1], "fune": [1, 1, 1, 1] },
+        "timeRate": [0.8, 0.6, 1, 1.8],
+        "pricePerKg": 700
       }
     }
   ]
@@ -742,6 +925,15 @@
   .keep-warn { color: #a23a1a; font-weight: bold; }
   .keep-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
   .sheet-box .keep-actions button { display: inline-block; margin: 0; padding: 6px 16px; font-size: 14px; }
+  /* 釣りの準備の画面 */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .sheet-box .chips button { display: inline-block; margin: 0; padding: 6px 14px; color: #27406a; background: #e6d3b4; font-size: 15px; }
+  .sheet-box .chips button.on { color: #fff6e6; background: #27406a; }
+  .sheet-box .chips button:disabled { color: #8a7760; background: #eee1c8; }
+  .tip { margin: 8px 0 0; padding: 8px 12px; font-size: 14px; line-height: 1.7; background: #f3e4c8; border-radius: 10px; }
+  .tip p { margin: 0; }
+  .tip .sheet-source { margin-top: 2px; font-size: 12px; }
+  .outlook { display: flex; flex-wrap: wrap; gap: 6px 16px; font-weight: bold; }
   #notice button {
     padding: 12px 24px;
     color: #27406a;
@@ -764,7 +956,7 @@
 /* ============================================================
    2. ゲームの設定
    ============================================================ */
-const GAME_VERSION = 'v0.4';
+const GAME_VERSION = 'v0.5';
 const TAU = Math.PI * 2;
 
 // 横幅は固定し、高さを端末の縦横比に合わせる（スマホで上下左右に余白を出さないため）
@@ -875,6 +1067,10 @@ function loadFishData() {
     showNotice('魚データの形が違います', ['魚データには「sources」と「fish」の欄が必要です。']);
     return null;
   }
+  if (!data.gear || !['spots', 'times', 'rods', 'methods', 'baits'].every((k) => Array.isArray(data.gear[k]) && data.gear[k].length)) {
+    showNotice('道具データの形が違います', ['魚データの「gear」に、spots、times、rods、methods、baits が必要です。']);
+    return null;
+  }
   if (data.fish.length === 0) {
     showNotice('魚データが空です', ['魚データの「fish」に、魚を1種類以上入れてください。']);
     return null;
@@ -885,11 +1081,13 @@ function loadFishData() {
     const ok = g && Array.isArray(g.sizeCm) && g.sizeCm.length === 2 && FIGHT_STYLES[g.fight]
       && Number.isFinite(g.power) && Number.isFinite(g.biteWindowMs) && Number.isFinite(g.weightA)
       && Array.isArray(g.nibbles) && g.nibbles.length === 2
-      && Array.isArray(g.bestRange) && g.bestRange.length === 2;
+      && Array.isArray(g.bestRange) && g.bestRange.length === 2
+      && Array.isArray(g.spots) && g.seasonRate && Array.isArray(g.timeRate) && g.timeRate.length === 4
+      && Number.isFinite(g.pricePerKg);
     if (!ok) {
       showNotice(
         '魚データの「game」の欄に足りないものがあります',
-        ['sizeCm、fight（dart / run / dive）、power、biteWindowMs、nibbles、bestRange、weightA を見てください。'],
+        ['sizeCm、fight（dart / run / dive）、power、biteWindowMs、nibbles、bestRange、weightA、spots、seasonRate、timeRate、pricePerKg を見てください。'],
         fish && fish.name ? String(fish.name) : null
       );
       return null;
@@ -910,6 +1108,10 @@ const Save = (() => {
     stock: [],       // 冷蔵庫と冷凍庫の魚
     catchLog: [],    // 釣った記録
     cookLog: [],     // 料理した記録
+    trip: {},        // 釣りの準備（釣り場、時間帯、竿、仕掛け、エサ）
+    requests: [],    // ご近所の依頼
+    nextRequestId: 1,
+    requestDay: 0,   // 依頼を最後に増やした日
   };
   let state = { ...DEFAULTS };
   let available = false;
@@ -929,11 +1131,13 @@ const Save = (() => {
   }
 
   // 中身の形がおかしい欄は、その欄だけ最初の状態に戻す（前の版の保存もそのまま使える）
-  for (const name of ['stock', 'catchLog', 'cookLog']) {
+  for (const name of ['stock', 'catchLog', 'cookLog', 'requests']) {
     if (!Array.isArray(state[name])) state[name] = [];
   }
-  if (!state.book || typeof state.book !== 'object' || Array.isArray(state.book)) state.book = {};
-  for (const name of ['day', 'money', 'nextStockId']) {
+  for (const name of ['book', 'trip']) {
+    if (!state[name] || typeof state[name] !== 'object' || Array.isArray(state[name])) state[name] = {};
+  }
+  for (const name of ['day', 'money', 'nextStockId', 'nextRequestId', 'requestDay']) {
     if (!Number.isFinite(state[name])) state[name] = DEFAULTS[name];
   }
 
@@ -959,7 +1163,7 @@ const RULES = {
   fridgeFade: 0.1,     // 冷蔵で1日ごとに下がる鮮度の割合
   fridgeFloor: 0.3,    // 冷蔵の鮮度が下がる下限の割合
   frozenTaste: 0.6,    // 冷凍すると、味（鮮度）にかかる割合
-  frozenPrice: 0.6,    // 冷凍すると、売値にかかる割合（売る機能は段階5で作る）
+  frozenPrice: 0.6,    // 冷凍すると、売値にかかる割合
 };
 const RULE_NOTE = '生の料理は釣ってから3日まで、冷蔵は7日まで、冷凍は1か月まで、冷凍した魚は生で使えない、というのはゲームのルールです。現実の保存の目安ではありません。';
 
@@ -1020,6 +1224,142 @@ const Keep = {
   nextDay() {
     Save.data.day += 1;
     Save.commit();
+  },
+};
+
+// 釣りの準備。釣れやすさの数字はゲームのルールで、現実のデータではない
+const SEASON_NAMES = ['春', '夏', '秋', '冬'];
+const SEASON_DAYS = 10;   // ゲームの何日で季節が変わるか
+const Trip = {
+  gear(kind) { return window.fishData.gear[kind]; },
+
+  // 次に釣りへ行く日の季節（1日は最初に投げたときに進むので、今日の次の日で数える）
+  seasonIndex() { return Math.floor(Save.data.day / SEASON_DAYS) % 4; },
+  tripsLeft() { return SEASON_DAYS - (Save.data.day % SEASON_DAYS); },
+
+  // 保存された選択を確かめて、今の組み合わせを返す。合わないものは使えるものに直す
+  current() {
+    const saved = Save.data.trip;
+    const pick = (list, id) => list.find((x) => x.id === id) || list[0];
+    const spot = pick(this.gear('spots').filter((s) => s.open), saved.spot);
+    const time = pick(this.gear('times'), saved.time);
+    const method = pick(this.gear('methods').filter((m) => m.spots.includes(spot.id)), saved.method);
+    const rods = this.gear('rods').filter((r) => r.spots.includes(spot.id));
+    const fitRod = rods.find((r) => method.rods.includes(r.id));
+    const rod = pick(rods, saved.rod || (fitRod && fitRod.id));   // まだ選んでいないときは、仕掛けに合う竿にする
+    const bait = pick(this.gear('baits').filter((b) => method.baits.includes(b.id)), saved.bait);
+    return { spot, time, method, rod, bait };
+  },
+
+  choose(kind, id) {
+    Save.data.trip[kind] = id;
+    // 釣り場や仕掛けを変えたら、合う竿とエサに合わせる
+    if (kind === 'spot' || kind === 'method') {
+      const t = this.current();
+      Save.data.trip.method = t.method.id;
+      const fitRod = this.gear('rods').find((r) => t.method.rods.includes(r.id) && r.spots.includes(t.spot.id));
+      if (fitRod) Save.data.trip.rod = fitRod.id;
+      Save.data.trip.bait = t.method.baits[0];
+    }
+    Save.commit();
+  },
+
+  // その魚の釣れやすさ。0ならその釣り場にいない
+  rate(fish, trip, seasonIndex) {
+    const g = fish.game;
+    if (!g.spots.includes(trip.spot.id)) return 0;
+    const season = g.seasonRate[trip.spot.id][seasonIndex];
+    const time = g.timeRate[this.gear('times').indexOf(trip.time)];
+    const rod = trip.method.rods.includes(trip.rod.id) ? 1 : 0.75;
+    return season * time * (trip.method.fit[fish.id] || 0.1) * (trip.bait.fit[fish.id] || 0.1) * rod;
+  },
+
+  // アタリが来るかどうかの確率
+  biteChance(rate) { return Math.min(1, 0.3 + 0.45 * rate); },
+};
+
+// 市場。売値はゲーム用の数字
+const EAT_BONUS = 1.3;   // 食べると、売値の何倍の得になるか（売るより得にするため1より大きくする）
+const Market = {
+  // fresh は図鑑の鮮度の数字。冷凍の魚は味の割合がかかっているので、元にもどして値段を出す
+  price(fish, weight, fresh, frozen) {
+    const base = Math.min(1, fresh / (frozen ? RULES.frozenTaste : 1));
+    const value = (weight / 1000) * fish.game.pricePerKg * (0.4 + 0.6 * base);
+    return Math.max(5, Math.round(value * (frozen ? RULES.frozenPrice : 1)));
+  },
+
+  itemPrice(item, fish) {
+    const info = Keep.info(item);
+    return this.price(fish, item.weight, info.fresh, info.frozen);
+  },
+
+  sell(item, fish) {
+    const price = this.itemPrice(item, fish);
+    Save.data.money += price;
+    Keep.remove(item.id);   // ここで保存もされる
+    return price;
+  },
+
+  // 食べると食費が浮く。同じ魚を売るより、必ず多くもらえる
+  eat(data) {
+    const price = this.price(data.fish, Number.isFinite(data.weight) ? data.weight : 0, data.fresh, !!data.frozen);
+    const bonus = Math.ceil(price * EAT_BONUS);
+    Save.data.money += bonus;
+    Save.commit();
+    return `食費が浮いた！　+${bonus}D`;
+  },
+};
+
+// ご近所の依頼。冷蔵庫の魚を渡すとお礼がもらえる
+const REQUEST_LIMIT = 3;       // 同時に受けられる数
+const REQUEST_DAYS = 10;       // 何日のあいだ待ってくれるか
+const NEIGHBORS = [
+  { who: 'となりのおばあちゃん', line: '夕飯に魚が食べたくてねえ' },
+  { who: '角の八百屋さん', line: 'お店のまかないにしたいんだ' },
+  { who: '下の階の親子', line: '子どもに魚を食べさせたくて' },
+  { who: '町内会長さん', line: '今度の集まりに持っていきたいな' },
+];
+const Requests = {
+  make() {
+    const d = Save.data;
+    // なるべく今の依頼と違う魚にする
+    const all = window.fishData.fish;
+    const unused = all.filter((f) => !d.requests.some((r) => r.fishId === f.id));
+    const list = unused.length ? unused : all;
+    const fish = list[Math.floor(Math.random() * list.length)];
+    const [low, high] = fish.game.sizeCm;
+    const minCm = Math.round(low + (high - low) * Math.random() * 0.45);
+    const person = NEIGHBORS[Math.floor(Math.random() * NEIGHBORS.length)];
+    const weight = fish.game.weightA * Math.pow(minCm, 3);
+    const reward = Market.price(fish, weight, 0.8, false) * 2 + 80;
+    d.requests.push({ id: d.nextRequestId++, fishId: fish.id, minCm, reward, who: person.who, line: person.line, until: d.day + REQUEST_DAYS });
+  },
+
+  // 古い依頼を消して、1日に1件ずつ増やす（はじめて開いたときは全部出す）
+  refresh() {
+    const d = Save.data;
+    d.requests = d.requests.filter((r) => r.until >= d.day);
+    if (d.requestDay === 0) {
+      while (d.requests.length < REQUEST_LIMIT) this.make();
+    } else if (d.day > d.requestDay && d.requests.length < REQUEST_LIMIT) {
+      this.make();
+    }
+    d.requestDay = d.day;
+    Save.commit();
+  },
+
+  // 依頼に渡せる魚（冷蔵庫の、腐っていない、大きさが足りている魚）
+  matches(request) {
+    return Keep.items().filter((item) => {
+      const info = Keep.info(item);
+      return item.fishId === request.fishId && !info.frozen && !info.rotten && item.sizeCm >= request.minCm;
+    });
+  },
+
+  deliver(request, item) {
+    Save.data.money += request.reward;
+    Save.data.requests = Save.data.requests.filter((r) => r.id !== request.id);
+    Keep.remove(item.id);
   },
 };
 
@@ -1492,8 +1832,36 @@ function paintShore(ctx, w, h, noRod) {
     ctx.closePath();
     ctx.fill();
   }
+  paintAngler(ctx, noRod);
+}
 
-  // 人（立って、竿を持っている）
+// 船の上。へさきが右に伸びる
+function paintBoat(ctx, w) {
+  const rnd = seeded(41);
+  ctx.fillStyle = rgba(COLOR.shore, 0.55);
+  for (let pass = 0; pass < 6; pass++) {
+    const j = () => (rnd() - 0.5) * 5;
+    ctx.beginPath();
+    ctx.moveTo(0, 296 + j());
+    ctx.lineTo(w * 0.46 + j(), 300 + j());
+    ctx.lineTo(w * 0.6 + j(), 274 + j());
+    ctx.lineTo(w * 0.47 + j(), 410 + j());
+    ctx.lineTo(0, 490 + j());
+    ctx.closePath();
+    ctx.fill();
+  }
+  ctx.strokeStyle = rgba('#fff6e6', 0.55);   // 船べりの白い線
+  ctx.lineWidth = 6;
+  ctx.beginPath();
+  ctx.moveTo(0, 312);
+  ctx.lineTo(w * 0.46, 316);
+  ctx.lineTo(w * 0.57, 292);
+  ctx.stroke();
+  paintAngler(ctx, true);
+}
+
+// 人（立って、竿を持っている）
+function paintAngler(ctx, noRod) {
   ctx.fillStyle = COLOR.shore;
   ctx.strokeStyle = COLOR.shore;
   ctx.lineCap = 'round';
@@ -1535,6 +1903,14 @@ function paintShore(ctx, w, h, noRod) {
   ctx.quadraticCurveTo(350, 110, ROD_TIP.x, 70);
   ctx.stroke();
 }
+
+// 時間帯ごとの空と海の色の重ね方。朝まずめは元の絵のまま
+const SKY_TINT = {
+  dawn: null,
+  day: { color: 0xa8dcff, alpha: 0.34 },
+  dusk: { color: 0xff7a3c, alpha: 0.22 },
+  night: { color: 0x0b1436, alpha: 0.62 },
+};
 
 function paintFloat(ctx, w, h) {
   ctx.fillStyle = '#d9564a';
@@ -2557,10 +2933,10 @@ function waterPoint(d) {
   return { x: 470 + t * 150, y: HORIZON + SEA_H * (0.55 - 0.45 * t), scale: 1.15 - 0.6 * t };
 }
 
-// 投げた距離に合う魚が来やすいように、くじを引く
-function pickFish(d) {
+// 投げた距離と、釣り場・季節・時間帯・道具に合う魚が来やすいように、くじを引く
+function pickFish(d, rates) {
   const list = window.fishData.fish;
-  const weights = list.map((f) => (d >= f.game.bestRange[0] && d <= f.game.bestRange[1] ? 1 : 0.15));
+  const weights = list.map((f, i) => (d >= f.game.bestRange[0] && d <= f.game.bestRange[1] ? 1 : 0.15) * rates[i]);
   let r = Math.random() * weights.reduce((a, b) => a + b, 0);
   for (let i = 0; i < list.length; i++) {
     r -= weights[i];
@@ -2700,20 +3076,14 @@ class HarborScene extends Phaser.Scene {
     this.cameras.main.fadeIn(REDUCE_MOTION ? 0 : 400, 60, 71, 112);
     this.dawn = createDawn(this);
 
-    const heading = this.add.text(W / 2, H * 0.14, '堤防で釣ろう', {
-      fontFamily: FONT_TITLE, fontSize: '72px', fontStyle: '600', color: COLOR.cream,
+    Requests.refresh();
+
+    this.heading = this.add.text(W / 2, H * 0.1, '', {
+      fontFamily: FONT_TITLE, fontSize: '68px', fontStyle: '600', color: COLOR.cream,
     }).setOrigin(0.5).setDepth(30).setShadow(0, 3, 'rgba(40,44,96,0.45)', 12);
 
-    const howTo = [
-      '① 押してためて、はなすと投げる',
-      '② ウキがしずんだら、すぐ合わせる',
-      '③ 押すと巻く、はなすと緩む',
-      '　 押しっぱなしだと、糸が切れるよ',
-      '',
-      '投げる強さで、寄ってくる魚が変わるよ',
-    ].join('\n');
-    this.add.text(W / 2, heading.y + 84, howTo, {
-      fontFamily: FONT_BODY, fontSize: '34px', color: COLOR.cream, lineSpacing: 16,
+    this.summary = this.add.text(W / 2, this.heading.y + 66, '', {
+      fontFamily: FONT_BODY, fontSize: '32px', color: COLOR.cream, align: 'center', lineSpacing: 12,
     }).setOrigin(0.5, 0).setDepth(30).setShadow(0, 2, 'rgba(40,44,96,0.55)', 8);
 
     const go = (motion) => {
@@ -2738,21 +3108,41 @@ class HarborScene extends Phaser.Scene {
       changeScene(this, 'Title');
     });
 
-    this.add.text(W - 22, 56, `${Save.data.day}日目　${Save.data.money}D`, {
+    this.status = this.add.text(W - 22, 56, '', {
       fontFamily: FONT_BODY, fontSize: '30px', fontStyle: 'bold', color: COLOR.cream,
     }).setOrigin(1, 0.5).setDepth(40).setShadow(0, 2, 'rgba(26,40,80,0.6)', 6);
 
-    // 図鑑と冷蔵庫
+    // 図鑑と冷蔵庫、依頼と市場、準備
+    const refresh = () => this.refreshKeep();
     const smallY = Math.round(H * 0.68) - 132;
-    createSmallButton(this, W / 2 - 185, smallY, '魚図鑑', () => bookPanel());
+    const townY = smallY - 124;
+    const prepY = townY - 154;
+    createSmallButton(this, W / 2 - 185, prepY, '釣りの準備', () => tripPanel(refresh));
+    createSmallButton(this, W / 2 + 185, prepY, 'あそびかた', () => howToSheet());
+    this.requestButton = createSmallButton(this, W / 2 - 185, townY, '', () => requestPanel(refresh), 30);
+    createSmallButton(this, W / 2 + 185, townY, '市場で売る', () => marketPanel(refresh));
+    createSmallButton(this, W / 2 - 185, smallY, '魚図鑑', () => bookPanel(refresh));
     this.keepButton = createSmallButton(this, W / 2 + 185, smallY, '', () => this.openKeep());
-    this.keepWarn = this.add.text(W / 2, smallY - 74, '', {
+    this.keepWarn = this.add.text(W / 2, townY - 76, '', {
       fontFamily: FONT_BODY, fontSize: '28px', fontStyle: 'bold', color: '#ffd27a',
     }).setOrigin(0.5).setDepth(40).setShadow(0, 2, 'rgba(26,40,80,0.7)', 6);
     this.refreshKeep();
   }
 
+  // 準備や売り買いのあとに、画面の文字を今の状態に直す
   refreshKeep() {
+    const trip = Trip.current();
+    const season = Trip.seasonIndex();
+    const nextSeason = SEASON_NAMES[(season + 1) % 4];
+    this.heading.setText(`${trip.spot.name}で釣ろう`);
+    this.summary.setText([
+      `季節：${SEASON_NAMES[season]}（あと${Trip.tripsLeft()}回の釣りで${nextSeason}）`,
+      `時間帯：${trip.time.name}`,
+      `竿：${trip.rod.name}`,
+      `仕掛け：${trip.method.name}＋${trip.bait.name}`,
+    ].join('\n'));
+    this.status.setText(`${Save.data.day}日目　${Save.data.money}D`);
+    this.requestButton.label.setText(`ご近所の依頼（${Save.data.requests.length}）`);
     this.keepButton.label.setText(`冷蔵庫（${Keep.items().length}）`);
     const worry = Keep.worryCount();
     this.keepWarn.setText(worry ? `傷みそうな魚が${worry}ひきいるよ` : '');
@@ -2796,6 +3186,7 @@ class FishingScene extends Phaser.Scene {
 
   init(data) {
     this.useMotion = !!(data && data.motion);
+    this.dayCounted = false;   // この画面の入れ物は使い回されるので、釣りに行くたびに数え直す
   }
 
   create() {
@@ -2804,8 +3195,23 @@ class FishingScene extends Phaser.Scene {
     this.dawn = createDawn(this);
     this.motionPace = REDUCE_MOTION ? 0.15 : 1;
 
-    bake(this, 'shoreNoRod', W, 500, (ctx, w, h) => paintShore(ctx, w, h, true));
-    this.add.image(0, SHORE_TOP, 'shoreNoRod').setOrigin(0).setDepth(5);
+    // 今回の釣り場・季節・時間帯・道具で、魚ごとの釣れやすさを決める
+    this.trip = Trip.current();
+    this.seasonIndex = Trip.seasonIndex();
+    this.rates = window.fishData.fish.map((f) => Trip.rate(f, this.trip, this.seasonIndex));
+
+    if (this.trip.spot.id === 'fune') {
+      bake(this, 'boatNoRod', W, 500, (ctx, w) => paintBoat(ctx, w));
+      this.add.image(0, SHORE_TOP, 'boatNoRod').setOrigin(0).setDepth(5);
+    } else {
+      bake(this, 'shoreNoRod', W, 500, (ctx, w, h) => paintShore(ctx, w, h, true));
+      this.add.image(0, SHORE_TOP, 'shoreNoRod').setOrigin(0).setDepth(5);
+    }
+    const tint = SKY_TINT[this.trip.time.sky];
+    if (tint) this.add.rectangle(0, 0, W, H, tint.color, tint.alpha).setOrigin(0).setDepth(8);
+    this.add.text(W / 2, 56, `${this.trip.spot.name}・${SEASON_NAMES[this.seasonIndex]}・${this.trip.time.name}`, {
+      fontFamily: FONT_BODY, fontSize: '30px', fontStyle: 'bold', color: COLOR.cream,
+    }).setOrigin(0.5).setDepth(45).setShadow(0, 2, 'rgba(26,40,80,0.6)', 6);
     bake(this, 'float', 26, 56, paintFloat);
     for (const fish of window.fishData.fish) {
       bake(this, `fish-${fish.id}`, FISH_BAKE.w, FISH_BAKE.h, (ctx, w, h) => paintFish(ctx, w, h, fish.id));
@@ -3006,11 +3412,14 @@ class FishingScene extends Phaser.Scene {
     const p = waterPoint(this.castD);
     this.ripple(p.x, p.y, 3.2);
     Sound.splash();
-    this.fish = pickFish(this.castD);
+    this.fish = pickFish(this.castD, this.rates);
     this.shadow.setTexture(`fish-${this.fish.id}`);
     this.fishNear = false;
     this.nibblesLeft = Phaser.Math.Between(this.fish.game.nibbles[0], this.fish.game.nibbles[1]);
-    this.waitT = randBetween(2.2, 5.2);
+    // 釣れやすい組み合わせほど早くアタリが来て、合わないとアタリがないこともある
+    const rate = this.rates[window.fishData.fish.indexOf(this.fish)];
+    this.noBite = Math.random() > Trip.biteChance(rate);
+    this.waitT = randBetween(2.2, 5.2) / Phaser.Math.Clamp(Math.sqrt(rate), 0.6, 1.5);
     this.say('');
     this.setAction('合わせる');
     this.hint.setText(this.useMotion ? 'ウキがしずんだら、押すか振る' : 'ウキがしずんだら押す');
@@ -3240,7 +3649,8 @@ class FishingScene extends Phaser.Scene {
       case 'waiting':
         this.waitT -= dt;
         if (this.waitT <= 0) {
-          if (this.nibblesLeft > 0) this.startNibble();
+          if (this.noBite) this.fail('アタリがなかった…\n投げ直そう');
+          else if (this.nibblesLeft > 0) this.startNibble();
           else this.startBite();
         }
         break;
@@ -3621,6 +4031,154 @@ function stampRow(entry) {
 }
 
 function fishById(id) { return window.fishData.fish.find((f) => f.id === id); }
+
+function howToSheet() {
+  showSheet('あそびかた', [
+    { steps: [
+      '押してためて、はなすと投げる',
+      'ウキがしずんだら、すぐ合わせる',
+      '押すと巻く、はなすと緩む。押しっぱなしだと糸が切れるよ',
+    ] },
+    { text: '投げる強さで、寄ってくる魚が変わるよ。' },
+    { text: '釣りの準備で、釣り場、時間帯、竿、仕掛け、エサを選べるよ。魚ごとに合う組み合わせがあるよ。' },
+    { text: '釣った魚は、料理して食べるのがいちばんお得。冷蔵庫の魚は、市場で売ったり、ご近所の依頼で渡したりできるよ。' },
+  ]);
+}
+
+// 道具や時間帯の豆知識。出典の本文で確かめたものだけ言い切る
+function tipBlock(box, note, extra) {
+  const tip = makeEl('div', 'tip');
+  if (note && note.status === '確認済み') {
+    tip.appendChild(makeEl('p', '', note.value));
+    sourceLine(tip, note.sources);
+  } else {
+    tip.appendChild(makeEl('p', '', '豆知識は、まだ資料で確かめているところです。'));
+  }
+  if (extra) tip.appendChild(makeEl('p', 'keep-warn', extra));
+  box.appendChild(tip);
+}
+
+function chipRow(box, items, selectedId, onPick) {
+  const row = makeEl('div', 'chips');
+  for (const item of items) {
+    const button = makeEl('button', item.id === selectedId ? 'on' : '', item.open === false ? `${item.name}（準備中）` : item.name);
+    if (item.open === false) button.disabled = true;
+    else button.addEventListener('click', () => onPick(item.id));
+    row.appendChild(button);
+  }
+  box.appendChild(row);
+}
+
+// 魚ごとの来やすさを、記号で見せる
+function outlookMark(rate) {
+  if (rate >= 1.4) return '◎';
+  if (rate >= 0.5) return '○';
+  return '△';
+}
+
+// 釣りの準備
+function tripPanel(onClose) {
+  const box = openPanel('釣りの準備');
+  const trip = Trip.current();
+  const season = Trip.seasonIndex();
+  const redraw = () => {
+    const sheet = document.getElementById('sheet');
+    const top = sheet.scrollTop;
+    tripPanel(onClose);
+    sheet.scrollTop = top;
+  };
+  const choose = (kind) => (id) => { Trip.choose(kind, id); redraw(); };
+
+  box.appendChild(makeEl('p', '', `今の季節は${SEASON_NAMES[season]}。あと${Trip.tripsLeft()}回の釣りで${SEASON_NAMES[(season + 1) % 4]}になるよ。`));
+
+  box.appendChild(makeEl('h3', '', '釣り場'));
+  chipRow(box, Trip.gear('spots'), trip.spot.id, choose('spot'));
+  tipBlock(box, trip.spot.note);
+  const locked = Trip.gear('spots').find((s) => s.open === false);
+  if (locked) box.appendChild(makeEl('p', 'sheet-note', `${locked.name}：${locked.lockNote}`));
+
+  box.appendChild(makeEl('h3', '', '時間帯'));
+  chipRow(box, Trip.gear('times'), trip.time.id, choose('time'));
+  tipBlock(box, trip.time.note);
+
+  box.appendChild(makeEl('h3', '', '仕掛け'));
+  chipRow(box, Trip.gear('methods').filter((m) => m.spots.includes(trip.spot.id)), trip.method.id, choose('method'));
+  tipBlock(box, trip.method.note);
+
+  box.appendChild(makeEl('h3', '', 'エサ'));
+  chipRow(box, Trip.gear('baits').filter((b) => trip.method.baits.includes(b.id)), trip.bait.id, choose('bait'));
+  tipBlock(box, trip.bait.note);
+
+  box.appendChild(makeEl('h3', '', '竿'));
+  chipRow(box, Trip.gear('rods').filter((r) => r.spots.includes(trip.spot.id)), trip.rod.id, choose('rod'));
+  const fits = trip.method.rods.includes(trip.rod.id);
+  tipBlock(box, trip.rod.note, fits ? '' : 'この仕掛けには別の竿が合うよ。今のままだと少し釣れにくくなる。');
+
+  box.appendChild(makeEl('h3', '', '来そうな魚'));
+  const outlook = makeEl('div', 'outlook');
+  for (const fish of window.fishData.fish) {
+    outlook.appendChild(makeEl('span', '', `${fish.name} ${outlookMark(Trip.rate(fish, trip, season))}`));
+  }
+  box.appendChild(outlook);
+  box.appendChild(makeEl('p', 'sheet-note', '◎○△と、季節や時間帯で魚の来やすさが変わるのは、このゲームのルールです。季節が変わる日数もゲームのルールで、現実の時期の目安ではありません。実際に釣りに行くときは、地域のルールと、今釣れている魚を確かめよう。'));
+  panelButton(box, 'これで決まり', () => { closePanel(); if (onClose) onClose(); });
+}
+
+// 市場
+function marketPanel(onClose) {
+  const box = openPanel('市場で売る');
+  box.appendChild(makeEl('p', '', `所持金 ${Save.data.money}D`));
+  box.appendChild(makeEl('p', 'sheet-note', `料理して食べると、売るより少し多くのDがもらえるよ（食費が浮くから）。冷凍すると売値は${Math.round(RULES.frozenPrice * 10)}割になる。値段はゲーム用の数字です。`));
+  const items = Keep.items().filter((item) => !Keep.info(item).rotten);
+  if (!items.length) box.appendChild(makeEl('p', '', '売れる魚がいないよ。釣ったあとに「冷蔵庫にしまう」を選ぶと、ここで売れるよ。'));
+  for (const item of items) {
+    const fish = fishById(item.fishId);
+    if (!fish) continue;
+    const info = Keep.info(item);
+    const row = makeEl('div', 'keep-item');
+    row.appendChild(fishImage(item.fishId, 'card-img'));
+    const body = makeEl('div', 'keep-body');
+    body.appendChild(makeEl('div', 'card-name', `${fish.name} ${item.sizeCm.toFixed(1)}cm${info.frozen ? '（冷凍）' : ''}`));
+    const price = Market.itemPrice(item, fish);
+    const actions = makeEl('div', 'keep-actions');
+    panelButton(actions, `${price}Dで売る`, () => { Market.sell(item, fish); marketPanel(onClose); });
+    body.appendChild(actions);
+    row.appendChild(body);
+    box.appendChild(row);
+  }
+  panelButton(box, 'とじる', () => { closePanel(); if (onClose) onClose(); });
+}
+
+// ご近所の依頼
+function requestPanel(onClose) {
+  const box = openPanel('ご近所の依頼');
+  box.appendChild(makeEl('p', '', `所持金 ${Save.data.money}D`));
+  box.appendChild(makeEl('p', 'sheet-note', '冷蔵庫の魚を渡すとお礼がもらえるよ。冷凍した魚は渡せない。お礼の金額はゲーム用の数字です。'));
+  const list = Save.data.requests;
+  if (!list.length) box.appendChild(makeEl('p', '', '今は依頼がないよ。釣りに行くと、また届くよ。'));
+  for (const request of list) {
+    const fish = fishById(request.fishId);
+    if (!fish) continue;
+    const row = makeEl('div', 'keep-item');
+    const body = makeEl('div', 'keep-body');
+    body.appendChild(makeEl('div', 'card-name', `${request.who}より`));
+    body.appendChild(makeEl('div', '', `「${request.line}」`));
+    body.appendChild(makeEl('div', '', `${fish.name} ${request.minCm}cm以上／お礼 ${request.reward}D／あと${request.until - Save.data.day}日`));
+    const matches = Requests.matches(request);
+    if (matches.length) {
+      const actions = makeEl('div', 'keep-actions');
+      for (const item of matches) {
+        panelButton(actions, `${item.sizeCm.toFixed(1)}cmを渡す`, () => { Requests.deliver(request, item); requestPanel(onClose); });
+      }
+      body.appendChild(actions);
+    } else {
+      body.appendChild(makeEl('div', 'keep-warn', '渡せる魚が冷蔵庫にいないよ'));
+    }
+    row.appendChild(body);
+    box.appendChild(row);
+  }
+  panelButton(box, 'とじる', () => { closePanel(); if (onClose) onClose(); });
+}
 
 // 図鑑の一覧
 function bookPanel(onClose) {
@@ -4428,7 +4986,7 @@ class EatScene extends Phaser.Scene {
     // 「いただきます」を押すと「食べた」になり、食レポが出る
     const eat = createButton(this, W / 2, H - 150, 'いただきます', () => {
       eat.setVisible(false).disableInteractive();
-      rewardToast(this, Book.recordEat(fish));
+      rewardToast(this, [...Book.recordEat(fish), Market.eat(this.catchData)]);
       this.showTasting(photoH);
     }, 46).setDepth(40);
   }
