@@ -825,7 +825,7 @@
     {
       "id": "kurodai",
       "name": "クロダイ",
-      "photo": false,
+      "views": false,
       "facts": {
         "season": {
           "value": "ほぼ1年中釣れる。よく釣れるのは3〜5月と10〜11月。堤防の落とし込み釣りは真夏がいちばん。",
@@ -7494,6 +7494,7 @@ const PREP_ART = {
   saba: { gill: 0.24, viewGill: 0.19, half: 100 },
   kasago: { gill: 0.35, viewGill: 0.27, half: 130 },
   onikasago: { gill: 0.31, viewGill: 0.31, half: 100 },   // 段階6の仮の絵に合わせた場所
+  kurodai: { gill: 0.24, viewGill: 0.24, half: 110 },
 };
 
 // 料理ごとのさばき方。順番に進める
@@ -7533,7 +7534,8 @@ class PrepScene extends Phaser.Scene {
     const path = this.dish.prepImage;
     if (path && !this.textures.exists(path)) this.load.image(path, path);
     const add = (key) => {
-      if (this.fish.photo === false) return;   // 絵がまだない魚は読みに行かない（仮の絵のまま進める）
+      // 絵がまだない魚と、背中・おなかの絵がない魚（"views": false）は読みに行かない（横向きの絵のまま進める）
+      if (this.fish.photo === false || this.fish.views === false) return;
       if (!this.textures.exists(key)) this.load.image(key, `images/${key}.webp`);
     };
     add(`view-${this.fish.id}-back`);
