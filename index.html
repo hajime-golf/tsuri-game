@@ -1092,7 +1092,8 @@
     {
       "id": "karei",
       "name": "マコガレイ",
-      "photo": false,
+      "views": false,
+      "faceRight": true,
       "facts": {
         "season": {
           "value": "10〜5月ごろ。いちばんは3〜4月の「花見ガレイ」と、初冬の産卵前の時期。",
@@ -1216,7 +1217,7 @@
     {
       "id": "aoriika",
       "name": "アオリイカ",
-      "photo": false,
+      "views": false,
       "facts": {
         "season": {
           "value": "大きいものは4〜6月、夏に生まれた小さいものは9〜12月がおもなシーズン。",
@@ -7496,6 +7497,8 @@ const PREP_ART = {
   onikasago: { gill: 0.31, viewGill: 0.31, half: 100 },   // 段階6の仮の絵に合わせた場所
   kurodai: { gill: 0.24, viewGill: 0.24, half: 110 },
   kisu: { gill: 0.23, viewGill: 0.23, half: 60 },
+  karei: { gill: 0.2, viewGill: 0.2, half: 140 },   // 頭が右の絵。割合は頭の側から数える
+  aoriika: { gill: 0.45, viewGill: 0.45, half: 110 },   // 足が左、胴が右
 };
 
 // 料理ごとのさばき方。順番に進める
@@ -7643,16 +7646,17 @@ class PrepScene extends Phaser.Scene {
       case 'poison': this.startPoison(); break;
       // イカ（Honda釣り図鑑のさばき方をもとにした流れ）
       case 'squidOpen':
+        // 絵は足が左、胴が右（絵の割合 0.45 から右が胴）
         this.say('胴を開く', '胴の真ん中の線に、包丁を入れよう（左から右へ）');
-        this.startTrace(this.fishY, this.left + this.fishW * 0.1, this.left + this.fishW * 0.6);
+        this.startTrace(this.fishY, this.left + this.fishW * 0.5, this.left + this.fishW * 0.93);
         break;
       case 'squidGuts':
-        this.say('甲と内臓を取る', '透明な甲を取って、頭と足ごと内臓をはがそう（墨袋を破らないように）');
-        this.startTrace(this.fishY + 30, this.left + this.fishW * 0.62, this.left + this.fishW * 0.92);
+        this.say('甲と内臓を取る', '透明な甲を取って、頭と足をつかみ、内臓ごと左へはがそう（墨袋を破らないように）');
+        this.startTrace(this.fishY + 20, this.left + this.fishW * 0.5, this.left + this.fishW * 0.1);
         break;
       case 'squidSkin':
         this.say('皮をむく', 'エンペラをはがして、皮を少しずつむこう（左から右へ）');
-        this.startTrace(this.fishY - 50, this.left + this.fishW * 0.08, this.left + this.fishW * 0.6);
+        this.startTrace(this.fishY - 60, this.left + this.fishW * 0.5, this.left + this.fishW * 0.92);
         break;
       default: this.nextStep();
     }
@@ -7708,8 +7712,13 @@ class PrepScene extends Phaser.Scene {
     this.finishStep(clamp01(1 - this.poisonMiss * 0.15));
   }
 
+  // 頭からの割合を、絵の左はしからの割合に直す（カレイは頭が右の絵）
+  fx(frac) {
+    return this.fish.faceRight ? 1 - frac : frac;
+  }
+
   xOf(frac) {
-    return this.left + this.fishW * frac;
+    return this.left + this.fishW * this.fx(frac);
   }
 
   // 真ん中の線をなぞる。from から to へ
@@ -7796,20 +7805,27 @@ class PrepScene extends Phaser.Scene {
   /* 頭を落とす：エラの後ろの線を、上から下へ */
   startHead() {
     this.say('頭を落とす', '赤い線にそって、上から下へスッとなぞろう');
-    this.cutX = this.left + this.fishW * this.art.gill;
+    this.cutX = this.xOf(this.art.gill);
     this.guide.lineStyle(5, 0xd63a26, 0.9);
     for (let y = this.bandTop; y < this.bandBottom; y += 26) this.guide.lineBetween(this.cutX, y, this.cutX, y + 15);
   }
 
   finishHead(score) {
     const key = `fish-${this.fish.id}`;
-    const split = this.art.gill * FISH_BAKE.w;
-    const head = this.add.image(this.fishX, this.fishY, key).setScale(this.fishScale).setCrop(0, 0, split, FISH_BAKE.h).setDepth(5);
-    this.body.setCrop(split, 0, FISH_BAKE.w - split, FISH_BAKE.h);
+    const right = !!this.fish.faceRight;   // 頭が右の絵は、右側を頭として切り離す
+    const split = this.fx(this.art.gill) * FISH_BAKE.w;
+    const head = this.add.image(this.fishX, this.fishY, key).setScale(this.fishScale).setDepth(5);
+    if (right) {
+      head.setCrop(split, 0, FISH_BAKE.w - split, FISH_BAKE.h);
+      this.body.setCrop(0, 0, split, FISH_BAKE.h);
+    } else {
+      head.setCrop(0, 0, split, FISH_BAKE.h);
+      this.body.setCrop(split, 0, FISH_BAKE.w - split, FISH_BAKE.h);
+    }
     this.headOff = true;
     Buzz.pulse(40);
     if (REDUCE_MOTION) head.setAlpha(0);
-    else this.tweens.add({ targets: head, x: head.x - 90, y: head.y + 80, angle: -14, alpha: 0, duration: 620, ease: 'Cubic.easeIn' });
+    else this.tweens.add({ targets: head, x: head.x + (right ? 90 : -90), y: head.y + 80, angle: right ? 14 : -14, alpha: 0, duration: 620, ease: 'Cubic.easeIn' });
     this.finishStep(score);
   }
 
